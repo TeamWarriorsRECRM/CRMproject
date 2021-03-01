@@ -1,0 +1,4 @@
+USE db name;
+
+INSERT INTO ;
+INSERT INTO ;
