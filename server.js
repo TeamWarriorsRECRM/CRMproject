@@ -5,7 +5,7 @@ const express = require('express');
 const apiRouter = require('./app/router/router');
 const { get } = require('http');
 const app = express();
-const path = require('path')
+
 
 const PORT = process.env.PORT || 8080
 
