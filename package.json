@@ -1,0 +1,27 @@
+{
+  "name": "crmproject",
+  "version": "1.0.0",
+  "description": "Please add notes for how to setup your project",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeamWarriorsRECRM/CRMproject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TeamWarriorsRECRM/CRMproject/issues"
+  },
+  "homepage": "https://github.com/TeamWarriorsRECRM/CRMproject#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
