@@ -1,9 +1,12 @@
-const db = require( '../config/connection.js' );
+const mysql = require("mysql");
+const db = require("../config/connection.js");
 
-function getClients(){
-    return db.query(`SELECT * FROM crm_client_db`)
+async function getClients() {
+  return await db
+    .query(`SELECT * FROM clientsCRM_db`)
+    .then((res) => console.log(res));
 }
 
 module.exports = {
-    getClients
-}
+  getClients,
+};
