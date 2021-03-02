@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  <title>Client Database</title>
+  <link href="assets/style.css" rel="stylesheet" type="text/css">
+    <title>Client Database</title>
 </head>
 
 <body>
@@ -16,7 +17,7 @@
 
   <ul class="nav nav-pills">
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="./index.html">Logout</a>
+      <a class="nav-link" aria-current="page" href="./index.html">Logout</a>
     </li>
 
     <li class="nav-item">
@@ -24,9 +25,12 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="./contact-us.html">Contact Support</a>
+      <a class="nav-link" href="">Access MLS listing</a>
     </li>
 
+    <li class="nav-item">
+      <a class="nav-link" href="./contact-us.html">Contact Support</a>
+    </li>
 
   </ul>
 
@@ -34,7 +38,8 @@
   <h1 style="text-align: center;">All Clients</h1>
 
   <br>
-  <table class="table" padding="">
+  <div class="container">
+  <table id="infoTable" class="table" padding="">
     <thead>
       <tr>
         <th scope="col">First Name</th>
@@ -86,8 +91,40 @@
       </tr>
     </tbody>
   </table>
-
-<button>View top potential clients</button>
+  <button onclick="sortTable()""> View top potential clients</button>
+</div>
+  
 </body>
+
+<script>
+  function sortTable() {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("infoTable");
+    switching = true;
+    while (switching) {
+      switching = false;
+      rows = table.rows;
+
+      // loop through all table rows except headers
+      for (i = 1; i < (rows.length - 1); i++) {
+        shouldSwitch = false;
+        x = rows[i].getElementByTagName("TD")[0];
+        y = rows[i + 1].getElementByTagName("TD")[0];
+
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+      if (shouldSwitch) {
+        /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    }
+  }
+</script>
 
 </html>
