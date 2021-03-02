@@ -26,7 +26,7 @@
 
       <h1 style="text-align: center;" >My Leads</h1>
 
-      <table class="table" padding="">
+      <table id="tableInfo" class="table" padding="">
         <thead>
           <tr>
             <th scope="col">First Name</th>
@@ -40,94 +40,133 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Mark</td>
-            <td>Jacob</td>
-            <td>$500,000</td>
-            <td>$60,000</td>
-            <td>Toronto</td>
-            <td>(Enter notes here)</td>
+          <tr id="row1">
+            <td id="firstName_row1" >Mark</td>
+            <td id="lastName_row1" >Jacob</td>
+            <td id="budget_row1">$500,000</td>
+            <td id="downpayment_row1">$60,000</td>
+            <td id="areaOfInterest_row1">Toronto</td>
+            <td id="note_row1" >(Enter notes here)</td>
             <td>
-              <button type="button" class="btn btn-primary">Edit</button>
-              <button type="button" class="btn btn-secondary">Delete</button>
+              <!-- <button onclick="edit_row1()" id="edit_button1" type="button" class="btn btn-primary" >Edit</button> -->
+              <input type="button" id="edit_button1" value="Edit" class="btn btn-primary" onclick="edit_row1()">
+              <input type="button" id="save_button1" value="Save" class="btn btn-primary" onclick="save_row1()">
+              <input type="button" id="delete_button1" value="Delete" class="btn btn-secondary" onclick="delete_row1()">
             </td>
           </tr>
           <tr>
-            <td>Alex</td>
-            <td>Andrews</td>
-            <td>$800,000</td>
-            <td>$80,000</td>
-            <td>Oshawa</td>
-            <td>(Enter notes here)</td>
+            <td id="firstName_row2">Alex</td>
+            <td id="lastName_row2">Andrews</td>
+            <td id="budget_row2">$800,000</td>
+            <td id="downpayment_row2">$80,000</td>
+            <td id="areaOfInterest_row2">Oshawa</td>
+            <td id="note_row2" >(Enter notes here)</td>
             <td>
-              <button type="button" class="btn btn-primary">Edit</button>
-              <button type="button" class="btn btn-secondary">Delete</button>
+              <input type="button" id="edit_button2" value="Edit" class="btn btn-primary" onclick="edit_row2()">
+              <input type="button" id="save_button2" value="Save" class="btn btn-primary" onclick="save_row2()">
+              <input type="button" id="delete_button2" value="Delete" class="btn btn-secondary" onclick="delete_row2()">
             </td>
           </tr>
           <tr>
-            <td>Leo</td>
-            <td>Scalops</td>
-            <td>$700,000</td>
-            <td>$80,000</td>
-            <td>Whitby</td>
-            <td>(Enter notes here)</td>
+            <td id="firstName_row3">Leo</td>
+            <td id="lastName_row3">Scalops</td>
+            <td id="budget_row3">$700,000</td>
+            <td id="downpayment_row3">$80,000</td>
+            <td id="areaOfInterest_row3">Whitby</td>
+            <td id="note_row3">(Enter notes here)</td>
             <td>
-              <button type="button" class="btn btn-primary">Edit</button>
-              <button type="button" class="btn btn-secondary">Delete</button>
+              <input type="button" id="edit_button3" value="Edit" class="btn btn-primary" onclick="edit_row1()">
+              <input type="button" id="save_button3" value="Save" class="btn btn-primary" onclick="save_row1()">
+              <input type="button" id="delete_button3" value="Delete" class="btn btn-secondary" onclick="delete_row1()">
             </td>
           </tr>
+
+          <!-- <tr>
+            <td><input type="text" name="new_firstName"></td>
+            <td><input type="text" name="new_lastName"></td>
+            <td><input type="text" name="new_budget"></td>
+            <td><input type="text" name="new_downPayment"></td>
+            <td><input type="text" name="new_areaOfInterest"></td>
+            <td><input type="text" name="new_note"></td>
+            <td>
+              <button onclick="edit_row3()" id="edit_button3" type="button" class="btn btn-primary" >Edit</button>
+              <button onclick="delete_row3()" id="edit_button3" type="button" class="btn btn-secondary">Delete</button>
+            </td>
+          </tr> -->
         </tbody>
       </table>
 
-      <!--Data Collected about Client-->
-      <!-- <div class= 'grid'>
-        <div class="col">
-          <strong>First Name</strong>
-        </div>
-        <div class='col'>
-          <strong>Last Name</strong>
-        </div>
-        <div class="col">
-          <strong>Budget</strong>
-        </div>
-        <div class="col">
-          <strong>Downpayment</strong>
-        </div>
-        <div class="col">
-          <strong>Area of interest</strong>
-          </div>
-        <div class="col">
-           <strong>Actions</strong>
-          </div>
-        </div> -->
-
-      <!--Client inputs-->
-     
-      <!-- <div class="row align-items-center">
-        <div class="col">
-          bob
-        </div>
-        <div class="col">
-          Alan
-        </div>
-        <div class="col">
-          $400,000
-        </div>
-        <div class="col">
-          $50,000
-        </div>
-        <div class="col">
-          Toronto
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-primary">Edit</button>
-          <button type="button" class="btn btn-secondary">Delete</button>
-        </div>
-      </div>
-
-   -->
-
-
-    
 </body>
+<script>
+
+//To allow user to edit input 
+function edit_row1(){
+  console.log('this works')
+
+  var firstName = document.getElementById('firstName_row1');
+  var lastName = document.getElementById('lastName_row1');
+  var budget = document.getElementById('budget_row1');
+  var downPay = document.getElementById('downpayment_row1');
+  var interest = document.getElementById('areaOfInterest_row1');
+  var notes = document.getElementById('note_row1');
+
+  var firstName_data = firstName.innerHTML;
+  var lastName_data = lastName.innerHTML;
+  var budget_data = budget.innerHTML;
+  var downPay_data = downPay.innerHTML;
+  var interest_data = interest.innerHTML;
+  var notes_data = notes.innerHTML;
+
+  firstName.innerHTML= "<input type='text' id='firstName_text"+"' value='"+firstName_data+"'>";
+  lastName.innerHTML= "<input type='text' id='secondName_text"+"' value='"+lastName_data+"'>";
+  budget.innerHTML= "<input type='text' id='budget_text"+"' value='"+budget_data+"'>";
+  downPay.innerHTML= "<input type='text' id='downPay_text"+"' value='"+downPay_data+"'>";
+  interest.innerHTML="<input type='text' id='interest_text"+"' value='"+interest_data+"'>";
+  notes.innerHTML="<input type='text' id='notes_text"+"' value='"+notes_data+"'>";
+  
+}
+
+//To save user input
+function save_row1(){
+
+  console.log('this works fam')
+
+
+  var firstName_val = document.getElementById('firstName_text').value;
+  var lastName_val = document.getElementById('secondName_text').value;
+  var budget_val = document.getElementById('budget_text').value;
+  var downPay_val = document.getElementById('downPay_text').value;
+  var interest_val = document.getElementById('interest_text').value;
+  var notes_val = document.getElementById('notes_text').value;
+
+  document.getElementById("firstName_row1").innerHTML=firstName_val;
+  document.getElementById("lastName_row1").innerHTML=lastName_val;
+  document.getElementById("budget_row1").innerHTML=budget_val;
+  document.getElementById("downpayment_row1").innerHTML=downPay_val;
+  document.getElementById("areaOfInterest_row1").innerHTML=interest_val;
+  document.getElementById("note_row1").innerHTML=notes_val;
+  
+}
+
+//To Delete full Row 
+
+function delete_row1(){
+  document.getElementById('row1').outerHTML='';
+}
+
+//to Add a row 
+function add_row(){
+  var new_firstName = document.getElementById("new_firstName")
+  var new_lastName = document.getElementById("new_lastName")
+  var new_budget = document.getElementById("new_downPayment")
+  var new_areaOfInterest = document.getElementById("new_areaOfInterest")
+  var new_note = document.getElementById("new_note ")
+
+  var table= document.getElementById("tableInfo"); 
+  var table_len=(table.rows.length)-1;
+  var row= table.insertRow(table_len).outerHTML=
+  "<tr id='row"+table_len+"'><td id='firstName_row"+table_len+"'>"+new_firstName+"</td><td id='lastName_row"+table_len+"'>"+new_lastName+"</td><td id='budget_row"+table_len+"'>"+new_budget+"</td><td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+}
+
+</script>
 </html>
