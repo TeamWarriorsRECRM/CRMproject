@@ -1,25 +1,33 @@
+const { async } = require("rxjs");
 const db = require("../config/connection.js");
 
 async function getClients() {
-  return db.query(`SELECT * FROM crm_client_db`);
+  return await db
+    .query(`SELECT firstname, lastname, area FROM clients`)
+    .then((res) => console.log(res));
 }
 
-async function userRetrieve() {
-  return db.query(`SELECT * FROM user_db`);
+async function insertClient(first, last, total, downpayment, area) {
+  return await db
+    .query(
+      `INSERT INTO clients (firstname, lastname, totalbudget, downpayment, area) VALUES ("${first}","${last}",${total},${downpayment},"${area}");`
+    )
+    .then((res) => console.log("new client inserted"));
 }
-async function insert() {
-  return db.query(`INSERT INTO test (name) VALUES ('hi');`);
+
+async function updateInfo(field, newValue, id) {
+  return db.query(`UPDATE clients SET ${field}="${newValue} WHERE id=${id}"`);
 }
-async function pull() {
-  let x = await db.query(
-    `INSERT INTO clients (firstname, lastname, totalbudget, downpayment, area) VALUES ("test2","test2",1,2,"T Downtown");`
-  );
-  console.log(x);
+
+async function deleteClient(id) {
+  return await db
+    .query(`DELETE FROM clients WHERE id=${id}`)
+    .then((res) => console.log(`Deleted!`));
 }
 
 module.exports = {
   getClients,
-  userRetrieve,
-  insert,
-  pull,
+  updateInfo,
+  insertClient,
+  deleteClient,
 };

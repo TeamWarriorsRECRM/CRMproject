@@ -24,4 +24,4 @@ app.listen(PORT, () => {
   console.log("Server is running", PORT);
 });
 
-orm.pull();
+orm.insertClient("Captain", "Harlock", 10, 10, "world");
