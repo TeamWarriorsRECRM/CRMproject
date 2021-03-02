@@ -91,12 +91,15 @@
       </tr>
     </tbody>
   </table>
-  <button onclick="sortTable()""> View top potential clients</button>
+  <button onclick="sortTable()"> Sort by most Promosing clients</button>
+  <a href="database.html"><button>View selected clients on Database</button></a>
 </div>
   
 </body>
 
 <script>
+
+  // This function is to sort the table
   function sortTable() {
     var table, rows, switching, i, x, y, shouldSwitch;
     table = document.getElementById("infoTable");
@@ -125,6 +128,11 @@
       }
     }
   }
+
+  
+
+
+
 </script>
 
 </html>
