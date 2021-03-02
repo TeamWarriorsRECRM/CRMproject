@@ -1,36 +1,38 @@
-const passport = require("passport");
-const localStrategy = require("passport-local").Strategy;
-const connection = require("./connection");
-// const User = connection.models.User;
+const passport = require("passport"),
+  LocalStrategy = require("passport-local").Strategy;
 const db = require("./connection");
-const orm = require("../models/orm");
 
-const customField = {
-  usernameField: "user",
-  password: "pw",
-};
+passport.use(
+  new LocalStrategy(
+    { usernameField: "username" },
 
-const verifyCallback = (username, password, done) => {
-  let userLookUp = orm
-    .userRetrieve({ username: username })
-    .then((user) => {
-      if (!user) {
-        return done(null, false);
-      }
+    function (username, password, done) {
+      db.Registered.findOne({
+        where: { username: username },
+      }).then(function (dbUser) {
+        if (dbUser) {
+          return done(null, dbUser, {
+            message: "Successful login",
+          });
+        } else if (!dbUser.validPassword(password)) {
+          return done(null, false, {
+            message: "Incorrect password please try again",
+          });
+        } else {
+          return done(null, false, {
+            message: "Incorrect username please try again",
+          });
+        }
+      });
+    }
+  )
+);
 
-      const isValid = validPassword(password, user.hash, user.salt);
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+passport.deserializeUser((remove, done) => {
+  done(null, remove);
+});
 
-      if (isValid) {
-        return done(null, user);
-      } else {
-        return done(null, false);
-      }
-    })
-    .catch((e) => {
-      done(e);
-    });
-};
-
-const strategy = new localStrategy();
-
-passport.use(new localStrategy(function (username, password, callback) {}));
+module.exports = passport;
