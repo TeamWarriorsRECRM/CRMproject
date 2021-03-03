@@ -1,4 +1,20 @@
 
+  // To save client input into database
+
+class User{
+    constructor(firstName, lastName, budget, downPay, interest, email, status, notes ){
+        this.firstName= firstName
+        this.lastName= lastName
+        this.budget= budget
+        this.downPay= downPay
+        this.interest= interest
+        this.email= email
+        this.status= status 
+        this.notes = notes
+    }
+
+} 
+  
   // Database js 
   
   //To allow user to edit input 
@@ -68,6 +84,7 @@
   }
 
   //to Add a row 
+
   function add_row(no) {
     var new_firstName = document.getElementById("new_firstName");
     var new_lastName = document.getElementById("new_lastName");
@@ -90,13 +107,16 @@
     document.getElementById('new_downPayment').value = "";
     document.getElementById('new_areaOfInterest').value = "";
     document.getElementById('new_email').value = "";
+    document.getElementById('new_status').value="";
     document.getElementById('new_note').value = "";
+
+    var user = (new_firstName,new_lastName, new_budget, new_downPayment, new_areaOfInterest, new_email, new_status, new_note)
   }
 
   
-  
-// moment function working, 
 
+
+// moment function working, 
 
 
 //To show current 
@@ -140,10 +160,5 @@
     }
   }
 
-  // Login page reveal 
-  async function reveal(){
-    var element= document.getElementsByClassName('database')[0];
-    element.classList.remove('database')
-    console.log("this works")
-  }
+  
   

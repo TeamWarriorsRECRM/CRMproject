@@ -10,7 +10,7 @@ const passport = require("passport");
 const db = require("./app/config/connection");
 const app = express();
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 6000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
