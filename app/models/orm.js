@@ -7,11 +7,19 @@ async function getClients() {
     .then((res) => console.log(res));
 }
 
-async function insertClient(first, last, total, downpayment, area) {
+async function insertClient(
+  first,
+  last,
+  total,
+  downpayment,
+  area,
+  email,
+  status
+) {
   ////////decontruct obj/////////
   return await db
     .query(
-      `INSERT INTO clients (firstname, lastname, totalbudget, downpayment, area) VALUES ("${first}","${last}",${total},${downpayment},"${area}");`
+      `INSERT INTO clients (firstname, lastname, totalbudget, downpayment, area) VALUES ("${first}","${last}",${total},${downpayment},"${area}","${email}", "${status}");`
     )
     .then((res) => console.log("new client inserted"));
 }
