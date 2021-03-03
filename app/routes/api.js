@@ -1,8 +1,11 @@
-// const orm = require('../models/orm');
+const passport = require("../config/passport");
+const db = require("../config/connection");
 
-// app.post('/api/clientdb', async function(req, res){
-//     const savedClients = await orm.getClients();
-//     res.send(savedClients)
-// })
+app.post("/index", passport.authenticate("local"), (req, res) => {
+  res.send(req.user);
+});
 
-// module.exports = 
+app.get("/logout", (req, res, next) => {
+  req.logout();
+  res.redirect("/index.html");
+});
