@@ -1,6 +1,7 @@
 
   // To save client input into database
 
+
 class User{
     constructor(firstName, lastName, budget, downPay, interest, email, status, notes ){
         this.firstName= firstName
@@ -12,8 +13,8 @@ class User{
         this.status= status 
         this.notes = notes
     }
-
 } 
+
   
   // Database js 
   
@@ -27,7 +28,7 @@ class User{
     var downPay = document.getElementById('downpayment_row' + no);
     var interest = document.getElementById('areaOfInterest_row' + no);
     var email = document.getElementById('email_row'+ no);
-    var status = document.getElementById('status_row'+no)
+    // var status = document.getElementById('status_row'+no)
     var notes = document.getElementById('note_row' + no);
 
     var firstName_data = firstName.innerHTML;
@@ -36,7 +37,7 @@ class User{
     var downPay_data = downPay.innerHTML;
     var interest_data = interest.innerHTML;
     var email_data = email.innerHTML;
-    var status_data = status.innerHTML;
+    // var status_data = status.innerHTML;
     var notes_data = notes.innerHTML;
 
     firstName.innerHTML = "<input type='text' id='firstName_text" + no + "' value='" + firstName_data + "'>";
@@ -45,7 +46,7 @@ class User{
     downPay.innerHTML = "<input type='text' id='downPay_text" + no + "' value='" + downPay_data + "'>";
     interest.innerHTML = "<input type='text' id='interest_text" + no + "' value='" + interest_data + "'>";
     email.innerHTML = "<input type='text' id='email_text" + no+ "' value='" + interest_data + "'>";
-    status.innerHTML = "<input type='text' id='status_text" + no+ "' value='" + status_data + "'>";
+    // status.innerHTML = "<input type='text' id='status_text" + no+ "' value='" + status_data + "'>";
     notes.innerHTML = "<input type='text' id='notes_text" + no + "' value='" + notes_data + "'>";
 
   }
@@ -62,7 +63,7 @@ class User{
     var downPay_val = document.getElementById('downPay_text' + no).value;
     var interest_val = document.getElementById('interest_text' + no).value;
     var email_val = document.getElementById('email_text'+no).value;
-    var status_val = document.getElementById('status_text'+no).value;
+    // var status_val = document.getElementById('status_text'+no).value;
     var notes_val = document.getElementById('notes_text' + no).value;
 
     document.getElementById("firstName_row" + no).innerHTML = firstName_val;
@@ -71,8 +72,16 @@ class User{
     document.getElementById("downpayment_row" + no).innerHTML = downPay_val;
     document.getElementById("areaOfInterest_row" + no).innerHTML = interest_val;
     document.getElementById("email_row"+no).innerHTML= email_val;
-    document.getElementById("status_row"+no).innerHTML=status_val;
+    // document.getElementById("status_row"+no).innerHTML=status_val;
     document.getElementById("note_row" + no).innerHTML = notes_val;
+
+// To save Status update: 
+
+function dataSelect(){
+    var d= document.getElementById('ddselect')
+    var displayText=d.options(d.selectedIndex).text;
+    document.getElementById('textvalue').value=displayText;
+}
 
   }
 
@@ -98,9 +107,9 @@ class User{
     var table = document.getElementById("tableInfo");
     var table_len = (table.rows.length);
     var row = table.insertRow(table_len).outerHTML =
-      "<tr id='row" + table_len + "'><td id='firstName_row" + table_len + "'>" + new_firstName + "</td><td id='lastName_row" + table_len + "'>" + new_lastName + "</td><td id='budget_row" + table_len + "'>" + new_budget + "</td><td id='downpayment_row" + table_len + "'>" + new_downPayment + "</td><td id='areaOfInterest_row" + table_len + "'>" + new_areaOfInterest + "</td><td id='email_row" + table_len + "'>" + new_email + "</td><td id='status_row" + table_len + "'>" + new_status + "</td><td id='note_row" + table_len + "'>" + new_note + "</td><td><input type='button' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" + table_len + ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" + table_len + ")'> <input type='button' value='Delete' class='btn btn-secondary' onclick='delete_row(" + table_len + ")'></td></tr>";
+      "<tr id='row" + table_len + "'><td id='firstName_row" + table_len + "'>" + new_firstName + "</td><td id='lastName_row" + table_len + "'>" + new_lastName + "</td><td id='budget_row" + table_len + "'>" + new_budget + "</td><td id='downpayment_row" + table_len + "'>" + new_downPayment + "</td><td id='areaOfInterest_row" + table_len + "'>" + new_areaOfInterest + "</td><td id='email_row" + table_len + "'>" + new_email + "</td><td> <select> <option> Actively Looking </option><option  >Passively Looking </option> <option >Not interested</option></select>" + table_len  + "</td><td id='note_row" + table_len + "'>" + new_note + "</td><td><input type='button' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" + table_len + ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" + table_len + ")'> <input type='button' value='Delete' class='btn btn-secondary' onclick='delete_row(" + table_len + ")'></td></tr>";
 
-
+      
 
     document.getElementById("new_firstName").value = "";
     document.getElementById("new_lastName").value = "";
@@ -111,6 +120,8 @@ class User{
     document.getElementById('new_note').value = "";
 
     var user = (new_firstName,new_lastName, new_budget, new_downPayment, new_areaOfInterest, new_email, new_status, new_note)
+
+    
   }
 
   
