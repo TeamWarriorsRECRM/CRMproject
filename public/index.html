@@ -11,34 +11,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     <title>My Real estate agent</title>
 
-    <style>
-      .login-form {
-        width: 340px;
-          margin: 50px auto;
-      }
-        .login-form form {
-          margin-bottom: 15px;
-            background: #f7f7f7;
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-        }
-        .login-form h2 {
-            margin: 0 0 15px;
-        }
-        .form-control, .btn {
-            min-height: 38px;
-            border-radius: 2px;
-        }
-        .btn {        
-            font-size: 15px;
-            font-weight: bold;
-        }
     
-        .database{
-          display: none;
-
-        }
-    </style>
   </head>
 
 <body>
@@ -53,6 +26,7 @@
         </li>
       </ul>
 
+      <div class="container">
       <div class="login-form">
         <form action="" method="post">
             <h2 class="text-center">Log in</h2>       
@@ -72,7 +46,7 @@
         </form>
         <p class="text-center"><a href="#">Create an Account</a></p>
     </div> 
-
+ 
 
       <!--Client Database access -->
 
@@ -90,6 +64,7 @@
     
         </div>
     </div>
+  </div>
  
 
     <!--Sales Listing Login-->
@@ -97,15 +72,7 @@
 
     
 </body>
-<script>
+<script src="assets/script.js">
 
-async function reveal(){
-  var element= document.getElementsByClassName('database')[0];
-  element.classList.remove('database')
-  console.log("this works")
-}
-
-
-// create class, return the function with object 
 </script>
 </html>
