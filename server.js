@@ -31,6 +31,15 @@ app.use(passport.session());
 // db.sequelize.sync();
 // createClass();
 
+app.get("/", (req, res) => {});
+
+app.post("/database.html", (req, res) => {
+  console.log(req.body);
+  let body = req.body;
+  orm.insertClient(body);
+  res.send(`some response ${req.body}`);
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running, http://localhost:${PORT}/"`);
 });

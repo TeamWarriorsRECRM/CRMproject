@@ -1,30 +1,4 @@
-// import orm from "./../../app/models/orm";
-
 // To save client input into database
-
-function createObj(
-  firstName_val,
-  lastName_val,
-  budget_val,
-  downPay_val,
-  interest_val,
-  email_val,
-  status_val,
-  notes_val
-) {
-  const user = {
-    firstName: firstName_val,
-    lastName: lastName_val,
-    budget: budget_val,
-    downPay: downPay_val,
-    interest: interest_val,
-    email: email_val,
-    status: status_val,
-    notes: notes_val,
-  };
-  console.log(user);
-  // orm.insertClient(user);
-}
 
 // Database js
 
@@ -97,7 +71,7 @@ function edit_row(no) {
 }
 
 //To save user input
-function save_row(no) {
+async function save_row(no) {
   console.log("this works fam");
 
   var firstName_val = document.getElementById("firstName_text" + no).value;
@@ -120,16 +94,20 @@ function save_row(no) {
   document.getElementById("status_row" + no).innerHTML = status_val;
   document.getElementById("note_row" + no).innerHTML = notes_val;
 
-  createObj(
-    firstName_val,
-    lastName_val,
-    budget_val,
-    downPay_val,
-    interest_val,
-    email_val,
-    status_val,
-    notes_val
-  );
+  const res = await fetch(`/database.html`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      firstName: firstName_val,
+      lastName: lastName_val,
+      budget: budget_val,
+      downPay: downPay_val,
+      interest: interest_val,
+      email: email_val,
+      status: status_val,
+      notes: notes_val,
+    }),
+  });
 }
 
 //To Delete full Row
