@@ -1,25 +1,29 @@
+// import orm from "./../../app/models/orm";
+
 // To save client input into database
 
-class User {
-  constructor(
-    firstName,
-    lastName,
-    budget,
-    downPay,
-    interest,
-    email,
-    status,
-    notes
-  ) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.budget = budget;
-    this.downPay = downPay;
-    this.interest = interest;
-    this.email = email;
-    this.status = status;
-    this.notes = notes;
-  }
+function createObj(
+  firstName_val,
+  lastName_val,
+  budget_val,
+  downPay_val,
+  interest_val,
+  email_val,
+  status_val,
+  notes_val
+) {
+  const user = {
+    firstName: firstName_val,
+    lastName: lastName_val,
+    budget: budget_val,
+    downPay: downPay_val,
+    interest: interest_val,
+    email: email_val,
+    status: status_val,
+    notes: notes_val,
+  };
+  console.log(user);
+  // orm.insertClient(user);
 }
 
 // Database js
@@ -105,6 +109,8 @@ function save_row(no) {
   var status_val = document.getElementById("status_text" + no).value;
   var notes_val = document.getElementById("notes_text" + no).value;
 
+  console.log(lastName_val, "    LASTNAME");
+
   document.getElementById("firstName_row" + no).innerHTML = firstName_val;
   document.getElementById("lastName_row" + no).innerHTML = lastName_val;
   document.getElementById("budget_row" + no).innerHTML = budget_val;
@@ -113,6 +119,17 @@ function save_row(no) {
   document.getElementById("email_row" + no).innerHTML = email_val;
   document.getElementById("status_row" + no).innerHTML = status_val;
   document.getElementById("note_row" + no).innerHTML = notes_val;
+
+  createObj(
+    firstName_val,
+    lastName_val,
+    budget_val,
+    downPay_val,
+    interest_val,
+    email_val,
+    status_val,
+    notes_val
+  );
 }
 
 //To Delete full Row
@@ -186,16 +203,6 @@ function add_row(no) {
   document.getElementById("new_email").value = "";
   document.getElementById("new_status").value = "";
   document.getElementById("new_note").value = "";
-
-  var user =
-    (new_firstName,
-    new_lastName,
-    new_budget,
-    new_downPayment,
-    new_areaOfInterest,
-    new_email,
-    new_status,
-    new_note);
 }
 
 // moment function working,

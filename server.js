@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const createClass = require("./public/assets/script");
 const orm = require("./app/models/orm");
 const express = require("express");
 const session = require("express-session");
@@ -9,6 +10,7 @@ const { get } = require("http");
 const passport = require("passport");
 const db = require("./app/config/connection");
 const { connection } = require("./app/config/connection");
+const { Script } = require("vm");
 const app = express();
 
 const PORT = process.env.PORT || 5000;
@@ -27,6 +29,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // db.sequelize.sync();
+// createClass();
 
 app.listen(PORT, () => {
   console.log(`Server is running, http://localhost:${PORT}/"`);
