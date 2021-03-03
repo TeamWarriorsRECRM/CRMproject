@@ -14,12 +14,13 @@ async function insertClient(
   downpayment,
   area,
   email,
-  status
+  status,
+  note
 ) {
   ////////decontruct obj/////////
   return await db
     .query(
-      `INSERT INTO clients (firstname, lastname, totalbudget, downpayment, area) VALUES ("${first}","${last}",${total},${downpayment},"${area}","${email}", "${status}");`
+      `INSERT INTO clients (firstname, lastname, totalbudget, downpayment, area) VALUES ("${first}","${last}",${total},${downpayment},"${area}","${email}", "${status}", "${note}");`
     )
     .then((res) => console.log("new client inserted"));
 }
