@@ -16,7 +16,7 @@
 
   <ul class="nav nav-pills">
     <li class="nav-item">
-      <a class="nav-link" aria-current="page" href="./initalPage.html">Logout</a>
+      <a class="nav-link" aria-current="page" href="./index.html">Logout</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="./clients.html">Go Back</a>
@@ -50,6 +50,8 @@
         <th scope="col">Budget</th>
         <th scope="col">Downpayment</th>
         <th scope="col">Area of Interest</th>
+        <th scope="col">Client email</th>
+        <th scope="col">Status</th>
         <th scope="col">My Notes</th>
         <th scope="col">Actions</th>
 
@@ -62,6 +64,21 @@
         <td id="budget_row1">$500,000</td>
         <td id="downpayment_row1">$60,000</td>
         <td id="areaOfInterest_row1">Toronto</td>
+        <td id="email_row1">email</td>
+        <td id="status_row1">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Select status
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+
+
+        </td>
         <td id="note_row1">(Enter notes here)</td>
         <td>
           <!-- <button onclick="edit_row1()" id="edit_button1" type="button" class="btn btn-primary" >Edit</button> -->
@@ -76,6 +93,8 @@
         <td id="budget_row2">$800,000</td>
         <td id="downpayment_row2">$80,000</td>
         <td id="areaOfInterest_row2">Oshawa</td>
+        <td id="email_row2">email</td>
+        <td id="status_row2">Passively Looking</td>
         <td id="note_row2">(Enter notes here)</td>
         <td>
           <input type="button" id="edit_button2" value="Edit" class="btn btn-primary" onclick="edit_row(2)">
@@ -89,6 +108,8 @@
         <td id="budget_row3">$700,000</td>
         <td id="downpayment_row3">$80,000</td>
         <td id="areaOfInterest_row3">Whitby</td>
+        <td id="email_row3">email</td>
+        <td id="status_row3">Not interested</td>
         <td id="note_row3">(Enter notes here)</td>
         <td>
           <input type="button" id="edit_button3" value="Edit" class="btn btn-primary" onclick="edit_row(3)">
@@ -103,98 +124,9 @@
   </table>
 
 </body>
-<script src="assets/script.js">
+<script src="./assets/script.js" >
 
-  //To allow user to edit input 
-  // function edit_row(no) {
-  //   console.log('this works')
-
-  //   var firstName = document.getElementById('firstName_row' + no);
-  //   var lastName = document.getElementById('lastName_row' + no);
-  //   var budget = document.getElementById('budget_row' + no);
-  //   var downPay = document.getElementById('downpayment_row' + no);
-  //   var interest = document.getElementById('areaOfInterest_row' + no);
-  //   var notes = document.getElementById('note_row' + no);
-
-  //   var firstName_data = firstName.innerHTML;
-  //   var lastName_data = lastName.innerHTML;
-  //   var budget_data = budget.innerHTML;
-  //   var downPay_data = downPay.innerHTML;
-  //   var interest_data = interest.innerHTML;
-  //   var notes_data = notes.innerHTML;
-
-  //   firstName.innerHTML = "<input type='text' id='firstName_text" + no + "' value='" + firstName_data + "'>";
-  //   lastName.innerHTML = "<input type='text' id='secondName_text" + no + "' value='" + lastName_data + "'>";
-  //   budget.innerHTML = "<input type='text' id='budget_text" + no + "' value='" + budget_data + "'>";
-  //   downPay.innerHTML = "<input type='text' id='downPay_text" + no + "' value='" + downPay_data + "'>";
-  //   interest.innerHTML = "<input type='text' id='interest_text" + no + "' value='" + interest_data + "'>";
-  //   notes.innerHTML = "<input type='text' id='notes_text" + no + "' value='" + notes_data + "'>";
-
-  // }
-
-  //To save user input
-  // function save_row(no) {
-
-  //   console.log('this works fam')
-
-
-  //   var firstName_val = document.getElementById('firstName_text' + no).value;
-  //   var lastName_val = document.getElementById('secondName_text' + no).value;
-  //   var budget_val = document.getElementById('budget_text' + no).value;
-  //   var downPay_val = document.getElementById('downPay_text' + no).value;
-  //   var interest_val = document.getElementById('interest_text' + no).value;
-  //   var notes_val = document.getElementById('notes_text' + no).value;
-
-  //   document.getElementById("firstName_row" + no).innerHTML = firstName_val;
-  //   document.getElementById("lastName_row" + no).innerHTML = lastName_val;
-  //   document.getElementById("budget_row" + no).innerHTML = budget_val;
-  //   document.getElementById("downpayment_row" + no).innerHTML = downPay_val;
-  //   document.getElementById("areaOfInterest_row" + no).innerHTML = interest_val;
-  //   document.getElementById("note_row" + no).innerHTML = notes_val;
-
-  // }
-
-  //To Delete full Row 
-
-  // function delete_row(no) {
-  //   console.log('this works eh')
-  //   document.getElementById('row' + no + "").outerHTML = '';
-  // }
-
-  //to Add a row 
-  // function add_row(no) {
-  //   var new_firstName = document.getElementById("new_firstName")
-  //   var new_lastName = document.getElementById("new_lastName")
-  //   var new_budget = document.getElementById("new_budget")
-  //   var new_downPayment = document.getElementById('new_downPayment')
-  //   var new_areaOfInterest = document.getElementById("new_areaOfInterest")
-  //   var new_note = document.getElementById("new_note ")
-
-  //   var table = document.getElementById("tableInfo");
-  //   var table_len = (table.rows.length);
-  //   var row = table.insertRow(table_len).outerHTML =
-  //     "<tr id='row" + table_len + "'><td id='firstName_row" + table_len + "'>" + new_firstName + "</td><td id='lastName_row" + table_len + "'>" + new_lastName + "</td><td id='budget_row" + table_len + "'>" + new_budget + "</td><td id='downpayment_row" + table_len + "'>" + new_downPayment + "</td><td id='areaOfInterest_row" + table_len + "'>" + new_areaOfInterest + "</td><td id='note_row" + table_len + "'>" + new_note + "</td><td><input type='button' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" + table_len + ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" + table_len + ")'> <input type='button' value='Delete' class='btn btn-secondary' onclick='delete_row(" + table_len + ")'></td></tr>";
-
-
-
-  //   document.getElementById("new_firstName").value = "";
-  //   document.getElementById("new_lastName").value = "";
-  //   document.getElementById('new_downPayment').value = "";
-  //   document.getElementById('new_areaOfInterest').value = "";
-  //   document.getElementById('new_note').value = "";
-
-  // }
-
-  
-//To show current 
-// document.getElementById("time").onload = function timeShow() {timeShow()};a
-
-// function timeShow() {
-//   var x = new Date(document.lastModified);
-//   document.getElementById("time").innerHTML = x;
-// }
-
-
+ 
 </script>
 
 </html>
