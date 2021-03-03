@@ -8,8 +8,6 @@ async function getClients() {
 }
 
 async function insertClient(obj) {
-  ////////decontruct obj/////////
-
   return await db
     .query(
       `INSERT INTO clients (firstname, lastname, totalbudget, downpayment, area, email, _status,note) VALUES ("${obj.firstName}","${obj.lastName}",${obj.budget},${obj.downPay},"${obj.interest}","${obj.email}", "${obj.status}", "${obj.notes}");`
@@ -21,9 +19,11 @@ async function updateInfo(field, newValue, id) {
   return db.query(`UPDATE clients SET ${field}="${newValue} WHERE id=${id}"`);
 }
 
-async function deleteClient(id) {
+async function deleteClient(name, lastName) {
   return await db
-    .query(`DELETE FROM clients WHERE id=${id}`)
+    .query(
+      `DELETE FROM clients WHERE firstname="${name}" AND lastname="${lastName}"`
+    )
     .then((res) => console.log(`Deleted!`));
 }
 

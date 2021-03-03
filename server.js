@@ -31,7 +31,15 @@ app.use(passport.session());
 // db.sequelize.sync();
 // createClass();
 
-app.get("/", (req, res) => {});
+app.get("/database.html", (req, res) => {});
+
+app.delete("/database.html/:firstName/:lastName", (req, res) => {
+  console.log(req.params);
+  orm.deleteClient(req.params.firstName, req.params.lastName);
+  res.send();
+});
+
+app.put("/database.html", (req, res) => {});
 
 app.post("/database.html", (req, res) => {
   console.log(req.body);

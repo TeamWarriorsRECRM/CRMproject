@@ -112,9 +112,20 @@ async function save_row(no) {
 
 //To Delete full Row
 
-function delete_row(no) {
+async function delete_row(no) {
   console.log("this works eh");
+  var firstName_val = document.getElementById("firstName_row" + no).innerHTML;
+  var lastName_val = document.getElementById("lastName_row" + no).innerHTML;
+  // console.log(firstName_val, lastName_val, "   INPUT");
   document.getElementById("row" + no + "").outerHTML = "";
+
+  const deletion = await fetch(
+    `/database.html/${firstName_val}/${lastName_val}`,
+    {
+      method: "DELETE",
+    }
+  );
+  console.log(deletion, "  DLEETION ");
 }
 
 //to Add a row
