@@ -11,10 +11,10 @@ const db = require("./app/config/connection");
 const { connection } = require("./app/config/connection");
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 
-require("./routes/router.js")(app);
-require("./routes/api-routes.js")(app);
+// require("./routes/router.js")(app);
+// require("./routes/api-routes.js")(app);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -26,7 +26,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-db.sequelize.sync();
+// db.sequelize.sync();
 
 app.listen(PORT, () => {
   console.log(`Server is running, http://localhost:${PORT}/"`);
