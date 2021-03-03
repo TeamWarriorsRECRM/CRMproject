@@ -8,6 +8,7 @@ async function getClients() {
 }
 
 async function insertClient(first, last, total, downpayment, area) {
+  ////////decontruct obj/////////
   return await db
     .query(
       `INSERT INTO clients (firstname, lastname, totalbudget, downpayment, area) VALUES ("${first}","${last}",${total},${downpayment},"${area}");`
