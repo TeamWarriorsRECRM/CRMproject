@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 7000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// app.get('/api/clients', (req, res)=>{
+// app.get('/api/database', (req, res)=>{
 //    const clientList =  await orm.getClients();
 //    res.send(clientList);
 // });
