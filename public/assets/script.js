@@ -78,10 +78,14 @@
     document.getElementById('new_downPayment').value = "";
     document.getElementById('new_areaOfInterest').value = "";
     document.getElementById('new_note').value = "";
-
   }
 
   
+  
+// moment function working, 
+
+
+
 //To show current 
 // document.getElementById("time").onload = function timeShow() {timeShow()};a
 
@@ -93,29 +97,6 @@
 
 
 // Client js 
-
-function add_row(no) {
-    var new_firstName = document.getElementById("new_firstName")
-    var new_lastName = document.getElementById("new_lastName")
-    var new_budget = document.getElementById("new_budget")
-    var new_downPayment = document.getElementById('new_downPayment')
-    var new_areaOfInterest = document.getElementById("new_areaOfInterest")
-    var new_note = document.getElementById("new_note ")
-
-    var table = document.getElementById("tableInfo");
-    var table_len = (table.rows.length);
-    var row = table.insertRow(table_len).outerHTML =
-      "<tr id='row" + table_len + "'><td id='firstName_row" + table_len + "'>" + new_firstName + "</td><td id='lastName_row" + table_len + "'>" + new_lastName + "</td><td id='budget_row" + table_len + "'>" + new_budget + "</td><td id='downpayment_row" + table_len + "'>" + new_downPayment + "</td><td id='areaOfInterest_row" + table_len + "'>" + new_areaOfInterest + "</td><td id='note_row" + table_len + "'>" + new_note + "</td><td><input type='button' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" + table_len + ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" + table_len + ")'> <input type='button' value='Delete' class='btn btn-secondary' onclick='delete_row(" + table_len + ")'></td></tr>";
-
-
-
-    document.getElementById("new_firstName").value = "";
-    document.getElementById("new_lastName").value = "";
-    document.getElementById('new_downPayment').value = "";
-    document.getElementById('new_areaOfInterest').value = "";
-    document.getElementById('new_note').value = "";
-
-  }
 
   function sortTable() {
     var table, rows, switching, i, x, y, shouldSwitch;
