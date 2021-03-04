@@ -14,7 +14,6 @@ class User{
         this.notes = notes
     }
 } 
-
   
   // Database js 
   

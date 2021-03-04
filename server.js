@@ -12,7 +12,7 @@ const { connection } = require("./app/config/connection");
 const app = express();
 const moment = require('moment')
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 400;
 
 // require("./routes/router.js")(app);
 // require("./routes/api-routes.js")(app);
