@@ -1,14 +1,14 @@
 const bcrypt = require("bcryptjs");
-const { Sequelize, DataTypes } = require("sequelize/types");
+// const { Sequelize, DataTypes } = require("sequelize/types");
 
-function userCreate() {
-  let Registered = sequelize.define("Registered", {
+module.exports = function (sequelize, DataTypes) {
+  let User = sequelize.define("User", {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
-        isUsername: true,
+        isEmail: true,
       },
     },
     password: {
@@ -16,17 +16,15 @@ function userCreate() {
       allowNull: false,
     },
   });
-  Registered.validPassword = (password) => {
+  User.prototype.validPassword = (password) => {
     return bcrypt.compareSync(password, this.password);
   };
-  Registered.addHook("beforeCreate", (user) => {
+  User.addHook("beforeCreate", (user) => {
     user.password = bcrypt.hashSync(
       user.password,
       bcrypt.genSaltSync(10),
       null
     );
   });
-  return Registered;
-}
-
-module.exports = userCreate;
+  return User;
+};

@@ -21,7 +21,7 @@
 
   <ul class="nav nav-pills">
     <li class="nav-item">
-      <!-- <a class="nav-link active" aria-current="page" href="./clients.html">Login</a> -->
+      <a class="nav-link active" aria-current="page" href="./clients.html">Login</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="./contact-us.html">Contact Support</a>
@@ -30,23 +30,22 @@
 
   <div class="container">
     <div class="login-form">
-      <form class="login">
-        <h2 class="text-center">Log in</h2>
+      <form class="register" action="/public/register" method="post">
+        <h2 class="text-center">Register New User</h2>
         <div class="form-group">
-          <input type="email" class="form-control" id="email-input" placeholder="Email" required="required">
+          <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="required">
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="password-input" placeholder="Password" required="required">
+          <input type="password" class="form-control" name="password" id="password" placeholder="Password"
+            required="required">
         </div>
+        <!-- <div class="form-group">
+          <input type="password" class="form-control" id="password-input2" placeholder="Password" required="required">
+        </div> -->
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block">Log in</button>
-        </div>
-        <div class="clearfix">
-          <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-          <a href="#" class="pull-right">Forgot Password?</a>
+          <button type="submit" class="btn btn-primary btn-block">Create Account</button>
         </div>
       </form>
-      <p class="text-center"><a href="/register.html">Create an Account</a></p>
     </div>
 
 
@@ -63,12 +62,10 @@
             </div>
           </div>
         </div>
+
+
       </div>
     </div>
-
-
-  </div>
-  </div>
   </div>
 
 
@@ -77,9 +74,26 @@
 
 
 </body>
-<script type="module" src="assets/script.js">
+<script src="assets/script.js"></script>
+<script>
+  const register = async () => {
+    data = {
+      email: document.querySelector('#email').value,
+      password: document.querySelector('#password').value
+    }
+    await fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then(r => r.json());
+
+
+  }
+
+
 
 </script>
-<script src="index.js"></script>
 
 </html>
