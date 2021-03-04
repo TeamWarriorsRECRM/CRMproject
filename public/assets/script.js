@@ -170,78 +170,82 @@ async function editRow(...inputs) {
 }
 
 //to Add a row
+function add_row(){
+    document.getElementById('newEntry').classList.remove('disappear')
+}
 
-function add_row(no) {
-  var new_firstName = document.getElementById("new_firstName");
-  var new_lastName = document.getElementById("new_lastName");
-  var new_budget = document.getElementById("new_budget");
-  var new_downPayment = document.getElementById("new_downPayment");
-  var new_areaOfInterest = document.getElementById("new_areaOfInterest");
-  var new_email = document.getElementById("new_email");
-  var new_status = document.getElementById("new_status");
-  var new_note = document.getElementById("new_note ");
+
+// function add_row(no) {
+//   var new_firstName = document.getElementById("new_firstName");
+//   var new_lastName = document.getElementById("new_lastName");
+//   var new_budget = document.getElementById("new_budget");
+//   var new_downPayment = document.getElementById("new_downPayment");
+//   var new_areaOfInterest = document.getElementById("new_areaOfInterest");
+//   var new_email = document.getElementById("new_email");
+//   var new_status = document.getElementById("new_status");
+//   var new_note = document.getElementById("new_note ");
 
   // if (!new_firstName) new_firstName.innerHTML += "";
 
-  console.log(new_firstName, "   ADD A ROW FUNC");
+//   console.log(new_firstName, "   ADD A ROW FUNC");
 
-  var table = document.getElementById("tableInfo");
-  var table_len = table.rows.length;
-  var row = (table.insertRow(table_len).outerHTML =
-    "<tr id='row" +
-    table_len +
-    "'><td placeholder='value here' id='firstName_row" +
-    table_len +
-    "'>" +
-    new_firstName +
-    "</td><td placeholder='value here' id='lastName_row" +
-    table_len +
-    "'>" +
-    new_lastName +
-    "</td><td placeholder='value here' id='budget_row" +
-    table_len +
-    "'>" +
-    new_budget +
-    "</td><td placeholder='value here' id='downpayment_row" +
-    table_len +
-    "'>" +
-    new_downPayment +
-    "</td><td placeholder='value here' id='areaOfInterest_row" +
-    table_len +
-    "'>" +
-    new_areaOfInterest +
-    "</td><td placeholder='value here' id='email_row" +
-    table_len +
-    "'>" +
-    new_email +
-    "</td><td placeholder='value here' id='status_row" +
-    table_len +
-    "'>" +
-    new_status +
-    "</td><td placeholder='value here' id='note_row" +
-    table_len +
-    "'>" +
-    new_note +
-    "</td><td><input type='button' id='edit_button" +
-    no +
-    "' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" +
-    table_len +
-    ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" +
-    table_len +
-    ")'> <input type='button' value='Delete' class='btn btn-secondary' onclick='delete_row(" +
-    table_len +
-    ")'></td></tr>");
+//   var table = document.getElementById("tableInfo");
+//   var table_len = table.rows.length;
+//   var row = (table.insertRow(table_len).outerHTML =
+//     "<tr id='row" +
+//     table_len +
+//     "'><td placeholder='value here' id='firstName_row" +
+//     table_len +
+//     "'>" +
+//     new_firstName +
+//     "</td><td placeholder='value here' id='lastName_row" +
+//     table_len +
+//     "'>" +
+//     new_lastName +
+//     "</td><td placeholder='value here' id='budget_row" +
+//     table_len +
+//     "'>" +
+//     new_budget +
+//     "</td><td placeholder='value here' id='downpayment_row" +
+//     table_len +
+//     "'>" +
+//     new_downPayment +
+//     "</td><td placeholder='value here' id='areaOfInterest_row" +
+//     table_len +
+//     "'>" +
+//     new_areaOfInterest +
+//     "</td><td placeholder='value here' id='email_row" +
+//     table_len +
+//     "'>" +
+//     new_email +
+//     "</td><td placeholder='value here' id='status_row" +
+//     table_len +
+//     "'>" +
+//     new_status +
+//     "</td><td placeholder='value here' id='note_row" +
+//     table_len +
+//     "'>" +
+//     new_note +
+//     "</td><td><input type='button' id='edit_button" +
+//     no +
+//     "' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" +
+//     table_len +
+//     ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" +
+//     table_len +
+//     ")'> <input type='button' value='Delete' class='btn btn-secondary' onclick='delete_row(" +
+//     table_len +
+//     ")'></td></tr>");
 
   // new_firstName.innerHTML = "";
-  document.getElementById("firstName_row").innerHTML += "jhgyk";
-  document.getElementById("lastName_row").innerText += "ffff";
-  document.getElementById("downPayment_row").value = "ffff";
-  document.getElementById("areaOfInterest_row").innerText = "ffff";
-  document.getElementById("email_row").innerText = "ffff";
-  document.getElementById("status_row").innerText = "ffff";
-  document.getElementById("note_row").innerText = "ffff";
+//   document.getElementById("firstName_row").innerHTML += "jhgyk";
+//   document.getElementById("lastName_row").innerText += "ffff";
+//   document.getElementById("downPayment_row").value = "ffff";
+//   document.getElementById("areaOfInterest_row").innerText = "ffff";
+//   document.getElementById("email_row").innerText = "ffff";
+//   document.getElementById("status_row").innerText = "ffff";
+//   document.getElementById("note_row").innerText = "ffff";
   // document.getElementById("edit_button" + no).classList.add("disappear");
-}
+// }
 
 // moment function working,
 

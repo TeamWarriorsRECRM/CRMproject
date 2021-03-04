@@ -30,9 +30,9 @@ app.use(
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-app.post("/public/index", passport.authenticate("local"), function (req, res) {
-  res.json(req.user);
-});
+// app.post("/public/index", passport.authenticate("local"), function (req, res) {
+//   res.json(req.user);
+// });
 
 app.post("/public/register", function (req, res) {
   db.User.create({
