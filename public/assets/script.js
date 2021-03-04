@@ -107,9 +107,8 @@ function dataSelect(){
     var table = document.getElementById("tableInfo");
     var table_len = (table.rows.length);
     var row = table.insertRow(table_len).outerHTML =
-      "<tr id='row" + table_len + "'><td id='firstName_row" + table_len + "'>" + new_firstName + "</td><td id='lastName_row" + table_len + "'>" + new_lastName + "</td><td id='budget_row" + table_len + "'>" + new_budget + "</td><td id='downpayment_row" + table_len + "'>" + new_downPayment + "</td><td id='areaOfInterest_row" + table_len + "'>" + new_areaOfInterest + "</td><td id='email_row" + table_len + "'>" + new_email + "</td><td> <select> <option> Actively Looking </option><option  >Passively Looking </option> <option >Not interested</option></select>" + table_len  + "</td><td id='note_row" + table_len + "'>" + new_note + "</td><td><input type='button' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" + table_len + ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" + table_len + ")'> <input type='button' value='Delete' class='btn btn-secondary' onclick='delete_row(" + table_len + ")'></td></tr>";
+      "<tr id='row" + table_len + "'><td id='firstName_row" + table_len + "'>" + new_firstName + "</td><td id='lastName_row" + table_len + "'>" + new_lastName + "</td><td id='budget_row" + table_len + "'>" + new_budget + "</td><td id='downpayment_row" + table_len + "'>" + new_downPayment + "</td><td id='areaOfInterest_row" + table_len + "'>" + new_areaOfInterest + "</td><td id='email_row" + table_len + "'>" + new_email + "</td><td> <select> <option> Actively Looking </option><option  >Passively Looking </option> <option >Not interested</option></select>"   + "</td><td id='note_row" + table_len + "'>" + new_note + "</td><td><input type='button' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" + table_len + ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" + table_len + ")'> <input type='button' value='Delete' class='btn btn-secondary' onclick='delete_row(" + table_len + ")'></td></tr>";
 
-      
 
     document.getElementById("new_firstName").value = "";
     document.getElementById("new_lastName").value = "";
@@ -121,19 +120,18 @@ function dataSelect(){
 
     var user = (new_firstName,new_lastName, new_budget, new_downPayment, new_areaOfInterest, new_email, new_status, new_note)
 
-    
   }
-
-  
 
 
 // moment function working, 
 
 
 //To show current 
-// document.getElementById("time").onload = function timeShow() {timeShow()};a
+// document.getElementById("time").onload = function timeShow() {timeShow()};
 
 // function timeShow() {
+//    var x= ((moment().format("MMM Do YY"))
+//    var x = new Date(moment().format("MMM Do YY")) 
 //   var x = new Date(document.lastModified);
 //   document.getElementById("time").innerHTML = x;
 // }

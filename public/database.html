@@ -36,8 +36,8 @@
   <div class="container">
     <div style="text-align: center;">
       <h1 style="text-align: center;">My Leads</h1>
-      <h6>Last Accessed: </h6>
-      <h7 id="time"> </h7>
+    <button onclick=timeShow() >Last Accessed: </button>
+      <h7 id="time" style="text-align: right;"> </h7>
     </div>
 
     <button onclick=add_row() class="btn btn-primary" style="text-align:left">Add new client </button>
@@ -72,13 +72,6 @@
                 <option >Not interested</option>
               </select>
           
-             
-            <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" value="0">Actively Looking</a></li>
-              <li><a class="dropdown-item" value="1">Passively Looking </a></li>
-              <li><a class="dropdown-item" value="2">Not interested</a></li>
-            </ul>
-          </div> -->
 
           </td>
           <td id="note_row1">(Enter notes here)</td>
@@ -146,7 +139,8 @@
   </tbody>
   </table>
 
-
+  
+ 
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
