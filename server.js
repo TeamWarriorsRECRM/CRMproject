@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const createClass = require("./public/assets/script");
 const orm = require("./app/models/orm");
 const express = require("express");
 const session = require("express-session");
@@ -9,6 +10,8 @@ const { get } = require("http");
 const passport = require("passport");
 const db = require("./app/config/connection");
 const { connection } = require("./app/config/connection");
+const { Script } = require("vm");
+const { async } = require("rxjs");
 const app = express();
 
 const PORT = process.env.PORT || 5000;
@@ -27,6 +30,49 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // db.sequelize.sync();
+// createClass();
+
+app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
+  console.log(req.body, "   REQUEST BODY"); /////////////////////////////////////////////////////////////
+  console.log(res.body, "   RESPONSE BODY"); /////////////////////////////////////////////////////////////
+  const id = await orm.getSingleClient(
+    req.body.firstname,
+    req.body.lastname,
+    req.body.area
+  );
+  console.log(id, "   ID");
+}); ////////////////////////////////////////////////
+
+app.put("/database.html", (req, res) => {});
+
+app.delete("/database.html/:firstName/:lastName", (req, res) => {
+  // console.log(req.params);
+  orm.deleteClient(req.params.firstName, req.params.lastName);
+  res.send();
+});
+
+app.post("/database.html", (req, res) => {
+  // console.log(req.body);
+  let body = req.body;
+  orm.insertClient(body);
+  res.send();
+});
+
+app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
+  console.log(req.params);
+  const id = await orm
+    .getSingleClient(
+      req.params.firstName,
+      req.params.lastName,
+      req.params.email
+    )
+    .then((res) => console.log(res, "  SERVER SCRIPT"));
+  console.log(id, " FROM SERVER ID");
+});
+
+app.get("/database.html", (req, res) => {
+  orm.getClients();
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running, http://localhost:${PORT}/"`);
