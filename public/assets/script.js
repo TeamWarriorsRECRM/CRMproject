@@ -1,9 +1,11 @@
 // To save client input into database
 
+const { async } = require("rxjs");
+
 // Database js
 
 //To allow user to edit input
-function edit_row(no) {
+async function edit_row(no) {
   console.log("this works");
 
   var firstName = document.getElementById("firstName_row" + no);
@@ -68,6 +70,15 @@ function edit_row(no) {
     "'>";
   notes.innerHTML =
     "<input type='text' id='notes_text" + no + "' value='" + notes_data + "'>";
+
+  ////////if entry exists update
+  const findId = await fetch(
+    `/database.html/${firstName_data}/${lastName_data}/${email_data}`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 }
 
 //To save user input
@@ -94,6 +105,22 @@ async function save_row(no) {
   document.getElementById("status_row" + no).innerHTML = status_val;
   document.getElementById("note_row" + no).innerHTML = notes_val;
 
+  //////if entry exists update
+  // const findId = await fetch(`/database.html`, {
+  //   method: "PUT",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: JSON.stringify({
+  //     firstName: firstName_val,
+  //     lastName: lastName_val,
+  //     budget: budget_val,
+  //     downPay: downPay_val,
+  //     interest: interest_val,
+  //     email: email_val,
+  //     status: status_val,
+  //     notes: notes_val,
+  //   }),
+  // }).then((res) => console.log(res.statusText));
+  //////ELSE ADD
   const res = await fetch(`/database.html`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -125,7 +152,16 @@ async function delete_row(no) {
       method: "DELETE",
     }
   );
-  console.log(deletion, "  DLEETION ");
+  // console.log(deletion, "  DELETION ");
+}
+
+////EDIT ROW
+//////////NOT READY YET
+async function editRow(...inputs) {
+  const result = await fetch("/database.html", {
+    method: "PUT",
+    body: {},
+  });
 }
 
 //to Add a row

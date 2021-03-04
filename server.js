@@ -11,6 +11,7 @@ const passport = require("passport");
 const db = require("./app/config/connection");
 const { connection } = require("./app/config/connection");
 const { Script } = require("vm");
+const { async } = require("rxjs");
 const app = express();
 
 const PORT = process.env.PORT || 5000;
@@ -31,21 +32,34 @@ app.use(passport.session());
 // db.sequelize.sync();
 // createClass();
 
-app.get("/database.html", (req, res) => {});
+app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
+  console.log(req.body, "   REQUEST BODY"); /////////////////////////////////////////////////////////////
+  console.log(res.body, "   RESPONSE BODY"); /////////////////////////////////////////////////////////////
+  const id = await orm.getSingleClient(
+    req.body.firstname,
+    req.body.lastname,
+    req.body.area
+  );
+  console.log(id, "   ID");
+}); ////////////////////////////////////////////////
+
+app.put("/database.html", (req, res) => {});
 
 app.delete("/database.html/:firstName/:lastName", (req, res) => {
-  console.log(req.params);
+  // console.log(req.params);
   orm.deleteClient(req.params.firstName, req.params.lastName);
   res.send();
 });
 
-app.put("/database.html", (req, res) => {});
-
 app.post("/database.html", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   let body = req.body;
   orm.insertClient(body);
-  res.send(`some response ${req.body}`);
+  res.send();
+});
+
+app.get(`/database.html/:firstName/:lastName/:email`, (req, res) => {
+  console.log(req.params);
 });
 
 app.listen(PORT, () => {

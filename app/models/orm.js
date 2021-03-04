@@ -7,6 +7,14 @@ async function getClients() {
     .then((res) => console.log(res));
 }
 
+async function getSingleClient(firstName, lastName, email) {
+  return await db
+    .query(
+      `SELECT id FROM clients WHERE firstname="${firstName}" AND lastname="${lastName}" AND area="${email}";`
+    )
+    .then((res) => console.log(res.id));
+}
+
 async function insertClient(obj) {
   return await db
     .query(
@@ -32,4 +40,5 @@ module.exports = {
   updateInfo,
   insertClient,
   deleteClient,
+  getSingleClient,
 };
