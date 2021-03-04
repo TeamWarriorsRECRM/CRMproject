@@ -8,7 +8,7 @@ async function userRetrieve() {
   return db.query(`SELECT * FROM user_db`);
 }
 async function insert() {
-  return db.query(`INSERT INTO test (name) VALUES ('hi');`);
+  return db.query(`INSERT INTO test (name) VALUES ('hi3');`);
 }
 async function pull() {
   let x = await db.query(
@@ -16,7 +16,6 @@ async function pull() {
   );
   console.log(x);
 }
-
 
 module.exports = {
   getClients,
