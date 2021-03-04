@@ -23,11 +23,13 @@
   opacity: 0.6;
 }
 
+.disappear {
+  display: none;
+}
+
 /* body {
   background-image: url("https://image.freepik.com/free-photo/grey-grunge-texture-grunge_19-128535.jpg");
 } */
-
-
 
 /*This is for the login page */
       .login-form {
