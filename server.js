@@ -1,6 +1,7 @@
 require("dotenv").config();
 
-// const orm = require("./app/models/orm");
+const createClass = require("./public/assets/script");
+const orm = require("./app/routes/orm");
 const express = require("express");
 const session = require("express-session");
 const sequelize = require("sequelize");
@@ -9,6 +10,8 @@ const { get } = require("http");
 const passport = require("./app/config/passport");
 const db = require("./app/models");
 const { connection } = require("./app/config/connection");
+const { Script } = require("vm");
+const { async } = require("rxjs");
 const app = express();
 
 const PORT = process.env.PORT || 8080;
@@ -58,6 +61,50 @@ app.get("/logout", function (req, res) {
 //     });
 //   }
 // });
+// db.sequelize.sync();
+// createClass();
+
+app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
+  console.log(req.body, "   REQUEST BODY"); /////////////////////////////////////////////////////////////
+  console.log(res.body, "   RESPONSE BODY"); /////////////////////////////////////////////////////////////
+  const id = await orm.getSingleClient(
+    req.body.firstname,
+    req.body.lastname,
+    req.body.area
+  );
+  console.log(id, "   ID");
+}); ////////////////////////////////////////////////
+
+app.put("/database.html", (req, res) => {});
+
+app.delete("/database.html/:firstName/:lastName", (req, res) => {
+  // console.log(req.params);
+  orm.deleteClient(req.params.firstName, req.params.lastName);
+  res.send();
+});
+
+app.post("/database.html", (req, res) => {
+  // console.log(req.body);
+  let body = req.body;
+  orm.insertClient(body);
+  res.send();
+});
+
+app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
+  console.log(req.params);
+  const id = await orm
+    .getSingleClient(
+      req.params.firstName,
+      req.params.lastName,
+      req.params.email
+    )
+    .then((res) => console.log(res, "  SERVER SCRIPT"));
+  console.log(id, " FROM SERVER ID");
+});
+
+app.get("/database.html", (req, res) => {
+  orm.getClients();
+});
 
 db.sequelize.sync().then(function () {
   app.listen(PORT, function () {

@@ -29,6 +29,7 @@
     "mysql2": "^1.7.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "rxjs": "^6.6.6",
     "sequelize": "^5.22.3"
   },
   "devDependencies": {}

@@ -1,32 +1,13 @@
 // To save client input into database
 
-class User {
-  constructor(
-    firstName,
-    lastName,
-    budget,
-    downPay,
-    interest,
-    email,
-    status,
-    notes
-  ) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.budget = budget;
-    this.downPay = downPay;
-    this.interest = interest;
-    this.email = email;
-    this.status = status;
-    this.notes = notes;
-  }
-}
+const { async } = require("rxjs");
 
 // Database js
 
 //To allow user to edit input
-function edit_row(no) {
+async function edit_row(no) {
   console.log("this works");
+  // document.querySelector("#edit_button" + no).classList.add("disappear");
 
   var firstName = document.getElementById("firstName_row" + no);
   var lastName = document.getElementById("lastName_row" + no);
@@ -45,6 +26,10 @@ function edit_row(no) {
   var email_data = email.innerHTML;
   var status_data = status.innerHTML;
   var notes_data = notes.innerHTML;
+
+  console.log(firstName_data);
+  console.log(lastName_data);
+  console.log(budget_data);
 
   firstName.innerHTML =
     "<input type='text' id='firstName_text" +
@@ -90,11 +75,21 @@ function edit_row(no) {
     "'>";
   notes.innerHTML =
     "<input type='text' id='notes_text" + no + "' value='" + notes_data + "'>";
+
+  ////////if entry exists update
+  const findId = await fetch(
+    `/database.html/${firstName_data}/${lastName_data}/${email_data}`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 }
 
 //To save user input
-function save_row(no) {
+async function save_row(no) {
   console.log("this works fam");
+  // document.querySelector("#edit_button" + no).classList.remove("disappear");
 
   var firstName_val = document.getElementById("firstName_text" + no).value;
   var lastName_val = document.getElementById("secondName_text" + no).value;
@@ -105,6 +100,8 @@ function save_row(no) {
   var status_val = document.getElementById("status_text" + no).value;
   var notes_val = document.getElementById("notes_text" + no).value;
 
+  console.log(lastName_val, "    LASTNAME");
+
   document.getElementById("firstName_row" + no).innerHTML = firstName_val;
   document.getElementById("lastName_row" + no).innerHTML = lastName_val;
   document.getElementById("budget_row" + no).innerHTML = budget_val;
@@ -113,13 +110,63 @@ function save_row(no) {
   document.getElementById("email_row" + no).innerHTML = email_val;
   document.getElementById("status_row" + no).innerHTML = status_val;
   document.getElementById("note_row" + no).innerHTML = notes_val;
+
+  //////if entry exists update
+  // const findId = await fetch(`/database.html`, {
+  //   method: "PUT",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: JSON.stringify({
+  //     firstName: firstName_val,
+  //     lastName: lastName_val,
+  //     budget: budget_val,
+  //     downPay: downPay_val,
+  //     interest: interest_val,
+  //     email: email_val,
+  //     status: status_val,
+  //     notes: notes_val,
+  //   }),
+  // }).then((res) => console.log(res.statusText));
+  //////ELSE ADD
+  const res = await fetch(`/database.html`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      firstName: firstName_val,
+      lastName: lastName_val,
+      budget: budget_val,
+      downPay: downPay_val,
+      interest: interest_val,
+      email: email_val,
+      status: status_val,
+      notes: notes_val,
+    }),
+  });
 }
 
 //To Delete full Row
-
-function delete_row(no) {
+async function delete_row(no) {
   console.log("this works eh");
+  var firstName_val = document.getElementById("firstName_row" + no).innerHTML;
+  var lastName_val = document.getElementById("lastName_row" + no).innerHTML;
+  // console.log(firstName_val, lastName_val, "   INPUT");
   document.getElementById("row" + no + "").outerHTML = "";
+
+  const deletion = await fetch(
+    `/database.html/${firstName_val}/${lastName_val}`,
+    {
+      method: "DELETE",
+    }
+  );
+  // console.log(deletion, "  DELETION ");
+}
+
+////EDIT ROW
+//////////NOT READY YET
+async function editRow(...inputs) {
+  const result = await fetch("/database.html", {
+    method: "PUT",
+    body: {},
+  });
 }
 
 //to Add a row
@@ -134,44 +181,50 @@ function add_row(no) {
   var new_status = document.getElementById("new_status");
   var new_note = document.getElementById("new_note ");
 
+  // if (!new_firstName) new_firstName.innerHTML += "";
+
+  console.log(new_firstName, "   ADD A ROW FUNC");
+
   var table = document.getElementById("tableInfo");
   var table_len = table.rows.length;
-  var row = (table.insertRow(table_len).innerHTML =
+  var row = (table.insertRow(table_len).outerHTML =
     "<tr id='row" +
     table_len +
-    "'><td id='firstName_row" +
+    "'><td placeholder='value here' id='firstName_row" +
     table_len +
     "'>" +
     new_firstName +
-    "</td><td id='lastName_row" +
+    "</td><td placeholder='value here' id='lastName_row" +
     table_len +
     "'>" +
     new_lastName +
-    "</td><td id='budget_row" +
+    "</td><td placeholder='value here' id='budget_row" +
     table_len +
     "'>" +
     new_budget +
-    "</td><td id='downpayment_row" +
+    "</td><td placeholder='value here' id='downpayment_row" +
     table_len +
     "'>" +
     new_downPayment +
-    "</td><td id='areaOfInterest_row" +
+    "</td><td placeholder='value here' id='areaOfInterest_row" +
     table_len +
     "'>" +
     new_areaOfInterest +
-    "</td><td id='email_row" +
+    "</td><td placeholder='value here' id='email_row" +
     table_len +
     "'>" +
     new_email +
-    "</td><td id='status_row" +
+    "</td><td placeholder='value here' id='status_row" +
     table_len +
     "'>" +
     new_status +
-    "</td><td id='note_row" +
+    "</td><td placeholder='value here' id='note_row" +
     table_len +
     "'>" +
     new_note +
-    "</td><td><input type='button' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" +
+    "</td><td><input type='button' id='edit_button" +
+    no +
+    "' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" +
     table_len +
     ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" +
     table_len +
@@ -179,23 +232,15 @@ function add_row(no) {
     table_len +
     ")'></td></tr>");
 
-  document.getElementById("new_firstName").value = "";
-  document.getElementById("new_lastName").value = "";
-  document.getElementById("new_downPayment").value = "";
-  document.getElementById("new_areaOfInterest").value = "";
-  document.getElementById("new_email").value = "";
-  document.getElementById("new_status").value = "";
-  document.getElementById("new_note").value = "";
-
-  var user =
-    (new_firstName,
-    new_lastName,
-    new_budget,
-    new_downPayment,
-    new_areaOfInterest,
-    new_email,
-    new_status,
-    new_note);
+  // new_firstName.innerHTML = "";
+  document.getElementById("firstName_row").innerHTML += "jhgyk";
+  document.getElementById("lastName_row").innerText += "ffff";
+  document.getElementById("downPayment_row").value = "ffff";
+  document.getElementById("areaOfInterest_row").innerText = "ffff";
+  document.getElementById("email_row").innerText = "ffff";
+  document.getElementById("status_row").innerText = "ffff";
+  document.getElementById("note_row").innerText = "ffff";
+  // document.getElementById("edit_button" + no).classList.add("disappear");
 }
 
 // moment function working,
@@ -230,39 +275,11 @@ function sortTable() {
         break;
       }
     }
-    if (shouldSwitch) {
-      /*If a switch has been marked, make the switch
+  }
+  if (shouldSwitch) {
+    /*If a switch has been marked, make the switch
         and mark that a switch has been done:*/
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-    }
+    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+    switching = true;
   }
 }
-
-// LOG IN & REGISTER ------------------------------------------------------------------
-
-// async function SignUp(){
-//   let email;
-//   let pass;
-//   data={
-//     email:email,
-//     password:pass
-//   }
-//   req={
-//     method:'POST',
-//     header: {'Content-Type': "application/json"}
-//     body: data
-//   }
-
-//   await fetch('/api/singnup',data)
-
-// }
-
-// const  = () =>
-//   fetch("/api/register", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(),
-//   });

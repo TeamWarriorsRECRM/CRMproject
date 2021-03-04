@@ -13,7 +13,7 @@ CREATE TABLE tasks (
 
 DROP DATABASE IF EXISTS  clients_db ;
 CREATE DATABASE clients_db;
-USE clients_db;
+USE clients_db;  
 CREATE TABLE clients (
     firstname varchar(100),
     lastname varchar(100),
