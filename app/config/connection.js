@@ -1,5 +1,4 @@
 const mysql = require("mysql");
-const Sequelize = require("sequelize");
 
 class Database {
   constructor(config) {
@@ -36,4 +35,4 @@ const db = new Database({
   insecureAuth: true,
 });
 
-module.exports = db;
+// module.exports = db;
