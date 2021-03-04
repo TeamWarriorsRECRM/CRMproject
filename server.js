@@ -30,22 +30,22 @@ app.use(
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-// app.post("/api/index", passport.authenticate("local"), function (req, res) {
-//   res.json(req.user);
-// });
+app.post("/public/index", passport.authenticate("local"), function (req, res) {
+  res.json(req.user);
+});
 
-// app.post("/public/register", function (req, res) {
-//   db.User.create({
-//     email: req.body.email,
-//     password: req.body.password,
-//   })
-//     .then(function () {
-//       res.redirect(307, "/api/index");
-//     })
-//     .catch(function (err) {
-//       res.status(401).json(err);
-//     });
-// });
+app.post("/public/register", function (req, res) {
+  db.User.create({
+    username: req.body.email,
+    password: req.body.password,
+  })
+    .then(function () {
+      res.redirect(307, "/public/index");
+    })
+    .catch(function (err) {
+      res.status(401).json(err);
+    });
+});
 
 // app.get("/logout", function (req, res) {
 //   req.logout();
