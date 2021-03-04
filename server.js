@@ -58,8 +58,20 @@ app.post("/database.html", (req, res) => {
   res.send();
 });
 
-app.get(`/database.html/:firstName/:lastName/:email`, (req, res) => {
+app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
   console.log(req.params);
+  const id = await orm
+    .getSingleClient(
+      req.params.firstName,
+      req.params.lastName,
+      req.params.email
+    )
+    .then((res) => console.log(res, "  SERVER SCRIPT"));
+  console.log(id, " FROM SERVER ID");
+});
+
+app.get("/database.html", (req, res) => {
+  orm.getClients();
 });
 
 app.listen(PORT, () => {

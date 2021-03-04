@@ -12,7 +12,7 @@ async function getSingleClient(firstName, lastName, email) {
     .query(
       `SELECT id FROM clients WHERE firstname="${firstName}" AND lastname="${lastName}" AND area="${email}";`
     )
-    .then((res) => console.log(res.id));
+    .then((res) => console.log(res, "  ORM SCRIPT"));
 }
 
 async function insertClient(obj) {

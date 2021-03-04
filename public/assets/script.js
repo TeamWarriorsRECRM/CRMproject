@@ -7,6 +7,7 @@ const { async } = require("rxjs");
 //To allow user to edit input
 async function edit_row(no) {
   console.log("this works");
+  // document.querySelector("#edit_button" + no).classList.add("disappear");
 
   var firstName = document.getElementById("firstName_row" + no);
   var lastName = document.getElementById("lastName_row" + no);
@@ -25,6 +26,10 @@ async function edit_row(no) {
   var email_data = email.innerHTML;
   var status_data = status.innerHTML;
   var notes_data = notes.innerHTML;
+
+  console.log(firstName_data);
+  console.log(lastName_data);
+  console.log(budget_data);
 
   firstName.innerHTML =
     "<input type='text' id='firstName_text" +
@@ -84,6 +89,7 @@ async function edit_row(no) {
 //To save user input
 async function save_row(no) {
   console.log("this works fam");
+  // document.querySelector("#edit_button" + no).classList.remove("disappear");
 
   var firstName_val = document.getElementById("firstName_text" + no).value;
   var lastName_val = document.getElementById("secondName_text" + no).value;
@@ -138,7 +144,6 @@ async function save_row(no) {
 }
 
 //To Delete full Row
-
 async function delete_row(no) {
   console.log("this works eh");
   var firstName_val = document.getElementById("firstName_row" + no).innerHTML;
@@ -176,44 +181,50 @@ function add_row(no) {
   var new_status = document.getElementById("new_status");
   var new_note = document.getElementById("new_note ");
 
+  // if (!new_firstName) new_firstName.innerHTML += "";
+
+  console.log(new_firstName, "   ADD A ROW FUNC");
+
   var table = document.getElementById("tableInfo");
   var table_len = table.rows.length;
   var row = (table.insertRow(table_len).outerHTML =
     "<tr id='row" +
     table_len +
-    "'><td id='firstName_row" +
+    "'><td placeholder='value here' id='firstName_row" +
     table_len +
     "'>" +
     new_firstName +
-    "</td><td id='lastName_row" +
+    "</td><td placeholder='value here' id='lastName_row" +
     table_len +
     "'>" +
     new_lastName +
-    "</td><td id='budget_row" +
+    "</td><td placeholder='value here' id='budget_row" +
     table_len +
     "'>" +
     new_budget +
-    "</td><td id='downpayment_row" +
+    "</td><td placeholder='value here' id='downpayment_row" +
     table_len +
     "'>" +
     new_downPayment +
-    "</td><td id='areaOfInterest_row" +
+    "</td><td placeholder='value here' id='areaOfInterest_row" +
     table_len +
     "'>" +
     new_areaOfInterest +
-    "</td><td id='email_row" +
+    "</td><td placeholder='value here' id='email_row" +
     table_len +
     "'>" +
     new_email +
-    "</td><td id='status_row" +
+    "</td><td placeholder='value here' id='status_row" +
     table_len +
     "'>" +
     new_status +
-    "</td><td id='note_row" +
+    "</td><td placeholder='value here' id='note_row" +
     table_len +
     "'>" +
     new_note +
-    "</td><td><input type='button' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" +
+    "</td><td><input type='button' id='edit_button" +
+    no +
+    "' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" +
     table_len +
     ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" +
     table_len +
@@ -221,13 +232,15 @@ function add_row(no) {
     table_len +
     ")'></td></tr>");
 
-  document.getElementById("new_firstName").value = "";
-  document.getElementById("new_lastName").value = "";
-  document.getElementById("new_downPayment").value = "";
-  document.getElementById("new_areaOfInterest").value = "";
-  document.getElementById("new_email").value = "";
-  document.getElementById("new_status").value = "";
-  document.getElementById("new_note").value = "";
+  // new_firstName.innerHTML = "";
+  document.getElementById("firstName_row").innerHTML += "jhgyk";
+  document.getElementById("lastName_row").innerText += "ffff";
+  document.getElementById("downPayment_row").value = "ffff";
+  document.getElementById("areaOfInterest_row").innerText = "ffff";
+  document.getElementById("email_row").innerText = "ffff";
+  document.getElementById("status_row").innerText = "ffff";
+  document.getElementById("note_row").innerText = "ffff";
+  // document.getElementById("edit_button" + no).classList.add("disappear");
 }
 
 // moment function working,
