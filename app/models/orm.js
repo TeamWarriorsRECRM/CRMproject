@@ -4,7 +4,7 @@ const db = require("../config/connection.js");
 async function getClients() {
   return await db
     .query(`SELECT firstname, lastname, area FROM clients`)
-    .then((res) => console.log(res));
+    .then((res) => console.log(res, "  FROM ORM"));
 }
 
 async function getSingleClient(firstName, lastName, email) {
@@ -12,7 +12,11 @@ async function getSingleClient(firstName, lastName, email) {
     .query(
       `SELECT id FROM clients WHERE firstname="${firstName}" AND lastname="${lastName}" AND area="${email}";`
     )
-    .then((res) => console.log(res, "  ORM SCRIPT"));
+    .then((res) => {
+      let [id] = res;
+      console.log(id.id, "  ORM SCRIPT");
+      return id.id;
+    });
 }
 
 async function insertClient(obj) {

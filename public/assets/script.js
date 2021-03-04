@@ -4,6 +4,13 @@ const { async } = require("rxjs");
 
 // Database js
 
+async function getList() {
+  const list = await fetch(`/database.html`, {
+    method: "GET",
+    // headers: { "content-type": "application/json" },
+  });
+}
+
 //To allow user to edit input
 async function edit_row(no) {
   console.log("this works");
@@ -84,6 +91,9 @@ async function edit_row(no) {
       headers: { "Content-Type": "application/json" },
     }
   );
+  // .then((res) => console.log(res, "   RES FROM SCRIPT"));
+
+  console.log(findId, "   EDIT FUNCTION");
 }
 
 //To save user input
@@ -126,6 +136,7 @@ async function save_row(no) {
   //     notes: notes_val,
   //   }),
   // }).then((res) => console.log(res.statusText));
+
   //////ELSE ADD
   const res = await fetch(`/database.html`, {
     method: "POST",

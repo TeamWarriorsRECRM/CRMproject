@@ -43,8 +43,6 @@ app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
   console.log(id, "   ID");
 }); ////////////////////////////////////////////////
 
-app.put("/database.html", (req, res) => {});
-
 app.delete("/database.html/:firstName/:lastName", (req, res) => {
   // console.log(req.params);
   orm.deleteClient(req.params.firstName, req.params.lastName);
@@ -59,19 +57,24 @@ app.post("/database.html", (req, res) => {
 });
 
 app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
-  console.log(req.params);
+  // console.log(req.params);
   const id = await orm
     .getSingleClient(
       req.params.firstName,
       req.params.lastName,
       req.params.email
     )
-    .then((res) => console.log(res, "  SERVER SCRIPT"));
+    .then((res) => res);
   console.log(id, " FROM SERVER ID");
+  res.send(id);
 });
 
-app.get("/database.html", (req, res) => {
-  orm.getClients();
+app.get("/database.html", async (req, res) => {
+  console.log(req);
+  console.log(res);
+  const list = await orm.getClients();
+  console.log(list, "   FROM SERVER");
+  res.send();
 });
 
 app.listen(PORT, () => {
