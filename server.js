@@ -64,6 +64,12 @@ app.get("/logout", function (req, res) {
 // db.sequelize.sync();
 // createClass();
 
+app.get("/api/database", async (req, res) => {
+  const list = await orm.getClients();
+  console.log(list, "   FROM SERVER");
+  res.send(list);
+});
+
 app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
   console.log(req.body, "   REQUEST BODY"); /////////////////////////////////////////////////////////////
   console.log(res.body, "   RESPONSE BODY"); /////////////////////////////////////////////////////////////
@@ -72,7 +78,7 @@ app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
     req.body.lastname,
     req.body.area
   );
-  console.log(id, "   ID");
+  console.log(id, "   ID from server");
 }); ////////////////////////////////////////////////
 
 app.delete("/database.html/:firstName/:lastName", (req, res) => {
@@ -99,14 +105,6 @@ app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
     .then((res) => res);
   console.log(id, " FROM SERVER ID");
   res.send(id);
-});
-
-app.get("/database.html", async (req, res) => {
-  console.log(req);
-  console.log(res);
-  const list = await orm.getClients();
-  console.log(list, "   FROM SERVER");
-  res.send();
 });
 
 db.sequelize.sync().then(function () {

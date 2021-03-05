@@ -22,7 +22,7 @@
       <a class="nav-link" href="./clients.html">Go Back</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="./database.html">Client Database</a>
+      <a class="nav-link active" onclick="getList()" href="./database.html">Client Database</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="">Access MLS listing</a>
@@ -40,7 +40,7 @@
       <h7 id="time"> </h7>
     </div>
 
-    <button onclick=add_row() class="btn btn-primary" style="text-align:left">Add new client </button>
+    <button onclick="add_row()" class="btn btn-primary" style="text-align:left">Add new client </button>
     <br>
     <table id="tableInfo" class="table" padding="">
       <thead>

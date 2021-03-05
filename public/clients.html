@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="assets/style.css" rel="stylesheet" type="text/css">
-    <title>Clients</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="assets/style.css" rel="stylesheet" type="text/css">
+  <title>Clients</title>
 </head>
 
 <body>
@@ -36,108 +36,70 @@
   </ul>
 
   <div class="container">
-  <h1 style="text-align: center;">All Clients</h1>
-  <h5 style="text-align: center">Last Accesed: </h5> 
+    <h1 style="text-align: center;">All Clients</h1>
+    <h5 style="text-align: center">Last Accesed: </h5>
   </div>
 
-  
+
   <br>
   <div class="container">
-  <table id="infoTable" class="table" padding="">
-    <thead>
-      <tr>
-        <th  onclick="sort()" scope="col">First Name</th>
-        <th onclick="sort()" scope="col">Last Name</th>
-        <th onclick="sort()"scope="col">Status</th>
-        <th onclick="sort()" scope="col">Contact client</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr id= "row1">
-        <td id="firstName_row1">Mark</td>
-        <td id="lastName_row1">Jacob</td>
-        <td id="budget_row1" >Actively Looking</td>
-        <td>
-          <div class="form-check">
-            <label class="btn btn-outline-secondary" for="btnradio3"><a target="_blank" class="fa fa-envelope"
-              href="mailto:"></a></label>
+    <table id="infoTable" class="table" padding="">
+      <thead>
+        <tr>
+          <th onclick="sort()" scope="col">First Name</th>
+          <th onclick="sort()" scope="col">Last Name</th>
+          <th onclick="sort()" scope="col">Status</th>
+          <th onclick="sort()" scope="col">Contact client</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="row1">
+          <td id="firstName_row1">Mark</td>
+          <td id="lastName_row1">Jacob</td>
+          <td id="budget_row1">Actively Looking</td>
+          <td>
+            <div class="form-check">
+              <label class="btn btn-outline-secondary" for="btnradio3"><a target="_blank" class="fa fa-envelope"
+                  href="mailto:"></a></label>
 
-            </label>
-          </div>
+              </label>
+            </div>
 
-        </td>
-      </tr>
-      <tr id="row2">
-        <td id="firstName_row2" >Alex</td>
-        <td id="lastName_row2">Andrews</td>
-        <td id="budget_row2">Passively looking</td>
-       
-        <td>
-          <div class="form-check">
-            <label class="btn btn-outline-secondary" for="btnradio3"><a target="_blank" class="fa fa-envelope"
-              href="mailto:"></a></label>
-            </label>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>Leo</td>
-        <td>Scalops</td>
-        <td>Not interested</td>
-       
-        <td>
-          <div class="form-check">
-            <label class="btn btn-outline-secondary" for="btnradio3"><a target="_blank" class="fa fa-envelope"
-              href="mailto:"></a></label>
-            </label>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <button onclick="sort()"> Sort by most Promosing clients</button>
-</div>
-  
+          </td>
+        </tr>
+        <tr id="row2">
+          <td id="firstName_row2">Alex</td>
+          <td id="lastName_row2">Andrews</td>
+          <td id="budget_row2">Passively looking</td>
+
+          <td>
+            <div class="form-check">
+              <label class="btn btn-outline-secondary" for="btnradio3"><a target="_blank" class="fa fa-envelope"
+                  href="mailto:"></a></label>
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Leo</td>
+          <td>Scalops</td>
+          <td>Not interested</td>
+
+          <td>
+            <div class="form-check">
+              <label class="btn btn-outline-secondary" for="btnradio3"><a target="_blank" class="fa fa-envelope"
+                  href="mailto:"></a></label>
+              </label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button onclick="sort()"> Sort by most Promosing clients</button>
+  </div>
+
+
+  <script src="assets/script.js"> </script>
 </body>
-
-<script src="assets/script.js">
-
-
-  // This function is to sort the table
-  function sort() {
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById("infoTable");
-    switching = true;
-    while (switching) {
-      switching = false;
-      rows = table.rows;
-
-      // loop through all table rows except headers
-      for (i = 1; i < (rows.length - 1); i++) {
-        shouldSwitch = false;
-        x = rows[i].getElementByTagName("TD")[0];
-        y = rows[i + 1].getElementByTagName("TD")[0];
-
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
-      }
-      if (shouldSwitch) {
-        /*If a switch has been marked, make the switch
-        and mark that a switch has been done:*/
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-      }
-    }
-  }
-
-
-  function email(){
-
-  }
-
-</script>
 
 </html>
