@@ -1,3 +1,7 @@
+const { async } = require("rxjs");
+
+let findId;
+
 // To save client input into database
 
 // const { async } = require("rxjs");
@@ -26,10 +30,6 @@ async function edit_row(no) {
   var email_data = email.innerHTML;
   var status_data = status.innerHTML;
   var notes_data = notes.innerHTML;
-
-  console.log(firstName_data);
-  console.log(lastName_data);
-  console.log(budget_data);
 
   firstName.innerHTML =
     "<input type='text' id='firstName_text" +
@@ -64,7 +64,7 @@ async function edit_row(no) {
   email.innerHTML =
     "<input type='text' id='email_text" + no + "' value='" + email_data + "'>";
   status.innerHTML =
-    "<select id='select''>' '<option> Actively looking </option>' '<option> Passively Looking </option>' '<option> Not Interested </option>' </select " +
+    "<select id='select''>' '<option value='1'> Actively looking </option>' '<option value='2'> Passively Looking </option>' '<option value='3'> Not Interested </option>' </select " +
     no +
     "' value='" +
     status_data +
@@ -72,17 +72,19 @@ async function edit_row(no) {
   notes.innerHTML =
     "<input type='text' id='notes_text" + no + "' value='" + notes_data + "'>";
 
-  ////////if entry exists update
-  const findId = await fetch(
-    `/database.html/${firstName_data}/${lastName_data}/${email_data}`,
-    {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-  );
-  // .then((res) => console.log(res, "   RES FROM SCRIPT"));
-
-  console.log(findId, "   EDIT FUNCTION");
+  // console.log(firstName_data);
+  // console.log(lastName_data);
+  // console.log(email_data);
+  // let findId = await fetch(
+  //   `/database.html/${firstName_data}/${lastName_data}/${email_data}`,
+  //   {
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" },
+  //   }
+  // ).then((res) => {
+  //   console.log(res, "  WTF!!!!");
+  // });
+  // console.log(findId);
 }
 
 //To save user input
@@ -96,7 +98,11 @@ async function save_row(no) {
   var downPay_val = document.getElementById("downPay_text" + no).value;
   var interest_val = document.getElementById("interest_text" + no).value;
   var email_val = document.getElementById("email_text" + no).value;
-  var status_val = document.getElementById("status_text" + no).value;
+
+  const e = document.getElementById("select");
+  const index = e.value;
+  var status_val = e.options[index].innerText;
+
   var notes_val = document.getElementById("notes_text" + no).value;
 
   console.log(lastName_val, "    LASTNAME");
@@ -110,37 +116,26 @@ async function save_row(no) {
   document.getElementById("status_row" + no).innerHTML = status_val;
   document.getElementById("note_row" + no).innerHTML = notes_val;
 
-  //////if entry exists update
-  // const findId = await fetch(`/database.html`, {
-  //   method: "PUT",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({
-  //     firstName: firstName_val,
-  //     lastName: lastName_val,
-  //     budget: budget_val,
-  //     downPay: downPay_val,
-  //     interest: interest_val,
-  //     email: email_val,
-  //     status: status_val,
-  //     notes: notes_val,
-  //   }),
-  // }).then((res) => console.log(res.statusText));
-
-  //////ELSE ADD
-  const res = await fetch(`/database.html`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      firstName: firstName_val,
-      lastName: lastName_val,
-      budget: budget_val,
-      downPay: downPay_val,
-      interest: interest_val,
-      email: email_val,
-      status: status_val,
-      notes: notes_val,
-    }),
+  let findId = await fetch(
+    `/database.html/${firstName_val}/${lastName_val}/${email_val}`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+  ).then((res) => {
+    console.log(res, "  WTF!!!!");
   });
+  console.log(findId);
+  // addOrEdit(
+  //   firstName_val,
+  //   lastName_val,
+  //   budget_val,
+  //   downPay_val,
+  //   interest_val,
+  //   email_val,
+  //   status_val,
+  //   notes_val
+  // );
 }
 
 //To Delete full Row
@@ -158,15 +153,6 @@ async function delete_row(no) {
     }
   );
   // console.log(deletion, "  DELETION ");
-}
-
-////EDIT ROW
-//////////NOT READY YET
-async function editRow(...inputs) {
-  const result = await fetch("/database.html", {
-    method: "PUT",
-    body: {},
-  });
 }
 
 //to Add a row
@@ -243,22 +229,6 @@ function add_row(no) {
       table_len +
       ")'></td></tr>");
 
-    // await function myFunction(){
-    //     // var x = document.getElementById('selection').options.item[0].text;
-    //     // document.getElementById('status_row').innerHTML =x
-    //     if(document.getElementById('selection').options =
-    //     document.getElementById('selection').options[0].text
-    // }
-    //   new_firstName.innerHTML = "";
-    //   document.getElementById("firstName_row").innerHTML += "jhgyk";
-    //   document.getElementById("lastName_row").innerText += "ffff";
-    //   document.getElementById("downPayment_row").value = "ffff";
-    //   document.getElementById("areaOfInterest_row").innerText = "ffff";
-    //   document.getElementById("email_row").innerText = "ffff";
-    //   document.getElementById("status_row").innerText = "ffff";
-    //   document.getElementById("note_row").innerText = "ffff";
-    //   document.getElementById("edit_button" + no).classList.add("disappear");
-
     //to clear all inputs
     document.getElementById("firstNameNew").value = "";
     document.getElementById("lastNameNew").value = "";
@@ -268,40 +238,59 @@ function add_row(no) {
     document.getElementById("emailAdressNew").value = "";
     document.getElementById("myNotesNew").value = "";
   }
+}
+// moment function working,
 
-  // moment function working,
+// Client js
 
-  // To show current
-  // document.getElementById("time").onload = function timeShow() {timeShow()};a
+function sortTable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("infoTable");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
 
-  // function timeShow() {
-  //    var x= ((moment().format("MMM Do YY"))
-  //    var x = new Date(moment().format("MMM Do YY"))
-  //   var x = new Date(document.lastModified);
-  //   document.getElementById("time").innerHTML = x;
-  // }
+    // loop through all table rows except headers
+    for (i = 1; i < rows.length - 1; i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementByTagName("TD")[0];
+      y = rows[i + 1].getElementByTagName("TD")[0];
 
-  // Client js
-
-  function sortTable() {
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById("infoTable");
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+  }
+  if (shouldSwitch) {
+    /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
     switching = true;
-    while (switching) {
-      switching = false;
-      rows = table.rows;
+  }
+}
 
-      // loop through all table rows except headers
-      for (i = 1; i < rows.length - 1; i++) {
-        shouldSwitch = false;
-        x = rows[i].getElementByTagName("TD")[0];
-        y = rows[i + 1].getElementByTagName("TD")[0];
+// This function is to sort the table
+function sort() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("infoTable");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
 
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
+    // loop through all table rows except headers
+    for (i = 1; i < rows.length - 1; i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementByTagName("TD")[0];
+      y = rows[i + 1].getElementByTagName("TD")[0];
+
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
       }
     }
     if (shouldSwitch) {
@@ -311,53 +300,24 @@ function add_row(no) {
       switching = true;
     }
   }
+}
 
-  // This function is to sort the table
-  function sort() {
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById("infoTable");
-    switching = true;
-    while (switching) {
-      switching = false;
-      rows = table.rows;
+// function email() {}
 
-      // loop through all table rows except headers
-      for (i = 1; i < rows.length - 1; i++) {
-        shouldSwitch = false;
-        x = rows[i].getElementByTagName("TD")[0];
-        y = rows[i + 1].getElementByTagName("TD")[0];
+async function getList(event) {
+  event.preventDefault();
+  console.log("TEST");
+  const clients = await fetch("/api/database")
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
 
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
-      }
-      if (shouldSwitch) {
-        /*If a switch has been marked, make the switch
-        and mark that a switch has been done:*/
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-      }
-    }
-  }
+  document.querySelector("#tableRows").innerHTML = "";
 
-  function email() {}
+  console.log(clients, "  LIST FROM SCRIPT");
 
-  async function getList(event) {
-    event.preventDefault();
-    console.log("TEST");
-    const clients = await fetch("/api/database")
-      .then((res) => res.json())
-      .catch((err) => console.log(err));
-
-    document.querySelector("#tableRows").innerHTML = "";
-
-    console.log(clients, "  LIST FROM SCRIPT");
-
-    clients.forEach((el) => {
-      console.log(el.firstname);
-      document.querySelector("#tableRows").innerHTML += `
+  clients.forEach((el) => {
+    // console.log(el.firstname);
+    document.querySelector("#tableRows").innerHTML += `
     <tr id="row${el.id}">
     <td id="firstName_row${el.id}">${el.firstname}</td>
     <td id="lastName_row${el.id}">${el.lastname}</td>
@@ -374,11 +334,63 @@ function add_row(no) {
     </td>
   </tr>
     `;
-    });
-  }
+  });
 }
+
 function mySelect() {
   var d = document.getElementById("select");
   var displaytext = d.options[d.selectedIndex].text;
   document.getElementById("textvalue").value = displaytext;
+}
+
+async function addOrEdit(
+  firstName_val,
+  lastName_val,
+  budget_val,
+  downPay_val,
+  interest_val,
+  email_val,
+  status_val,
+  notes_val
+) {
+  ////check id for entry
+  ////////if entry exists update
+
+  //if entry exists update
+  if (findId) {
+    const result = await fetch(
+      `/database.html/${firstName_val}/${lastName_val}/${email_val}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: firstName_val,
+          lastName: lastName_val,
+          budget: budget_val,
+          downPay: downPay_val,
+          interest: interest_val,
+          email: email_val,
+          status: status_val,
+          notes: notes_val,
+          id: findId,
+        }),
+      }
+    );
+  } else {
+    //////ELSE ADD
+    const result = await fetch(`/database.html`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstName: firstName_val,
+        lastName: lastName_val,
+        budget: budget_val,
+        downPay: downPay_val,
+        interest: interest_val,
+        email: email_val,
+        status: status_val,
+        notes: notes_val,
+      }),
+    });
+  }
 }

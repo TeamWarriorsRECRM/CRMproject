@@ -13,7 +13,7 @@ const { connection } = require("./app/config/connection");
 const { Script } = require("vm");
 const { async } = require("rxjs");
 const app = express();
-const moment = require('moment')
+const moment = require("moment");
 
 const PORT = process.env.PORT || 500;
 
@@ -71,17 +71,16 @@ app.get("/api/database", async (req, res) => {
   res.send(list);
 });
 
+/////UPDATES THE ENTRY
 app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
-  console.log(req.body, "   REQUEST BODY"); /////////////////////////////////////////////////////////////
-  console.log(res.body, "   RESPONSE BODY"); /////////////////////////////////////////////////////////////
-  const id = await orm.getSingleClient(
-    req.body.firstname,
-    req.body.lastname,
-    req.body.area
-  );
-  console.log(id, "   ID from server");
-}); ////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////
+  const body = JSON.parse(req.body);
+  console.log(body, "   REQUEST BODY");
+  // const entry = await orm.updateInfo(body, res);
+  // res.send(entry);
+});
 
+/////DELETES ENTRY
 app.delete("/database.html/:firstName/:lastName", (req, res) => {
   // console.log(req.params);
   orm.deleteClient(req.params.firstName, req.params.lastName);
@@ -95,17 +94,17 @@ app.post("/database.html", (req, res) => {
   res.send();
 });
 
+//////ONLY GETTING THE ID FOR THE SELECTED ENTRY
 app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
-  // console.log(req.params);
-  const id = await orm
-    .getSingleClient(
-      req.params.firstName,
-      req.params.lastName,
-      req.params.email
-    )
-    .then((res) => res);
-  console.log(id, " FROM SERVER ID");
-  res.send(id);
+  // console.log(req.params.firstName);
+  const [id] = await orm.getSingleClient(
+    req.params.firstName,
+    req.params.lastName,
+    req.params.email
+  );
+  const result = id.id;
+  console.log(result, " FROM SERVER ID");
+  res.send();
 });
 
 db.sequelize.sync().then(function () {

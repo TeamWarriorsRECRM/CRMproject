@@ -9,15 +9,11 @@ async function getClients() {
 // getClients();
 
 async function getSingleClient(firstName, lastName, email) {
-  return await db
-    .query(
-      `SELECT id FROM clients WHERE firstname="${firstName}" AND lastname="${lastName}" AND area="${email}";`
-    )
-    .then((res) => {
-      let [id] = res;
-      console.log(id.id, "  ORM SCRIPT");
-      return id.id;
-    });
+  return await db.query(
+    `SELECT id FROM clients WHERE firstname="${firstName}" AND lastname="${lastName}" AND email="${email}";`
+  );
+
+  // console.log(res, "  ORM SCRIPT");
 }
 
 async function insertClient(obj) {
@@ -28,8 +24,10 @@ async function insertClient(obj) {
     .then((res) => console.log("new client inserted"));
 }
 
-async function updateInfo(field, newValue, id) {
-  return db.query(`UPDATE clients SET ${field}="${newValue} WHERE id=${id}"`);
+async function updateInfo(obj, id) {
+  return db.query(
+    `UPDATE clients SET firstname="${obj.firstName}", lastname="${obj.lastName}", totalbudget=${obj.budget}, downpayment=${obj.downPay}, area="${obj.interest}", email="${obj.email}", _status="${obj.status}",note="${obj.notes}" WHERE id=${id}`
+  );
 }
 
 async function deleteClient(name, lastName) {
