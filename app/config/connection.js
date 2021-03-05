@@ -35,4 +35,4 @@ const db = new Database({
   insecureAuth: true,
 });
 
-// module.exports = db;
+module.exports = db;
