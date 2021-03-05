@@ -28,11 +28,11 @@ passport.use(
   )
 );
 
-passport.serializeUser((user, done) => {
-  done(null, user);
+passport.serializeUser((user, cb) => {
+  cb(null, user);
 });
-passport.deserializeUser((remove, done) => {
-  done(null, remove);
+passport.deserializeUser((obj, cb) => {
+  cb(null, obj);
 });
 
 module.exports = passport;
