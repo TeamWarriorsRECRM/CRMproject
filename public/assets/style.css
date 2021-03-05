@@ -131,7 +131,7 @@ h1, h3{
 
 
 /*Adding new client titles*/ 
-#firstNameTitle, #lastNameTitle, #budgetTitle, #downpaymentTitle, #areaOfInterestTitle, #emailAddressTitle, #statusTitle, #noteTitle {
+#firstNameTitle, #lastNameTitle, #budgetTitle, #downpaymentTitle, #areaOfInterestTitle, #emailAddressTitle, #userStatusNew, #noteTitle {
     color: black;
     font-weight: bolder;
 }
