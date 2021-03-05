@@ -197,7 +197,7 @@ document.getElementById('newEntry').classList.add('disappear')
     var userDownpayment = document.getElementById('downpaymentNew').value
     var userAreaInterest = document.getElementById('areaOfInterestNew').value
     var userEmail = document.getElementById('emailAdressNew').value
-    // var userStatus = document.getElementById('lastNameNew').value
+    var userStatus = document.getElementById('userStatusNew').value
     var userNotes = document.getElementById('myNotesNew').value
 
   var table = document.getElementById("tableInfo");
@@ -229,9 +229,12 @@ document.getElementById('newEntry').classList.add('disappear')
     "'>" +
     userEmail +
     "</td><td placeholder='value here' id='status_row" +
+    table_len +
     "'>" +
-    x +
-    "</td><td placeholder='value here' id='note_row" +
+    // userStatus +
+    "<select id='select''>''<option> Actively looking </option>' '<option> Passively Looking </option>' '<option> Not Interested </option>' </select " +
+    
+    "</td><td placeholder='value here' id='note_row"+
     table_len +
     "'>" +
     userNotes +
@@ -244,6 +247,7 @@ document.getElementById('newEntry').classList.add('disappear')
     ")'> <input type='button' value='Delete' class='btn btn-secondary' onclick='delete_row(" +
     table_len +
     ")'></td></tr>");
+
 
 
     // await function myFunction(){
