@@ -144,12 +144,12 @@ async function delete_row(no) {
   var lastName_val = document.getElementById("lastName_row" + no).innerHTML;
   document.getElementById("row" + no + "").outerHTML = "";
 
-  const deletion = await fetch(
-    `/database.html/${firstName_val}/${lastName_val}`,
-    {
-      method: "DELETE",
-    }
-  );
+//   const deletion = await fetch(
+//     `/database.html/${firstName_val}/${lastName_val}`,
+//     {
+//       method: "DELETE",
+//     }
+//   );
   // console.log(deletion, "  DELETION ");
 }
 

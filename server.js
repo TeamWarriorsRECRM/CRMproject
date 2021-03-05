@@ -15,7 +15,7 @@ const { async } = require("rxjs");
 const app = express();
 const moment = require("moment");
 
-const PORT = process.env.PORT || 500;
+const PORT = process.env.PORT || 8080;
 
 require("./app/routes/html-route.js")(app);
 // require("./routes/api-routes.js")(app);
