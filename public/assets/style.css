@@ -27,9 +27,9 @@
   display: none;
 }
 
-/* body {
-  background-image: url("https://image.freepik.com/free-photo/grey-grunge-texture-grunge_19-128535.jpg");
-} */
+body {
+  background-image: url("https://www.bypeople.com/wp-content/uploads/2014/05/light-live-background-css.jpg");
+}
 
 /*This is for the login page */
       .login-form {
@@ -66,20 +66,20 @@
     min-width: 400px;
 }
 
-.content-table thead tr {
-    background-color: skyblue;
-    text-align: center;
-    font-weight: bold;
-}
+
 
 .content-table tbody tr {
     border-bottom: 1px solid lightgrey;
 }
 
 .content-table tr:nth-of-type(even){
-    background-color: #f3f3f3;
+    background-color: white;
 }
 
-        
+.content-table thead  {
+    background-color: skyblue;
+    text-align: center;
+    font-weight: bold;
+}
 
     

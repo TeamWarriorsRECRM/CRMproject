@@ -151,12 +151,12 @@ async function delete_row(no) {
   // console.log(firstName_val, lastName_val, "   INPUT");
   document.getElementById("row" + no + "").outerHTML = "";
 
-  const deletion = await fetch(
-    `/database.html/${firstName_val}/${lastName_val}`,
-    {
-      method: "DELETE",
-    }
-  );
+//   const deletion = await fetch(
+//     `/database.html/${firstName_val}/${lastName_val}`,
+//     {
+//       method: "DELETE",
+//     }
+//   );
   // console.log(deletion, "  DELETION ");
 }
 
@@ -187,6 +187,7 @@ document.getElementById('newEntry').classList.add('disappear')
   var new_email = document.getElementById("new_email");
   var new_status = document.getElementById("new_status");
   var new_note = document.getElementById("new_note ");
+
 
 //   if (!new_firstName) new_firstName.innerHTML += "";
 
@@ -232,8 +233,8 @@ document.getElementById('newEntry').classList.add('disappear')
     table_len +
     "'>" +
     // userStatus +
-    "<select id='select''>''<option> Actively looking </option>' '<option> Passively Looking </option>' '<option> Not Interested </option>' </select " +
-    
+    "<select id='select''>''<option> Actively looking </option>' '<option> Passively Looking </option>' '<option> Not Interested </option>' </select> " +
+
     "</td><td placeholder='value here' id='note_row"+
     table_len +
     "'>" +

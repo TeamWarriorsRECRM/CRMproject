@@ -34,6 +34,15 @@ app.use(
 //   res.json(req.user);
 // });
 
+app.post('/public/contact-us', function(req,res){
+  db.message.create({
+    email: req.body.email, 
+    explanation: req.body.explanation
+  })
+  .then(function (){
+  })
+})
+
 app.post("/public/register", function (req, res) {
   db.User.create({
     username: req.body.email,
