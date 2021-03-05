@@ -34,13 +34,15 @@
       <form class="login">
         <h2 class="text-center">Log in</h2>
         <div class="form-group">
-          <input type="email" class="form-control" id="email-input" placeholder="Email" required="required">
+          <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="required">
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="password-input" placeholder="Password" required="required">
+          <input type="password" class="form-control" name="password" id="password" placeholder="Password"
+            required="required">
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block">Log in</button>
+          <!-- add log in function -->
+          <button type="submit" onclick="sendLogIn(event)" class="btn btn-primary btn-block">Log in</button>
         </div>
         <div class="clearfix">
           <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
@@ -69,16 +71,10 @@
 
 
   </div>
-  </div>
-  </div>
-
-
   <!--Sales Listing Login-->
 
 
-
+  <script src="./assets/script.js"></script>
 </body>
-<script src="assets/script.js"></script>
-<script src="index.js"></script>
 
 </html>
