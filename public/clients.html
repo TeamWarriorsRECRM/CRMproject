@@ -46,10 +46,10 @@
     <table id="infoTable" class="table" padding="">
       <thead>
         <tr>
-          <th onclick="sort()" scope="col">First Name</th>
-          <th onclick="sort()" scope="col">Last Name</th>
-          <th onclick="sort()" scope="col">Status</th>
-          <th onclick="sort()" scope="col">Contact client</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">Contact client</th>
         </tr>
       </thead>
       <tbody>
@@ -100,8 +100,7 @@
 
 </body>
 
-<script src="assets/script.js">
-
+<script>
 
   // This function is to sort the table
   function sort() {
@@ -115,8 +114,8 @@
       // loop through all table rows except headers
       for (i = 1; i < (rows.length - 1); i++) {
         shouldSwitch = false;
-        x = rows[i].getElementByTagName("TD")[0];
-        y = rows[i + 1].getElementByTagName("TD")[0];
+        x = rows[i].getElementByTagName("TD")[2]
+        y = rows[i + 1].getElementByTagName("TD")[2];
 
         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
           //if so, mark as a switch and break the loop:

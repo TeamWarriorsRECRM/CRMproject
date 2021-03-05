@@ -4,17 +4,18 @@ const createClass = require("./public/assets/script");
 const orm = require("./app/routes/orm");
 const express = require("express");
 const session = require("express-session");
-const sequelize = require("sequelize");
+// const sequelize = require("sequelize");
 const routes = require("./app/routes/api");
 const { get } = require("http");
-const passport = require("./app/config/passport");
+// const passport = require("./app/config/passport");
 const db = require("./app/models");
 const { connection } = require("./app/config/connection");
 const { Script } = require("vm");
 const { async } = require("rxjs");
 const app = express();
+const moment = require("moment");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 500;
 
 require("./app/routes/html-route.js")(app);
 // require("./routes/api-routes.js")(app);
@@ -25,8 +26,8 @@ app.use(express.static("public"));
 app.use(
   session({ secret: "super secret", resave: true, saveUninitialized: true })
 );
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.post("/api/index", passport.authenticate("local"), function (req, res) {
   res.json(req.user);
@@ -41,10 +42,10 @@ app.post("/api/register", async function (req, res) {
   res.send(result);
 });
 
-app.get("/logout", function (req, res) {
-  req.logout();
-  res.redirect("/index");
-});
+// app.get("/logout", function (req, res) {
+//   req.logout();
+//   res.redirect("/index");
+// });
 
 app.get("/api/user_data", function (req, res) {
   if (!req.user) {
