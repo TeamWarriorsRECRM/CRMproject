@@ -328,10 +328,11 @@ async function sendLogIn(event) {
   event.preventDefault();
   console.log("working");
   data = {
-    username: document.querySelector("#username").value,
+    email: document.querySelector("#email").value,
     password: document.querySelector("#password").value,
   };
-  let result = await fetch("/api/index", {
+  console.log(data);
+  let logInResult = await fetch("/api/index", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -344,7 +345,7 @@ async function sendLogIn(event) {
 async function register(event) {
   event.preventDefault();
   data = {
-    username: document.querySelector("#username").value,
+    email: document.querySelector("#email").value,
     password: document.querySelector("#password").value,
   };
   let result = await fetch("/api/register", {

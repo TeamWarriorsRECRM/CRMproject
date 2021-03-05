@@ -1,28 +1,25 @@
-const passport = require("passport"),
-  LocalStrategy = require("passport-local").Strategy;
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 const db = require("../models");
 
 passport.use(
   new LocalStrategy(
     { usernameField: "email" },
 
-    function (username, password, done) {
+    function (email, password, done) {
       db.User.findOne({
-        where: { username: username },
+        where: { email: email },
       }).then(function (dbUser) {
-        if (dbUser) {
-          return done(null, dbUser, {
-            message: "Successful login",
+        if (!dbUser) {
+          return done(null, false, {
+            message: "Incorrect Email",
           });
         } else if (!dbUser.validPassword(password)) {
           return done(null, false, {
             message: "Incorrect password please try again",
           });
-        } else {
-          return done(null, false, {
-            message: "Incorrect username please try again",
-          });
         }
+        return done(null, dbUser);
       });
     }
   )
@@ -31,8 +28,8 @@ passport.use(
 passport.serializeUser((user, cb) => {
   cb(null, user);
 });
-passport.deserializeUser((obj, cb) => {
-  cb(null, obj);
+passport.deserializeUser((id, cb) => {
+  cb(null, id);
 });
 
 module.exports = passport;

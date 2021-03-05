@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
   <link href="assets/style.css" rel="stylesheet" type="text/css">
   <title>Client Database</title>
 </head>
+
 <body>
   <ul class="nav nav-pills">
     <li class="nav-item">
-      <a class="nav-link" aria-current="page" href="/logout">Logout</a>
+      <a class="navbar-brand" href="/logout">Logout</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="./clients.html">Go to main clients</a>
@@ -33,11 +35,11 @@
   <div class="container">
     <div style="text-align: center;">
       <h1 style="text-align: center;">My Leads</h1>
-      <button  class="myButton" style="text-align:left" href="addClient.html">Add new client </button>
+      <button class="myButton" style="text-align:left" href="addClient.html">Add new client </button>
       <h7 id="time" style="text-align: right;"> </h7>
     </div>
 
-  
+
     <br>
     <table id="tableInfo" class="table content-table" padding="">
       <thead>
@@ -62,12 +64,12 @@
           <td id="areaOfInterest_row1">Toronto</td>
           <td id="email_row1">email</td>
           <td id="status_row1">
-              <select>
-                <option  >Actively looking </option>
-                <option  >Passively Looking </option>
-                <option >Not interested</option>
-              </select>
-          
+            <select>
+              <option>Actively looking </option>
+              <option>Passively Looking </option>
+              <option>Not interested</option>
+            </select>
+
           </td>
           <td id="note_row1">(Enter notes here)</td>
           <td>
@@ -107,11 +109,11 @@
     <td id="areaOfInterest_row3">Whitby</td>
     <td id="email_row3">email</td>
     <td id="status_row3">
-  
+
       <select>
         <option>Actively looking </option>
-        <option >Passively Looking </option>
-        <option >Not interested</option>
+        <option>Passively Looking </option>
+        <option>Not interested</option>
       </select>
       </div>
     </td>
@@ -126,11 +128,10 @@
   </tbody>
   </table>
 
-  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+  <script src="./assets/script.js"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-<script src="./assets/script.js">
-  
-</script>
+
 </html>
