@@ -22,7 +22,7 @@
       <a class="nav-link" href="./clients.html">Go Back</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" onclick="getList()" href="./database.html">Client Database</a>
+      <a class="nav-link active" onclick="getList(event)" href="./database.html">Client Database</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="">Access MLS listing</a>
@@ -57,8 +57,8 @@
 
         </tr>
       </thead>
-      <tbody>
-        <tr id="row1">
+      <tbody id="tableRows">
+        <!-- <tr id="row1">
           <td id="firstName_row1">Mark</td>
           <td id="lastName_row1">Jacob</td>
           <td id="budget_row1">$500,000</td>
@@ -81,9 +81,9 @@
 
           </td>
           <td id="note_row1">(Enter notes here)</td>
-          <td>
-            <!-- <button onclick="edit_row1()" id="edit_button1" type="button" class="btn btn-primary" >Edit</button> -->
-            <input type="button" id="edit_button1" value="Edit" class="btn btn-primary" onclick="edit_row(1)">
+          <td> -->
+        <!--<button onclick="edit_row1()" id="edit_button1" type="button" class="btn btn-primary" >Edit</button> -->
+        <!-- <input type="button" id="edit_button1" value="Edit" class="btn btn-primary" onclick="edit_row(1)">
             <input type="button" id="save_button1" value="Save" class="btn btn-primary" onclick="save_row(1)">
             <input type="button" id="delete_button1" value="Delete" class="btn btn-secondary" onclick="delete_row(1)">
           </td>
@@ -116,7 +116,7 @@
             <input type="button" id="edit_button3" value="Edit" class="btn btn-primary" onclick="edit_row(3)">
             <input type="button" id="save_button3" value="Save" class="btn btn-primary" onclick="save_row(3)">
             <input type="button" id="delete_button3" value="Delete" class="btn btn-secondary" onclick="delete_row(3)">
-          </td>
+          </td> -->
         </tr>
 
   </div>

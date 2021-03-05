@@ -2,7 +2,7 @@ const { async } = require("rxjs");
 const db = require("../../app/config/connection");
 
 async function getClients() {
-  return await db.query(`SELECT firstname, lastname, area FROM clients`);
+  return await db.query(`SELECT * FROM clients`);
   // .then((res) => res.json());
 }
 

@@ -66,7 +66,7 @@ app.get("/logout", function (req, res) {
 
 app.get("/api/database", async (req, res) => {
   const list = await orm.getClients();
-  console.log(list, "   FROM SERVER");
+  // console.log(list, "   FROM SERVER");
   res.send(list);
 });
 
