@@ -7,7 +7,7 @@
 //To allow user to edit input
 async function edit_row(no) {
   console.log("this works");
-  // document.querySelector("#edit_button" + no).classList.add("disappear");
+  document.querySelector("#edit_button" + no).classList.add("disappear");
 
   var firstName = document.getElementById("firstName_row" + no);
   var lastName = document.getElementById("lastName_row" + no);
@@ -65,10 +65,10 @@ async function edit_row(no) {
     "<input type='text' id='email_text" +
     no +
     "' value='" +
-    interest_data +
+    email_data +
     "'>";
   status.innerHTML =
-    "<input type='text' id='status_text" +
+    "<select id='select''>' '<option> Actively looking </option>' '<option> Passively Looking </option>' '<option> Not Interested </option>' </select " +
     no +
     "' value='" +
     status_data +
@@ -200,8 +200,6 @@ document.getElementById('newEntry').classList.add('disappear')
     // var userStatus = document.getElementById('lastNameNew').value
     var userNotes = document.getElementById('myNotesNew').value
 
-
-
   var table = document.getElementById("tableInfo");
   var table_len = table.rows.length;
   var row = (table.insertRow(table_len).outerHTML =
@@ -231,7 +229,6 @@ document.getElementById('newEntry').classList.add('disappear')
     "'>" +
     userEmail +
     "</td><td placeholder='value here' id='status_row" +
-    table_len +
     "'>" +
     x +
     "</td><td placeholder='value here' id='note_row" +
@@ -248,6 +245,13 @@ document.getElementById('newEntry').classList.add('disappear')
     table_len +
     ")'></td></tr>");
 
+
+    // await function myFunction(){
+    //     // var x = document.getElementById('selection').options.item[0].text;
+    //     // document.getElementById('status_row').innerHTML =x
+    //     if(document.getElementById('selection').options = 
+    //     document.getElementById('selection').options[0].text
+    // }
 //   new_firstName.innerHTML = "";
 //   document.getElementById("firstName_row").innerHTML += "jhgyk";
 //   document.getElementById("lastName_row").innerText += "ffff";
@@ -268,10 +272,7 @@ document.getElementById('emailAdressNew').value=''
 document.getElementById('myNotesNew').value=''
 
 
-  await function myFunction(){
-    var x = document.getElementById('selection').options.item[0].text;
-    document.getElementById('status_row').innerHTML =x
-}
+
 }
 
 
@@ -318,3 +319,9 @@ function sortTable() {
     switching = true;
   }
 }
+
+function mySelect(){
+    var d = document.getElementById('select');
+    var displaytext = d.options[d.selectedIndex].text;
+    document.getElementById("textvalue").value = displaytext
+    }
