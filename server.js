@@ -34,14 +34,10 @@ app.use(
 //   res.json(req.user);
 // });
 
-app.post('/public/contact-us', function(req,res){
-  db.message.create({
-    email: req.body.email, 
-    explanation: req.body.explanation
-  })
-  .then(function (){
-  })
+app.get('/public/contact-us', function(req,res){
+  console.log(req.body + "this works")
 })
+
 
 app.post("/public/register", function (req, res) {
   db.User.create({

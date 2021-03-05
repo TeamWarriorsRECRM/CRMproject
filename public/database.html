@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
   <link href="assets/style.css" rel="stylesheet" type="text/css">
   <title>Client Database</title>
 </head>
@@ -37,7 +39,7 @@
   <div class="container">
     <div style="text-align: center;">
       <h1 style="text-align: center;">My Leads</h1>
-      <button onclick="add_client()" class="btn btn-primary" style="text-align:left">Add new client </button>
+      <button onclick="add_client()" class="myButton" style="text-align:left">Add new client </button>
       <h7 id="time" style="text-align: right;"> </h7>
     </div>
 
@@ -144,31 +146,31 @@
 <div class="container disappear" id="newEntry" style="max-width: 70%; ;"> 
   <div class="mb-3">
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">First Name</label>
+      <label for="exampleFormControlTextarea1" class="form-label" id="firstNameTitle">First Name</label>
       <textarea class="form-control" id="firstNameNew" rows="1"></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Second name</label>
+      <label for="exampleFormControlTextarea1" class="form-label" id="lastNameTitle">Second name</label>
       <textarea class="form-control" id="lastNameNew" rows="1"></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Budget</label>
+      <label for="exampleFormControlTextarea1" class="form-label" id="budgetTitle">Budget</label>
       <textarea class="form-control" id="budgetNew" rows="1"></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Downpayment</label>
+      <label for="exampleFormControlTextarea1" class="form-label" id="downpaymentTitle">Downpayment</label>
       <textarea class="form-control" id="downpaymentNew" rows="1"></textarea>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Area of interest</label>
+      <label for="exampleFormControlTextarea1" class="form-label" id="areaOfInterestTitle" >Area of interest</label>
       <textarea class="form-control" id="areaOfInterestNew" rows="1"></textarea>
     </div>
-    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <label for="exampleFormControlInput1" class="form-label" id="emailAddressTitle">Email address</label>
     <input type="email" class="form-control" id="emailAdressNew" placeholder="name@example.com">
   </div>
 
   <div class="mb-3">
-    <label for="exampleFormControlTextarea1" id="userStatusNew" class="form-label">Status</label>
+    <label for="exampleFormControlTextarea1" id="userStatusNew" class="form-label" id="statusTitle">Status</label>
     <form>
     <select id="selection">
       <option id="1">Actively looking </option>
@@ -179,7 +181,7 @@
   </form>
   </div>
   <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">My Notes</label>
+    <label for="exampleFormControlTextarea1" class="form-label" id="noteTitle">My Notes</label>
     <textarea class="form-control" id="myNotesNew" rows="1"></textarea>
   </div>
  
