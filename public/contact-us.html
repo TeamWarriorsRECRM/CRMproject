@@ -13,7 +13,6 @@
 
 <body>
 
-
   <ul class="nav nav-pills">
     <li class="nav-item">
       <a class="nav-link" aria-current="page" href="./index.html">Logout</a>
@@ -30,8 +29,45 @@
       <a class="nav-link active" href="./clients.html">Contact Support</a>
     </li>
   </ul>
+
+
+
   <!--User inputs questions-->
+
+
+  <div class="container" style="max-width: 60%; margin-top: 5%;">
+    <h3 style="text-align: center;">How may we help you?</h3>
+
+    <form>
+      <div class="form-group" style="margin-bottom: 20px;">
+        <label for="exampleFormControlInput1"><strong>Email address</strong></label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 20px;">
+        <label for="exampleFormControlSelect2"><strong>What do you need assistance with today?</strong></label>
+        <select multiple class="form-control" id="exampleFormControlSelect2">
+          <option>Database</option>
+          <option>MLS </option>
+          <option>Cancel subscription</option>
+          <option>Other</option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1"><strong>Please provide an explanation below</strong></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Please explain issue here"
+          rows="3"></textarea>
+      </div>
+    </form>
+
+    <a href="thankyou.html"><button> Submit</button></a>
+  </div>
   <script src="assets/script.js"></script>
 </body>
+
+<script>
+
+</script>
 
 </html>
