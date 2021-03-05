@@ -15,7 +15,7 @@ const { async } = require("rxjs");
 const app = express();
 const moment = require("moment");
 
-const PORT = process.env.PORT || 500;
+const PORT = process.env.PORT || 8080;
 
 require("./app/routes/html-route.js")(app);
 // require("./routes/api-routes.js")(app);
@@ -30,12 +30,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.post("/api/index", passport.authenticate("local"), function (req, res) {
+  console.log(req.user);
   res.json(req.user);
 });
 
 app.post("/api/register", async function (req, res) {
   let result = await db.User.create({
-    username: req.body.username,
+    email: req.body.email,
     password: req.body.password,
   });
   console.log();
@@ -44,7 +45,8 @@ app.post("/api/register", async function (req, res) {
 
 app.get("/logout", function (req, res) {
   req.logout();
-  res.redirect("/index");
+  console.log("redirecting server side");
+  res.redirect("/");
 });
 
 app.get("/api/user_data", function (req, res) {
