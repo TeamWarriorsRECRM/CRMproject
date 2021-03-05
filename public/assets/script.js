@@ -1,6 +1,6 @@
 // To save client input into database
 
-const { async } = require("rxjs");
+// const { async } = require("rxjs");
 
 // Database js
 
@@ -170,73 +170,85 @@ async function editRow(...inputs) {
 }
 
 //to Add a row
-function add_row(){
+function add_client(){
     document.getElementById('newEntry').classList.remove('disappear')
 }
 
 
-// function add_row(no) {
-//   var new_firstName = document.getElementById("new_firstName");
-//   var new_lastName = document.getElementById("new_lastName");
-//   var new_budget = document.getElementById("new_budget");
-//   var new_downPayment = document.getElementById("new_downPayment");
-//   var new_areaOfInterest = document.getElementById("new_areaOfInterest");
-//   var new_email = document.getElementById("new_email");
-//   var new_status = document.getElementById("new_status");
-//   var new_note = document.getElementById("new_note ");
+let x;
+// This is to add rows 
+async function add_row(no) {
+document.getElementById('newEntry').classList.add('disappear')
+  var new_firstName = document.getElementById("new_firstName");
+  var new_lastName = document.getElementById("new_lastName");
+  var new_budget = document.getElementById("new_budget");
+  var new_downPayment = document.getElementById("new_downPayment");
+  var new_areaOfInterest = document.getElementById("new_areaOfInterest");
+  var new_email = document.getElementById("new_email");
+  var new_status = document.getElementById("new_status");
+  var new_note = document.getElementById("new_note ");
 
-  // if (!new_firstName) new_firstName.innerHTML += "";
+//   if (!new_firstName) new_firstName.innerHTML += "";
 
-//   console.log(new_firstName, "   ADD A ROW FUNC");
+  // This is to add the User entries from the form, to the table
+    var userFirstName = document.getElementById('firstNameNew').value
+    var userLastName = document.getElementById('lastNameNew').value
+    var userBudget = document.getElementById('budgetNew').value
+    var userDownpayment = document.getElementById('downpaymentNew').value
+    var userAreaInterest = document.getElementById('areaOfInterestNew').value
+    var userEmail = document.getElementById('emailAdressNew').value
+    // var userStatus = document.getElementById('lastNameNew').value
+    var userNotes = document.getElementById('myNotesNew').value
 
-//   var table = document.getElementById("tableInfo");
-//   var table_len = table.rows.length;
-//   var row = (table.insertRow(table_len).outerHTML =
-//     "<tr id='row" +
-//     table_len +
-//     "'><td placeholder='value here' id='firstName_row" +
-//     table_len +
-//     "'>" +
-//     new_firstName +
-//     "</td><td placeholder='value here' id='lastName_row" +
-//     table_len +
-//     "'>" +
-//     new_lastName +
-//     "</td><td placeholder='value here' id='budget_row" +
-//     table_len +
-//     "'>" +
-//     new_budget +
-//     "</td><td placeholder='value here' id='downpayment_row" +
-//     table_len +
-//     "'>" +
-//     new_downPayment +
-//     "</td><td placeholder='value here' id='areaOfInterest_row" +
-//     table_len +
-//     "'>" +
-//     new_areaOfInterest +
-//     "</td><td placeholder='value here' id='email_row" +
-//     table_len +
-//     "'>" +
-//     new_email +
-//     "</td><td placeholder='value here' id='status_row" +
-//     table_len +
-//     "'>" +
-//     new_status +
-//     "</td><td placeholder='value here' id='note_row" +
-//     table_len +
-//     "'>" +
-//     new_note +
-//     "</td><td><input type='button' id='edit_button" +
-//     no +
-//     "' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" +
-//     table_len +
-//     ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" +
-//     table_len +
-//     ")'> <input type='button' value='Delete' class='btn btn-secondary' onclick='delete_row(" +
-//     table_len +
-//     ")'></td></tr>");
 
-  // new_firstName.innerHTML = "";
+
+  var table = document.getElementById("tableInfo");
+  var table_len = table.rows.length;
+  var row = (table.insertRow(table_len).outerHTML =
+    "<tr id='row" +
+    table_len +
+    "'><td id='firstNameNew"  +
+    table_len +
+    "'>"+ userFirstName +
+    "</td><td placeholder='value here' id='lastName_row" +
+    table_len +
+    "'>" +
+    userLastName +
+    "</td><td placeholder='value here' id='budget_row" +
+    table_len +
+    "'>" +
+    userBudget +
+    "</td><td placeholder='value here' id='downpayment_row" +
+    table_len +
+    "'>" +
+    userDownpayment +
+    "</td><td placeholder='value here' id='areaOfInterest_row" +
+    table_len +
+    "'>" +
+    userAreaInterest +
+    "</td><td placeholder='value here' id='email_row" +
+    table_len +
+    "'>" +
+    userEmail +
+    "</td><td placeholder='value here' id='status_row" +
+    table_len +
+    "'>" +
+    x +
+    "</td><td placeholder='value here' id='note_row" +
+    table_len +
+    "'>" +
+    userNotes +
+    "</td><td><input type='button' id='edit_button" +
+    no +
+    "' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" +
+    table_len +
+    ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" +
+    table_len +
+    ")'> <input type='button' value='Delete' class='btn btn-secondary' onclick='delete_row(" +
+    table_len +
+    ")'></td></tr>");
+
+//   new_firstName.innerHTML = "";
 //   document.getElementById("firstName_row").innerHTML += "jhgyk";
 //   document.getElementById("lastName_row").innerText += "ffff";
 //   document.getElementById("downPayment_row").value = "ffff";
@@ -244,12 +256,29 @@ function add_row(){
 //   document.getElementById("email_row").innerText = "ffff";
 //   document.getElementById("status_row").innerText = "ffff";
 //   document.getElementById("note_row").innerText = "ffff";
-  // document.getElementById("edit_button" + no).classList.add("disappear");
-// }
+//   document.getElementById("edit_button" + no).classList.add("disappear");
+
+//to clear all inputs
+  document.getElementById('firstNameNew').value=''
+document.getElementById('lastNameNew').value=''
+document.getElementById('budgetNew').value=''
+document.getElementById('downpaymentNew').value=''
+document.getElementById('areaOfInterestNew').value=''
+document.getElementById('emailAdressNew').value=''
+document.getElementById('myNotesNew').value=''
+
+
+  await function myFunction(){
+    var x = document.getElementById('selection').options.item[0].text;
+    document.getElementById('status_row').innerHTML =x
+}
+}
+
+
 
 // moment function working,
 
-//To show current
+// To show current
 // document.getElementById("time").onload = function timeShow() {timeShow()};a
 
 // function timeShow() {

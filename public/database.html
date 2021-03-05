@@ -40,7 +40,7 @@
       <h7 id="time" style="text-align: right;"> </h7>
     </div>
 
-    <button onclick="add_row()" class="btn btn-primary" style="text-align:left">Add new client </button>
+    <button onclick="add_client()" class="btn btn-primary" style="text-align:left">Add new client </button>
     <br>
     <table id="tableInfo" class="table" padding="">
       <thead>
@@ -138,40 +138,51 @@
 
   </tbody>
   </table>
-<div class="container disappear" id="newEntry">
+
+
+<div class="container disappear" id="newEntry" style="max-width: 70%; ;"> 
   <div class="mb-3">
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">First Name</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+      <textarea class="form-control" id="firstNameNew" rows="1"></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Second name</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+      <textarea class="form-control" id="lastNameNew" rows="1"></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Budget</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+      <textarea class="form-control" id="budgetNew" rows="1"></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Downpayment</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+      <textarea class="form-control" id="downpaymentNew" rows="1"></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Area of interest</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+      <textarea class="form-control" id="areaOfInterestNew" rows="1"></textarea>
     </div>
     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <input type="email" class="form-control" id="emailAdressNew" placeholder="name@example.com">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Status</label>
+    <form>
+    <select id="selection">
+      <option id="1">Actively looking </option>
+      <option id="2">Passively Looking </option>
+      <option id="3">Not interested</option>
+    </select>
+    <!-- <button onclick="myFunction()">Select option</button> -->
+  </form>
   </div>
   <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">My Notes</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+    <textarea class="form-control" id="myNotesNew" rows="1"></textarea>
   </div>
-  <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
-  </div>
-  <button>Submit</button>
+ 
+  <button onclick="add_row()" >Submit</button>
 </div>
 
   
