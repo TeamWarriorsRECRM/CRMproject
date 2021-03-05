@@ -1,6 +1,7 @@
 USE clientsCRM_db name;
 
 
+
 INSERT INTO clients (firstname, lastname, totalbudget, downpayment, area) VALUES ("John","Smith",1000000,250000,"Toronto Downtown");
 INSERT INTO clients (firstname, lastname, totalbudget, downpayment, area) VALUES ("Tony","Stark",6000000,1000000,"Toronto Old Town");
 INSERT INTO clients (firstname, lastname, totalbudget, downpayment, area) VALUES ("Steve","Rogers",200000,25000,"Toronto Mid Town");

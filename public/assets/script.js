@@ -1,13 +1,13 @@
 // To save client input into database
 
-const { async } = require("rxjs");
+// const { async } = require("rxjs");
 
 // Database js
 
 //To allow user to edit input
 async function edit_row(no) {
   console.log("this works");
-  // document.querySelector("#edit_button" + no).classList.add("disappear");
+  document.querySelector("#edit_button" + no).classList.add("disappear");
 
   var firstName = document.getElementById("firstName_row" + no);
   var lastName = document.getElementById("lastName_row" + no);
@@ -65,10 +65,10 @@ async function edit_row(no) {
     "<input type='text' id='email_text" +
     no +
     "' value='" +
-    interest_data +
+    email_data +
     "'>";
   status.innerHTML =
-    "<input type='text' id='status_text" +
+    "<select id='select''>' '<option> Actively looking </option>' '<option> Passively Looking </option>' '<option> Not Interested </option>' </select " +
     no +
     "' value='" +
     status_data +
@@ -170,8 +170,15 @@ async function editRow(...inputs) {
 }
 
 //to Add a row
+function add_client(){
+    document.getElementById('newEntry').classList.remove('disappear')
+}
 
-function add_row(no) {
+
+let x;
+// This is to add rows 
+async function add_row(no) {
+document.getElementById('newEntry').classList.add('disappear')
   var new_firstName = document.getElementById("new_firstName");
   var new_lastName = document.getElementById("new_lastName");
   var new_budget = document.getElementById("new_budget");
@@ -181,47 +188,53 @@ function add_row(no) {
   var new_status = document.getElementById("new_status");
   var new_note = document.getElementById("new_note ");
 
-  // if (!new_firstName) new_firstName.innerHTML += "";
+//   if (!new_firstName) new_firstName.innerHTML += "";
 
-  console.log(new_firstName, "   ADD A ROW FUNC");
+  // This is to add the User entries from the form, to the table
+    var userFirstName = document.getElementById('firstNameNew').value
+    var userLastName = document.getElementById('lastNameNew').value
+    var userBudget = document.getElementById('budgetNew').value
+    var userDownpayment = document.getElementById('downpaymentNew').value
+    var userAreaInterest = document.getElementById('areaOfInterestNew').value
+    var userEmail = document.getElementById('emailAdressNew').value
+    // var userStatus = document.getElementById('lastNameNew').value
+    var userNotes = document.getElementById('myNotesNew').value
 
   var table = document.getElementById("tableInfo");
   var table_len = table.rows.length;
   var row = (table.insertRow(table_len).outerHTML =
     "<tr id='row" +
     table_len +
-    "'><td placeholder='value here' id='firstName_row" +
+    "'><td id='firstNameNew"  +
     table_len +
-    "'>" +
-    new_firstName +
+    "'>"+ userFirstName +
     "</td><td placeholder='value here' id='lastName_row" +
     table_len +
     "'>" +
-    new_lastName +
+    userLastName +
     "</td><td placeholder='value here' id='budget_row" +
     table_len +
     "'>" +
-    new_budget +
+    userBudget +
     "</td><td placeholder='value here' id='downpayment_row" +
     table_len +
     "'>" +
-    new_downPayment +
+    userDownpayment +
     "</td><td placeholder='value here' id='areaOfInterest_row" +
     table_len +
     "'>" +
-    new_areaOfInterest +
+    userAreaInterest +
     "</td><td placeholder='value here' id='email_row" +
     table_len +
     "'>" +
-    new_email +
+    userEmail +
     "</td><td placeholder='value here' id='status_row" +
-    table_len +
     "'>" +
-    new_status +
+    x +
     "</td><td placeholder='value here' id='note_row" +
     table_len +
     "'>" +
-    new_note +
+    userNotes +
     "</td><td><input type='button' id='edit_button" +
     no +
     "' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" +
@@ -232,23 +245,46 @@ function add_row(no) {
     table_len +
     ")'></td></tr>");
 
-  // new_firstName.innerHTML = "";
-  document.getElementById("firstName_row").innerHTML += "jhgyk";
-  document.getElementById("lastName_row").innerText += "ffff";
-  document.getElementById("downPayment_row").value = "ffff";
-  document.getElementById("areaOfInterest_row").innerText = "ffff";
-  document.getElementById("email_row").innerText = "ffff";
-  document.getElementById("status_row").innerText = "ffff";
-  document.getElementById("note_row").innerText = "ffff";
-  // document.getElementById("edit_button" + no).classList.add("disappear");
+
+    // await function myFunction(){
+    //     // var x = document.getElementById('selection').options.item[0].text;
+    //     // document.getElementById('status_row').innerHTML =x
+    //     if(document.getElementById('selection').options = 
+    //     document.getElementById('selection').options[0].text
+    // }
+//   new_firstName.innerHTML = "";
+//   document.getElementById("firstName_row").innerHTML += "jhgyk";
+//   document.getElementById("lastName_row").innerText += "ffff";
+//   document.getElementById("downPayment_row").value = "ffff";
+//   document.getElementById("areaOfInterest_row").innerText = "ffff";
+//   document.getElementById("email_row").innerText = "ffff";
+//   document.getElementById("status_row").innerText = "ffff";
+//   document.getElementById("note_row").innerText = "ffff";
+//   document.getElementById("edit_button" + no).classList.add("disappear");
+
+//to clear all inputs
+  document.getElementById('firstNameNew').value=''
+document.getElementById('lastNameNew').value=''
+document.getElementById('budgetNew').value=''
+document.getElementById('downpaymentNew').value=''
+document.getElementById('areaOfInterestNew').value=''
+document.getElementById('emailAdressNew').value=''
+document.getElementById('myNotesNew').value=''
+
+
+
 }
+
+
 
 // moment function working,
 
-//To show current
+// To show current
 // document.getElementById("time").onload = function timeShow() {timeShow()};a
 
 // function timeShow() {
+//    var x= ((moment().format("MMM Do YY"))
+//    var x = new Date(moment().format("MMM Do YY")) 
 //   var x = new Date(document.lastModified);
 //   document.getElementById("time").innerHTML = x;
 // }
@@ -283,3 +319,9 @@ function sortTable() {
     switching = true;
   }
 }
+
+function mySelect(){
+    var d = document.getElementById('select');
+    var displaytext = d.options[d.selectedIndex].text;
+    document.getElementById("textvalue").value = displaytext
+    }

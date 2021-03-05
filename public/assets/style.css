@@ -32,29 +32,54 @@
 } */
 
 /*This is for the login page */
-.login-form {
-  width: 340px;
-  margin: 50px auto;
-}
-.login-form form {
-  margin-bottom: 15px;
-  background: #f7f7f7;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  padding: 30px;
-}
-.login-form h2 {
-  margin: 0 0 15px;
-}
-.form-control,
-.btn {
-  min-height: 38px;
-  border-radius: 2px;
-}
-.btn {
-  font-size: 15px;
-  font-weight: bold;
+      .login-form {
+        width: 340px;
+          margin: 50px auto;
+      }
+        .login-form form {
+          margin-bottom: 15px;
+            background: #f7f7f7;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+        .login-form h2 {
+            margin: 0 0 15px;
+        }
+        .form-control, .btn {
+            min-height: 38px;
+            border-radius: 2px;
+        }
+        .btn {        
+            font-size: 15px;
+            font-weight: bold;
+        }
+    
+        .disappear{
+          display: none;
+
+        }
+
+.content-table{
+    border-collapse: collapse;
+ 
+    font-size:0.9em; 
+    min-width: 400px;
 }
 
-.database {
-  display: none;
+.content-table thead tr {
+    background-color: skyblue;
+    text-align: center;
+    font-weight: bold;
 }
+
+.content-table tbody tr {
+    border-bottom: 1px solid lightgrey;
+}
+
+.content-table tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+
+        
+
+    
