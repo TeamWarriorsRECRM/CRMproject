@@ -16,34 +16,29 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-// require("./routes/router.js")(app);
+require("./app/routes/html-route.js")(app);
 // require("./routes/api-routes.js")(app);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-
 app.use(
   session({ secret: "super secret", resave: true, saveUninitialized: true })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.post("/public/index", passport.authenticate("local"), function (req, res) {
+app.post("/api/index", passport.authenticate("local"), function (req, res) {
   res.json(req.user);
 });
 
-app.post("/public/register", function (req, res) {
-  db.User.create({
-    username: req.body.email,
+app.post("/api/register", async function (req, res) {
+  let result = await db.User.create({
+    username: req.body.username,
     password: req.body.password,
-  })
-    .then(function () {
-      res.redirect(307, "/public/index");
-    })
-    .catch(function (err) {
-      res.status(401).json(err);
-    });
+  });
+  console.log(req.user);
+  res.send(result);
 });
 
 app.get("/logout", function (req, res) {
@@ -51,18 +46,16 @@ app.get("/logout", function (req, res) {
   res.redirect("/index");
 });
 
-// app.get("/api/user_data", function (req, res) {
-//   if (!req.user) {
-//     res.json({});
-//   } else {
-//     res.json({
-//       email: req.user.email,
-//       id: req.user.id,
-//     });
-//   }
-// });
-// db.sequelize.sync();
-// createClass();
+app.get("/api/user_data", function (req, res) {
+  if (!req.user) {
+    res.json({});
+  } else {
+    res.json({
+      email: req.user.email,
+      id: req.user.id,
+    });
+  }
+});
 
 app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
   console.log(req.body, "   REQUEST BODY"); /////////////////////////////////////////////////////////////

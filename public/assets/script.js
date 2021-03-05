@@ -283,3 +283,21 @@ function sortTable() {
     switching = true;
   }
 }
+
+// register form button -----------------------
+
+async function register(event) {
+  event.preventDefault();
+  data = {
+    username: document.querySelector("#username").value,
+    password: document.querySelector("#password").value,
+  };
+  let result = await fetch("/api/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((r) => r.json());
+  location.href = "/index.html";
+}
