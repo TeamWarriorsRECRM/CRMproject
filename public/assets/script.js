@@ -323,9 +323,10 @@ function mySelect() {
 }
 
 // AUTH CODE --------------------------------------------------------------------------
+
 async function sendLogIn(event) {
   event.preventDefault();
-  console.log("fucking working");
+  console.log("working");
   data = {
     username: document.querySelector("#username").value,
     password: document.querySelector("#password").value,

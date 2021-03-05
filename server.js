@@ -38,7 +38,7 @@ app.post("/api/register", async function (req, res) {
     username: req.body.username,
     password: req.body.password,
   });
-  console.log(req.user);
+  console.log();
   res.send(result);
 });
 
