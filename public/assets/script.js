@@ -269,17 +269,6 @@ function add_row(no) {
     document.getElementById("myNotesNew").value = "";
   }
 
-  // moment function working,
-
-  // To show current
-  // document.getElementById("time").onload = function timeShow() {timeShow()};a
-
-  // function timeShow() {
-  //    var x= ((moment().format("MMM Do YY"))
-  //    var x = new Date(moment().format("MMM Do YY"))
-  //   var x = new Date(document.lastModified);
-  //   document.getElementById("time").innerHTML = x;
-  // }
 
   // Client js
 
@@ -312,35 +301,7 @@ function add_row(no) {
     }
   }
 
-  // This function is to sort the table
-  function sort() {
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById("infoTable");
-    switching = true;
-    while (switching) {
-      switching = false;
-      rows = table.rows;
 
-      // loop through all table rows except headers
-      for (i = 1; i < rows.length - 1; i++) {
-        shouldSwitch = false;
-        x = rows[i].getElementByTagName("TD")[0];
-        y = rows[i + 1].getElementByTagName("TD")[0];
-
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
-      }
-      if (shouldSwitch) {
-        /*If a switch has been marked, make the switch
-        and mark that a switch has been done:*/
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-      }
-    }
-  }
 
   function email() {}
 

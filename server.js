@@ -71,6 +71,12 @@ app.get("/api/database", async (req, res) => {
   res.send(list);
 });
 
+app.post("/api/addClient", async(req,res) =>{
+  let body = req.body;
+  orm.insertClient(body);
+  res.send();
+})
+
 app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
   console.log(req.body, "   REQUEST BODY"); /////////////////////////////////////////////////////////////
   console.log(res.body, "   RESPONSE BODY"); /////////////////////////////////////////////////////////////
