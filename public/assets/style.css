@@ -111,6 +111,8 @@ h1, h3{
 	top:1px;
 }
 
+/* Background color for the form*/
+
 .submit{
     background-color:#1377b5;
     border-radius:28px;
@@ -128,10 +130,23 @@ h1, h3{
     background-color:#5cbf2a;
 }
 
+#newEntry{
+    text-align: center;
+    max-width: 50%;
+    background-color:lightblue
+
+
+}
 
 
 /*Adding new client titles*/ 
 #firstNameTitle, #lastNameTitle, #budgetTitle, #downpaymentTitle, #areaOfInterestTitle, #emailAddressTitle, #userStatusNew, #noteTitle {
     color: black;
     font-weight: bolder;
+}
+
+
+/* for the client.html table*/ 
+tr{
+    
 }

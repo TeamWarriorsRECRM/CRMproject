@@ -15,7 +15,8 @@
 <body>
 
 
-
+  <nav class="navbar navbar-light" >
+    <div class="container-fluid">
   <ul class="nav nav-pills">
     <li class="nav-item">
       <a class="nav-link" aria-current="page" href="/logout">Logout</a>
@@ -25,15 +26,14 @@
       <a class="nav-link" href="/database.html">Client Database</a>
     </li>
 
-    <li class="nav-item">
-      <a class="nav-link" href="">Access MLS listing</a>
-    </li>
+
 
     <li class="nav-item">
       <a class="nav-link" href="./contact-us.html">Contact Support</a>
     </li>
-
   </ul>
+</div>
+</nav>
 
   <div class="container">
     <h1 style="text-align: center;">All Clients</h1>
@@ -43,9 +43,9 @@
 
   <br>
   <div class="container">
-    <table id="infoTable" class="table" padding="">
+    <table id="infoTable" class="table content-table" >
       <thead>
-        <tr>
+        <tr >
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
           <th scope="col">Status</th>
@@ -54,10 +54,10 @@
       </thead>
       <tbody>
         <tr id="row1">
-          <td id="firstName_row1">Mark</td>
-          <td id="lastName_row1">Jacob</td>
-          <td id="budget_row1">Actively Looking</td>
-          <td>
+          <td  id="firstName_row1" style="text-align: center;">Mark</td>
+          <td  id="lastName_row1"style="text-align: center;">Jacob</td>
+          <td id="budget_row1"style="text-align: center;">Actively Looking</td>
+          <td style="text-align: center;">
             <div class="form-check">
               <label class="btn btn-outline-secondary" for="btnradio3"><a target="_blank" class="fa fa-envelope"
                   href="mailto:"></a></label>
@@ -68,11 +68,11 @@
           </td>
         </tr>
         <tr id="row2">
-          <td id="firstName_row2">Alex</td>
-          <td id="lastName_row2">Andrews</td>
-          <td id="budget_row2">Passively looking</td>
+          <td id="firstName_row2"style="text-align: center;" >Alex</td>
+          <td id="lastName_row2" style="text-align: center;">Andrews</td>
+          <td id="budget_row2" style="text-align: center;">Passively looking</td>
 
-          <td>
+          <td style="text-align: center;">
             <div class="form-check">
               <label class="btn btn-outline-secondary" for="btnradio3"><a target="_blank" class="fa fa-envelope"
                   href="mailto:"></a></label>
@@ -80,19 +80,7 @@
             </div>
           </td>
         </tr>
-        <tr>
-          <td>Leo</td>
-          <td>Scalops</td>
-          <td>Not interested</td>
-
-          <td>
-            <div class="form-check">
-              <label class="btn btn-outline-secondary" for="btnradio3"><a target="_blank" class="fa fa-envelope"
-                  href="mailto:"></a></label>
-              </label>
-            </div>
-          </td>
-        </tr>
+      
       </tbody>
     </table>
     <button onclick="sort()"> Sort by most Promosing clients</button>
