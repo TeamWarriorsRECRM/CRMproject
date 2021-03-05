@@ -1,9 +1,3 @@
-// To save client input into database
-
-// const { async } = require("rxjs");
-
-// Database js
-
 //To allow user to edit input
 async function edit_row(no) {
   console.log("this works");
@@ -148,7 +142,6 @@ async function delete_row(no) {
   console.log("this works eh");
   var firstName_val = document.getElementById("firstName_row" + no).innerHTML;
   var lastName_val = document.getElementById("lastName_row" + no).innerHTML;
-  // console.log(firstName_val, lastName_val, "   INPUT");
   document.getElementById("row" + no + "").outerHTML = "";
 
   const deletion = await fetch(
@@ -257,36 +250,36 @@ async function add_row(no) {
 
 // Client js
 
-// Client js
+// NEEDS TO BE REVIEWED-----------------------------------------------------------------------------------
 
-function sortTable() {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("infoTable");
-  switching = true;
-  while (switching) {
-    switching = false;
-    rows = table.rows;
+// function sortTable() {
+//   var table, rows, switching, i, x, y, shouldSwitch;
+//   table = document.getElementById("infoTable");
+//   switching = true;
+//   while (switching) {
+//     switching = false;
+//     rows = table.rows;
 
-    // loop through all table rows except headers
-    for (i = 1; i < rows.length - 1; i++) {
-      shouldSwitch = false;
-      x = rows[i].getElementByTagName("TD")[0];
-      y = rows[i + 1].getElementByTagName("TD")[0];
+//     // loop through all table rows except headers
+//     for (i = 1; i < rows.length - 1; i++) {
+//       shouldSwitch = false;
+//       x = rows[i].getElementByTagName("TD")[0];
+//       y = rows[i + 1].getElementByTagName("TD")[0];
 
-      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-        //if so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
-      }
-    }
-  }
-  if (shouldSwitch) {
-    /*If a switch has been marked, make the switch
-        and mark that a switch has been done:*/
-    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-    switching = true;
-  }
-}
+//       if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+//         //if so, mark as a switch and break the loop:
+//         shouldSwitch = true;
+//         break;
+//       }
+//     }
+//   }
+//   if (shouldSwitch) {
+//     /*If a switch has been marked, make the switch
+//         and mark that a switch has been done:*/
+//     rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+//     switching = true;
+//   }
+// }
 
 function email() {}
 
