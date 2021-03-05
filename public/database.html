@@ -25,7 +25,7 @@
       <a class="nav-link" href="./clients.html">Go to main clients</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="./database.html">Client Database</a>
+      <a class="nav-link active" onclick="getList(event)" href="./database.html">Client Database</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="">Access MLS listing</a>
@@ -60,8 +60,8 @@
 
         </tr>
       </thead>
-      <tbody>
-        <tr id="row1">
+      <tbody id="tableRows">
+        <!-- <tr id="row1">
           <td id="firstName_row1">Mark</td>
           <td id="lastName_row1">Jacob</td>
           <td id="budget_row1">$500,000</td>
@@ -78,9 +78,9 @@
 
           </td>
           <td id="note_row1">(Enter notes here)</td>
-          <td>
-            <!-- <button onclick="edit_row1()" id="edit_button1" type="button" class="btn btn-primary" >Edit</button> -->
-            <input type="button" id="edit_button1" value="Edit" class="btn btn-primary" onclick="edit_row(1)">
+          <td> -->
+        <!--<button onclick="edit_row1()" id="edit_button1" type="button" class="btn btn-primary" >Edit</button> -->
+        <!-- <input type="button" id="edit_button1" value="Edit" class="btn btn-primary" onclick="edit_row(1)">
             <input type="button" id="save_button1" value="Save" class="btn btn-primary" onclick="save_row(1)">
             <input type="button" id="delete_button1" value="Delete" class="btn btn-secondary" onclick="delete_row(1)">
           </td>
@@ -92,13 +92,37 @@
           <td id="downpayment_row2">$80,000</td>
           <td id="areaOfInterest_row2">Oshawa</td>
           <td id="email_row2">email</td>
-          <td id="status_row2">
+          <td id="status_row2">Passively Looking</td>
+          <td id="note_row2">(Enter notes here)</td>
+          <td>
+            <input type="button" id="edit_button2" value="Edit" class="btn btn-primary" onclick="edit_row(2)">
+            <input type="button" id="save_button2" value="Save" class="btn btn-primary" onclick="save_row(2)">
+            <input type="button" id="delete_button2" value="Delete" class="btn btn-secondary" onclick="delete_row(2)">
+          </td>
+        </tr>
+        <tr id="row3">
+          <td id="firstName_row3">Leo</td>
+          <td id="lastName_row3">Scalops</td>
+          <td id="budget_row3">$700,000</td>
+          <td id="downpayment_row3">$80,000</td>
+          <td id="areaOfInterest_row3">Whitby</td>
+          <td id="email_row3">email</td>
+          <td id="status_row3">Not interested</td>
+          <td id="note_row3">(Enter notes here)</td>
+          <td>
+            <input type="button" id="edit_button3" value="Edit" class="btn btn-primary" onclick="edit_row(3)">
+            <input type="button" id="save_button3" value="Save" class="btn btn-primary" onclick="save_row(3)">
+            <input type="button" id="delete_button3" value="Delete" class="btn btn-secondary" onclick="delete_row(3)">
+          </td> -->
+        </tr>
+      
+        <td id="status_row2">
 
-            <select>
-              <option>Actively looking </option>
-              <option>Passively Looking </option>
-              <option>Not interested</option>
-            </select>
+          <select>
+            <option>Actively looking </option>
+            <option>Passively Looking </option>
+            <option>Not interested</option>
+          </select>
   </div>
 
   </td>
@@ -117,11 +141,11 @@
     <td id="areaOfInterest_row3">Whitby</td>
     <td id="email_row3">email</td>
     <td id="status_row3">
-  
+
       <select>
         <option>Actively looking </option>
-        <option >Passively Looking </option>
-        <option >Not interested</option>
+        <option>Passively Looking </option>
+        <option>Not interested</option>
 
       </select>
       </div>
@@ -136,11 +160,13 @@
       <input type="button" id="delete_button3" value="Delete" class="btn btn-secondary" onclick="delete_row(3)">
     </td>
   </tr>
+  >>>>>>> master
 
   </div>
 
   </tbody>
   </table>
+
 
 
 <div class="container disappear" id="newEntry" style="max-width: 70%; ;"> 
@@ -157,6 +183,7 @@
       <label for="exampleFormControlTextarea1" class="form-label" id="budgetTitle">Budget</label>
       <textarea class="form-control" id="budgetNew" rows="1"></textarea>
     </div>
+
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label" id="downpaymentTitle">Downpayment</label>
       <textarea class="form-control" id="downpaymentNew" rows="1"></textarea>
@@ -184,12 +211,9 @@
     <label for="exampleFormControlTextarea1" class="form-label" id="noteTitle">My Notes</label>
     <textarea class="form-control" id="myNotesNew" rows="1"></textarea>
   </div>
- 
-  <button onclick="add_row()" >Submit</button>
-</div>
 
-  
-  
+
+
 
 </body>
 
@@ -198,7 +222,7 @@
 <script src="./assets/script.js">
 
 
-  
+
 
 </script>
 

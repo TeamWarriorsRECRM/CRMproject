@@ -62,11 +62,7 @@ async function edit_row(no) {
     interest_data +
     "'>";
   email.innerHTML =
-    "<input type='text' id='email_text" +
-    no +
-    "' value='" +
-    email_data +
-    "'>";
+    "<input type='text' id='email_text" + no + "' value='" + email_data + "'>";
   status.innerHTML =
     "<select id='select''>' '<option> Actively looking </option>' '<option> Passively Looking </option>' '<option> Not Interested </option>' </select " +
     no +
@@ -84,6 +80,9 @@ async function edit_row(no) {
       headers: { "Content-Type": "application/json" },
     }
   );
+  // .then((res) => console.log(res, "   RES FROM SCRIPT"));
+
+  console.log(findId, "   EDIT FUNCTION");
 }
 
 //To save user input
@@ -126,6 +125,7 @@ async function save_row(no) {
   //     notes: notes_val,
   //   }),
   // }).then((res) => console.log(res.statusText));
+
   //////ELSE ADD
   const res = await fetch(`/database.html`, {
     method: "POST",
@@ -254,79 +254,139 @@ document.getElementById('newEntry').classList.add('disappear')
     // await function myFunction(){
     //     // var x = document.getElementById('selection').options.item[0].text;
     //     // document.getElementById('status_row').innerHTML =x
-    //     if(document.getElementById('selection').options = 
+    //     if(document.getElementById('selection').options =
     //     document.getElementById('selection').options[0].text
     // }
-//   new_firstName.innerHTML = "";
-//   document.getElementById("firstName_row").innerHTML += "jhgyk";
-//   document.getElementById("lastName_row").innerText += "ffff";
-//   document.getElementById("downPayment_row").value = "ffff";
-//   document.getElementById("areaOfInterest_row").innerText = "ffff";
-//   document.getElementById("email_row").innerText = "ffff";
-//   document.getElementById("status_row").innerText = "ffff";
-//   document.getElementById("note_row").innerText = "ffff";
-//   document.getElementById("edit_button" + no).classList.add("disappear");
+    //   new_firstName.innerHTML = "";
+    //   document.getElementById("firstName_row").innerHTML += "jhgyk";
+    //   document.getElementById("lastName_row").innerText += "ffff";
+    //   document.getElementById("downPayment_row").value = "ffff";
+    //   document.getElementById("areaOfInterest_row").innerText = "ffff";
+    //   document.getElementById("email_row").innerText = "ffff";
+    //   document.getElementById("status_row").innerText = "ffff";
+    //   document.getElementById("note_row").innerText = "ffff";
+    //   document.getElementById("edit_button" + no).classList.add("disappear");
 
-//to clear all inputs
-  document.getElementById('firstNameNew').value=''
-document.getElementById('lastNameNew').value=''
-document.getElementById('budgetNew').value=''
-document.getElementById('downpaymentNew').value=''
-document.getElementById('areaOfInterestNew').value=''
-document.getElementById('emailAdressNew').value=''
-document.getElementById('myNotesNew').value=''
+    //to clear all inputs
+    document.getElementById("firstNameNew").value = "";
+    document.getElementById("lastNameNew").value = "";
+    document.getElementById("budgetNew").value = "";
+    document.getElementById("downpaymentNew").value = "";
+    document.getElementById("areaOfInterestNew").value = "";
+    document.getElementById("emailAdressNew").value = "";
+    document.getElementById("myNotesNew").value = "";
+  }
 
+  // moment function working,
 
+  // To show current
+  // document.getElementById("time").onload = function timeShow() {timeShow()};a
 
-}
+  // function timeShow() {
+  //    var x= ((moment().format("MMM Do YY"))
+  //    var x = new Date(moment().format("MMM Do YY"))
+  //   var x = new Date(document.lastModified);
+  //   document.getElementById("time").innerHTML = x;
+  // }
 
+  // Client js
 
+  function sortTable() {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("infoTable");
+    switching = true;
+    while (switching) {
+      switching = false;
+      rows = table.rows;
 
-// moment function working,
+      // loop through all table rows except headers
+      for (i = 1; i < rows.length - 1; i++) {
+        shouldSwitch = false;
+        x = rows[i].getElementByTagName("TD")[0];
+        y = rows[i + 1].getElementByTagName("TD")[0];
 
-// To show current
-// document.getElementById("time").onload = function timeShow() {timeShow()};a
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
 
-// function timeShow() {
-//    var x= ((moment().format("MMM Do YY"))
-//    var x = new Date(moment().format("MMM Do YY")) 
-//   var x = new Date(document.lastModified);
-//   document.getElementById("time").innerHTML = x;
-// }
+  // This function is to sort the table
+  function sort() {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("infoTable");
+    switching = true;
+    while (switching) {
+      switching = false;
+      rows = table.rows;
 
-// Client js
+      // loop through all table rows except headers
+      for (i = 1; i < rows.length - 1; i++) {
+        shouldSwitch = false;
+        x = rows[i].getElementByTagName("TD")[0];
+        y = rows[i + 1].getElementByTagName("TD")[0];
 
-function sortTable() {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("infoTable");
-  switching = true;
-  while (switching) {
-    switching = false;
-    rows = table.rows;
-
-    // loop through all table rows except headers
-    for (i = 1; i < rows.length - 1; i++) {
-      shouldSwitch = false;
-      x = rows[i].getElementByTagName("TD")[0];
-      y = rows[i + 1].getElementByTagName("TD")[0];
-
-      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-        //if so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+      if (shouldSwitch) {
+        /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
       }
     }
   }
-  if (shouldSwitch) {
-    /*If a switch has been marked, make the switch
-        and mark that a switch has been done:*/
-    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-    switching = true;
+
+  function email() {}
+
+  async function getList(event) {
+    event.preventDefault();
+    console.log("TEST");
+    const clients = await fetch("/api/database")
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+
+    document.querySelector("#tableRows").innerHTML = "";
+
+    console.log(clients, "  LIST FROM SCRIPT");
+
+    clients.forEach((el) => {
+      console.log(el.firstname);
+      document.querySelector("#tableRows").innerHTML += `
+    <tr id="row${el.id}">
+    <td id="firstName_row${el.id}">${el.firstname}</td>
+    <td id="lastName_row${el.id}">${el.lastname}</td>
+    <td id="budget_row${el.id}">${el.totalbudget}</td>
+    <td id="downpayment_row${el.id}">${el.downpayment}</td>
+    <td id="areaOfInterest_row${el.id}">${el.area}</td>
+    <td id="email_row${el.id}">${el.email}</td>
+    <td id="status_row${el.id}">${el._status}</td>
+    <td id="note_row${el.id}">${el.note}</td>
+    <td>
+      <input type="button" id="edit_button${el.id}" value="Edit" class="btn btn-primary" onclick="edit_row(${el.id})">
+      <input type="button" id="save_button${el.id}" value="Save" class="btn btn-primary" onclick="save_row(${el.id})">
+      <input type="button" id="delete_button${el.id}" value="Delete" class="btn btn-secondary" onclick="delete_row(${el.id})">
+    </td>
+  </tr>
+    `;
+    });
   }
 }
-
-function mySelect(){
-    var d = document.getElementById('select');
-    var displaytext = d.options[d.selectedIndex].text;
-    document.getElementById("textvalue").value = displaytext
-    }
+function mySelect() {
+  var d = document.getElementById("select");
+  var displaytext = d.options[d.selectedIndex].text;
+  document.getElementById("textvalue").value = displaytext;
+}
