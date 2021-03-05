@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const createClass = require("./public/assets/script");
-const orm = require("./app/routes/orm");
+const orm = require("./public/assets/orm");
 const express = require("express");
 const session = require("express-session");
 const sequelize = require("sequelize");
