@@ -27,9 +27,9 @@
   display: none;
 }
 
-/* body {
-  background-image: url("https://image.freepik.com/free-photo/grey-grunge-texture-grunge_19-128535.jpg");
-} */
+body {
+  background-image: url("https://www.bypeople.com/wp-content/uploads/2014/05/light-live-background-css.jpg");
+}
 
 /*This is for the login page */
       .login-form {
@@ -66,20 +66,72 @@
     min-width: 400px;
 }
 
-.content-table thead tr {
-    background-color: skyblue;
-    text-align: center;
-    font-weight: bold;
-}
+
 
 .content-table tbody tr {
     border-bottom: 1px solid lightgrey;
 }
 
 .content-table tr:nth-of-type(even){
-    background-color: #f3f3f3;
+    background-color: white;
 }
 
-        
+.content-table thead  {
+    background-color:#1377b5;
+    color:#ffffff;
+    text-align: center;
+    font-weight: bold;
+}
 
     
+h1, h3{
+    font-family: 'Merriweather', serif;
+    font-family: 'RocknRoll One', sans-serif;
+    font-weight: bolder;
+}
+
+.myButton {
+	background-color:#1377b5;
+	border-radius:28px;
+	border:1px solid #1377b5;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:10px 21px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.submit{
+    background-color:#1377b5;
+    border-radius:28px;
+	border:1px solid #1377b5;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:5px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.submit:hover{
+    background-color:#5cbf2a;
+}
+
+
+
+/*Adding new client titles*/ 
+#firstNameTitle, #lastNameTitle, #budgetTitle, #downpaymentTitle, #areaOfInterestTitle, #emailAddressTitle, #userStatusNew, #noteTitle {
+    color: black;
+    font-weight: bolder;
+}

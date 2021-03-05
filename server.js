@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const createClass = require("./public/assets/script");
-const orm = require("./app/routes/orm");
+const orm = require("./public/assets/orm");
 const express = require("express");
 const session = require("express-session");
 const sequelize = require("sequelize");
@@ -58,6 +58,18 @@ app.get("/api/user_data", function (req, res) {
   }
 });
 
+app.get("/api/database", async (req, res) => {
+  const list = await orm.getClients();
+  // console.log(list, "   FROM SERVER");
+  res.send(list);
+});
+
+app.post("/api/addClient", async (req, res) => {
+  let body = req.body;
+  orm.insertClient(body);
+  res.send();
+});
+
 app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
   console.log(req.body, "   REQUEST BODY"); /////////////////////////////////////////////////////////////
   console.log(res.body, "   RESPONSE BODY"); /////////////////////////////////////////////////////////////
@@ -66,10 +78,8 @@ app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
     req.body.lastname,
     req.body.area
   );
-  console.log(id, "   ID");
+  console.log(id, "   ID from server");
 }); ////////////////////////////////////////////////
-
-app.put("/database.html", (req, res) => {});
 
 app.delete("/database.html/:firstName/:lastName", (req, res) => {
   // console.log(req.params);
@@ -85,19 +95,16 @@ app.post("/database.html", (req, res) => {
 });
 
 app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
-  console.log(req.params);
+  // console.log(req.params);
   const id = await orm
     .getSingleClient(
       req.params.firstName,
       req.params.lastName,
       req.params.email
     )
-    .then((res) => console.log(res, "  SERVER SCRIPT"));
+    .then((res) => res);
   console.log(id, " FROM SERVER ID");
-});
-
-app.get("/database.html", (req, res) => {
-  orm.getClients();
+  res.send(id);
 });
 
 db.sequelize.sync().then(function () {

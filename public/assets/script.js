@@ -80,6 +80,9 @@ async function edit_row(no) {
       headers: { "Content-Type": "application/json" },
     }
   );
+  // .then((res) => console.log(res, "   RES FROM SCRIPT"));
+
+  console.log(findId, "   EDIT FUNCTION");
 }
 
 //To save user input
@@ -122,6 +125,7 @@ async function save_row(no) {
   //     notes: notes_val,
   //   }),
   // }).then((res) => console.log(res.statusText));
+
   //////ELSE ADD
   const res = await fetch(`/database.html`, {
     method: "POST",
@@ -241,22 +245,6 @@ async function add_row(no) {
     table_len +
     ")'></td></tr>");
 
-  // await function myFunction(){
-  //     // var x = document.getElementById('selection').options.item[0].text;
-  //     // document.getElementById('status_row').innerHTML =x
-  //     if(document.getElementById('selection').options =
-  //     document.getElementById('selection').options[0].text
-  // }
-  //   new_firstName.innerHTML = "";
-  //   document.getElementById("firstName_row").innerHTML += "jhgyk";
-  //   document.getElementById("lastName_row").innerText += "ffff";
-  //   document.getElementById("downPayment_row").value = "ffff";
-  //   document.getElementById("areaOfInterest_row").innerText = "ffff";
-  //   document.getElementById("email_row").innerText = "ffff";
-  //   document.getElementById("status_row").innerText = "ffff";
-  //   document.getElementById("note_row").innerText = "ffff";
-  //   document.getElementById("edit_button" + no).classList.add("disappear");
-
   //to clear all inputs
   document.getElementById("firstNameNew").value = "";
   document.getElementById("lastNameNew").value = "";
@@ -267,17 +255,7 @@ async function add_row(no) {
   document.getElementById("myNotesNew").value = "";
 }
 
-// moment function working,
-
-// To show current
-// document.getElementById("time").onload = function timeShow() {timeShow()};a
-
-// function timeShow() {
-//    var x= ((moment().format("MMM Do YY"))
-//    var x = new Date(moment().format("MMM Do YY"))
-//   var x = new Date(document.lastModified);
-//   document.getElementById("time").innerHTML = x;
-// }
+// Client js
 
 // Client js
 
@@ -310,29 +288,48 @@ function sortTable() {
   }
 }
 
-// register form button -----------------------
+function email() {}
 
-async function register(event) {
+async function getList(event) {
   event.preventDefault();
-  data = {
-    username: document.querySelector("#username").value,
-    password: document.querySelector("#password").value,
-  };
-  let result = await fetch("/api/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  }).then((r) => r.json());
-  location.href = "/index.html";
+  console.log("TEST");
+  const clients = await fetch("/api/database")
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+
+  document.querySelector("#tableRows").innerHTML = "";
+
+  console.log(clients, "  LIST FROM SCRIPT");
+
+  clients.forEach((el) => {
+    console.log(el.firstname);
+    document.querySelector("#tableRows").innerHTML += `
+    <tr id="row${el.id}">
+    <td id="firstName_row${el.id}">${el.firstname}</td>
+    <td id="lastName_row${el.id}">${el.lastname}</td>
+    <td id="budget_row${el.id}">${el.totalbudget}</td>
+    <td id="downpayment_row${el.id}">${el.downpayment}</td>
+    <td id="areaOfInterest_row${el.id}">${el.area}</td>
+    <td id="email_row${el.id}">${el.email}</td>
+    <td id="status_row${el.id}">${el._status}</td>
+    <td id="note_row${el.id}">${el.note}</td>
+    <td>
+      <input type="button" id="edit_button${el.id}" value="Edit" class="btn btn-primary" onclick="edit_row(${el.id})">
+      <input type="button" id="save_button${el.id}" value="Save" class="btn btn-primary" onclick="save_row(${el.id})">
+      <input type="button" id="delete_button${el.id}" value="Delete" class="btn btn-secondary" onclick="delete_row(${el.id})">
+    </td>
+  </tr>
+    `;
+  });
 }
+
 function mySelect() {
   var d = document.getElementById("select");
   var displaytext = d.options[d.selectedIndex].text;
   document.getElementById("textvalue").value = displaytext;
 }
 
+// AUTH CODE --------------------------------------------------------------------------
 async function sendLogIn(event) {
   event.preventDefault();
   console.log("fucking working");
@@ -348,4 +345,20 @@ async function sendLogIn(event) {
     body: JSON.stringify(data),
   }).then((r) => r.json());
   location.href = "/clients.html";
+}
+
+async function register(event) {
+  event.preventDefault();
+  data = {
+    username: document.querySelector("#username").value,
+    password: document.querySelector("#password").value,
+  };
+  let result = await fetch("/api/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((r) => r.json());
+  location.href = "/index.html";
 }
