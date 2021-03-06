@@ -129,8 +129,7 @@ async function insertClient() {
 
   console.log(id, "   NUMBER");
   //////////////////////DOESN'T READ VALUES
-  var firstName_val = document.getElementById("firstNameNew").innerText;
-  console.log(firstName_val);
+  var firstName_val = document.getElementById("firstNameNew").value;
   var lastName_val = document.getElementById("lastNameNew").value;
   var budget_val = document.getElementById("budgetNew").value;
   var downPay_val = document.getElementById("downpaymentNew").value;
@@ -141,7 +140,7 @@ async function insertClient() {
   const index = e.value;
   var status_val = e.options[index].innerText;
 
-  var notes_val = document.getElementById("notesNew" + no).value;
+  var notes_val = document.getElementById("notesNew").value;
 
   addEntry(
     firstName_val,
@@ -192,15 +191,15 @@ async function add_row(no) {
 
   //   if (!new_firstName) new_firstName.innerHTML += "";
 
-  // This is to add the User entries from the form, to the table
-  var userFirstName = document.getElementById("firstNameNew").value;
-  var userLastName = document.getElementById("lastNameNew").value;
-  var userBudget = document.getElementById("budgetNew").value;
-  var userDownpayment = document.getElementById("downpaymentNew").value;
-  var userAreaInterest = document.getElementById("areaOfInterestNew").value;
-  var userEmail = document.getElementById("emailAdressNew").value;
-  // var userStatus = document.getElementById('lastNameNew').value
-  var userNotes = document.getElementById("myNotesNew").value;
+  // // This is to add the User entries from the form, to the table
+  // var userFirstName = document.getElementById("firstNameNew").value;
+  // var userLastName = document.getElementById("lastNameNew").value;
+  // var userBudget = document.getElementById("budgetNew").value;
+  // var userDownpayment = document.getElementById("downpaymentNew").value;
+  // var userAreaInterest = document.getElementById("areaOfInterestNew").value;
+  // var userEmail = document.getElementById("emailAdressNew").value;
+  // // var userStatus = document.getElementById('lastNameNew').value
+  // var userNotes = document.getElementById("myNotesNew").value;
 
   var table = document.getElementById("tableInfo");
   var table_len = table.rows.length;
@@ -422,6 +421,14 @@ async function addEntry(
       id: id,
     }),
   });
+
+  document.getElementById("firstNameNew").value = "";
+  document.getElementById("lastNameNew").value = "";
+  document.getElementById("budgetNew").value = "";
+  document.getElementById("downpaymentNew").value = "";
+  document.getElementById("areaOfInterestNew").value = "";
+  document.getElementById("emailNew").value = "";
+  document.getElementById("notesNew").value = "";
 }
 
 // AUTH CODE --------------------------------------------------------------------------
