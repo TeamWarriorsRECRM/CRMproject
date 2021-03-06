@@ -20,6 +20,9 @@ CREATE TABLE clients (
     totalbudget int NOT NULL,
     downpayment int NOT NULL,
     area varchar(100),
+    email varchar(100),
+    _status varchar(100),
+    note varchar(200),
 	id INT auto_increment NOT NULL PRIMARY KEY
 );
 create USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mySQL86giovanni';
