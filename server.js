@@ -73,7 +73,7 @@ app.post("/api/addClient", async (req, res) => {
 app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
   ////////////////////////////////////////////////////////////////////
   const body = req.body;
-  console.log(body, "   REQUEST BODY");
+  // console.log(body, "   REQUEST BODY");
   const entry = await orm.updateInfo(body, body.id);
   res.send(entry);
 });
@@ -104,15 +104,15 @@ app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
     req.params.lastName,
     req.params.email
   );
-  console.log(id);
+
   const result = JSON.stringify(id.id);
-  console.log(result, " FROM SERVER ID");
+  // console.log(result, " FROM SERVER ID");
   res.send(result);
 });
 
 app.get("/api/clients", async (req, res) => {
   const quickList = await orm.quickList();
-  console.log(quickList, "  FROM SERVER");
+  // console.log(quickList, "  FROM SERVER");
   res.send(quickList);
 });
 

@@ -102,7 +102,7 @@ async function save_row(no) {
   )
     .then((res) => {
       const result = res.json();
-      console.log(result, "  WTF!!!!"); //////response
+      // console.log(result, "  WTF!!!!"); //////response
       return result;
     })
     .then((res) => {
@@ -295,7 +295,7 @@ function email() {}
 
 async function getList(event) {
   event.preventDefault();
-  console.log("TEST");
+  // console.log("TEST");
   const clients = await fetch("/api/database")
     .then((res) => res.json())
     .catch((err) => console.log(err));
@@ -373,7 +373,7 @@ async function editEntry(
   id
 ) {
   ////////if entry exists update
-  console.log(id, "   findID");
+  // console.log(id, "   findID");
   //if entry exists update
   const result = await fetch(
     `/database.html/${firstName_val}/${lastName_val}/${email_val}`,
