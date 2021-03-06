@@ -102,7 +102,7 @@ async function save_row(no) {
   )
     .then((res) => {
       const result = res.json();
-      // console.log(result, "  WTF!!!!"); //////response
+      console.log(result, "  WTF!!!!"); //////response
       return result;
     })
     .then((res) => {
@@ -322,6 +322,35 @@ async function getList(event) {
       <input type="button" id="delete_button${el.id}" value="Delete" class="btn btn-secondary" onclick="delete_row(${el.id})">
     </td>
   </tr>
+    `;
+  });
+}
+
+async function getQuickView(event) {
+  event.preventDefault();
+  // console.log("TEST");
+  const clients = await fetch("/api/clients")
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+
+  document.querySelector("#quickView").innerHTML = "";
+
+  // console.log(clients, "  FROM SCRIPT");
+
+  clients.forEach((el) => {
+    document.querySelector("#quickView").innerHTML += `
+    <tr id="row${el.id}">
+          <td  id="firstName_row${el.id}" style="text-align: center;">${el.firstname}</td>
+          <td  id="lastName_row${el.id}"style="text-align: center;">${el.lastname}</td>
+          <td id="budget_row${el.id}"style="text-align: center;">${el._status}</td>
+          <td style="text-align: center;">
+            <div class="form-check">
+              <label class="btn btn-outline-secondary" for="btnradio3"><a target="_blank" class="fa fa-envelope"
+                  href="mailto:${el.email}"></a></label>
+              </label>
+            </div>
+          </td>
+        </tr>
     `;
   });
 }

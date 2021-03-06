@@ -3,17 +3,18 @@ const db = require("../../app/config/connection");
 
 async function getClients() {
   return await db.query(`SELECT * FROM clients`);
-  // .then((res) => res.json());
 }
 
-// getClients();
+async function quickList() {
+  return await db.query(
+    `SELECT id,firstname, lastname, _status, email FROM clients;`
+  );
+}
 
 async function getSingleClient(firstName, lastName, email) {
   return await db.query(
-    `SELECT id FROM clients WHERE firstname="${firstName}" AND lastname="${lastName}" AND email="${email}";`
+    `SELECT id FROM clients WHERE firstname="${firstName}" AND lastname="${lastName}" OR email="${email}";`
   );
-
-  // console.log(res, "  ORM SCRIPT");
 }
 
 async function insertClient(obj) {
@@ -44,4 +45,5 @@ module.exports = {
   insertClient,
   deleteClient,
   getSingleClient,
+  quickList,
 };

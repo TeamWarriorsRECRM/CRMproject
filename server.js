@@ -104,9 +104,16 @@ app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
     req.params.lastName,
     req.params.email
   );
+  console.log(id);
   const result = JSON.stringify(id.id);
   console.log(result, " FROM SERVER ID");
   res.send(result);
+});
+
+app.get("/api/clients", async (req, res) => {
+  const quickList = await orm.quickList();
+  console.log(quickList, "  FROM SERVER");
+  res.send(quickList);
 });
 
 db.sequelize.sync().then(function () {
