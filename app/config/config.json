@@ -1,8 +1,13 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "rootroot",
     "database": "registered_db",
+=======
+    "password": "password",
+    "database": "clients_db",
+>>>>>>> master
     "host": "localhost",
     "dialect": "mysql",
     "port":3306
