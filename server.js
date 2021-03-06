@@ -71,16 +71,14 @@ app.post("/api/addClient", async (req, res) => {
 });
 
 app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
-  console.log(req.body, "   REQUEST BODY"); /////////////////////////////////////////////////////////////
-  console.log(res.body, "   RESPONSE BODY"); /////////////////////////////////////////////////////////////
-  const id = await orm.getSingleClient(
-    req.body.firstname,
-    req.body.lastname,
-    req.body.area
-  );
-  console.log(id, "   ID from server");
-}); ////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////
+  const body = req.body;
+  // console.log(body, "   REQUEST BODY");
+  const entry = await orm.updateInfo(body, body.id);
+  res.send(entry);
+});
 
+/////DELETES ENTRY
 app.delete("/database.html/:firstName/:lastName", (req, res) => {
   orm.deleteClient(req.params.firstName, req.params.lastName);
   res.send();
@@ -92,16 +90,30 @@ app.post("/database.html", (req, res) => {
   res.send();
 });
 
+app.post("/addClient.html", (req, res) => {
+  let body = req.body;
+  orm.insertClient(body);
+  res.send();
+});
+
+//////ONLY GETTING THE ID FOR THE SELECTED ENTRY
 app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
-  const id = await orm
-    .getSingleClient(
-      req.params.firstName,
-      req.params.lastName,
-      req.params.email
-    )
-    .then((res) => res);
-  console.log(id, " FROM SERVER ID");
-  res.send(id);
+  // console.log(req.params.firstName);
+  const [id] = await orm.getSingleClient(
+    req.params.firstName,
+    req.params.lastName,
+    req.params.email
+  );
+
+  const result = JSON.stringify(id.id);
+  // console.log(result, " FROM SERVER ID");
+  res.send(result);
+});
+
+app.get("/api/clients", async (req, res) => {
+  const quickList = await orm.quickList();
+  // console.log(quickList, "  FROM SERVER");
+  res.send(quickList);
 });
 
 db.sequelize.sync().then(function () {
