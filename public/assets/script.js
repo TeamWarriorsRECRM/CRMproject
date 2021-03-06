@@ -4,6 +4,7 @@ const { async } = require("rxjs");
 async function edit_row(no) {
   console.log("this works");
   document.querySelector("#edit_button" + no).classList.add("disappear");
+  document.getElementById("save_button" + no).classList.remove("disappear");
 
   var firstName = document.getElementById("firstName_row" + no);
   var lastName = document.getElementById("lastName_row" + no);
@@ -68,6 +69,8 @@ async function edit_row(no) {
 //To save user input
 async function save_row(no) {
   console.log("this works fam");
+  document.getElementById("save_button" + no).classList.add("disappear");
+  document.querySelector("#edit_button" + no).classList.remove("disappear");
 
   var firstName_val = document.getElementById("firstName_text" + no).value;
   var lastName_val = document.getElementById("secondName_text" + no).value;
@@ -317,7 +320,7 @@ async function getList(event) {
     <td id="note_row${el.id}">${el.note}</td>
     <td>
       <input type="button" id="edit_button${el.id}" value="Edit" class="btn btn-primary" onclick="edit_row(${el.id})">
-      <input type="button" id="save_button${el.id}" value="Save" class="btn btn-primary" onclick="save_row(${el.id})">
+      <input type="button" id="save_button${el.id}" value="Save" class="disappear btn btn-primary" onclick="save_row(${el.id})">
       <input type="button" id="delete_button${el.id}" value="Delete" class="btn btn-secondary" onclick="delete_row(${el.id})">
     </td>
   </tr>
