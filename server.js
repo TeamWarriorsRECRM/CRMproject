@@ -13,7 +13,6 @@ const { connection } = require("./app/config/connection");
 const { Script } = require("vm");
 const { async } = require("rxjs");
 const app = express();
-const moment = require("moment");
 
 const PORT = process.env.PORT || 8080;
 
