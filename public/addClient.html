@@ -15,15 +15,15 @@
 
     <ul class="nav nav-pills">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="./index.html">Logout</a>
+          <a class="nav-link" aria-current="page" href="/logout">Logout</a>
         </li>
     
         <li class="nav-item">
-          <a class="nav-link" href="./database.html">Client Database</a>
+          <a class="nav-link" href="/api/database">Client Database</a>
         </li>
     
         <li class="nav-item">
-          <a class="nav-link active" href="./clients.html">Contact Support</a>
+          <a class="nav-link active" href="/clients">Contact Support</a>
         </li>
       </ul>
       <br>
@@ -78,6 +78,23 @@
     </div>
   </div>
   <script src="./assets/script.js"></script>
+  <script>
+
+function myFunction(){
+
+
+let result = await fetch("/api/index", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((r) => r.json());
+
+}
+
+
+
+  </script>
 </body>
 
 </html>

@@ -46,6 +46,11 @@ app.get("/logout", function (req, res) {
   res.redirect("/");
 });
 
+app.get("/api/database", function (req, res){
+  res.redirect('/database')
+  console.log("redirect to database")
+})
+
 app.get("/api/user_data", function (req, res) {
   if (!req.user) {
     res.json({});

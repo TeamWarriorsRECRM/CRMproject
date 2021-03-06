@@ -27,4 +27,7 @@ module.exports = function (app) {
   app.get("/database", isAuth, function (req, res) {
     res.sendFile(path.join(__dirname, "../../public/database.html"));
   });
+
+
+
 };
