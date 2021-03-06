@@ -1,9 +1,8 @@
-const { async } = require("rxjs");
-
 //To allow user to edit input
 async function edit_row(no) {
   console.log("this works");
   document.querySelector("#edit_button" + no).classList.add("disappear");
+  document.getElementById("save_button" + no).classList.remove("disappear");
 
   var firstName = document.getElementById("firstName_row" + no);
   var lastName = document.getElementById("lastName_row" + no);
@@ -68,6 +67,8 @@ async function edit_row(no) {
 //To save user input
 async function save_row(no) {
   console.log("this works fam");
+  document.getElementById("save_button" + no).classList.add("disappear");
+  document.querySelector("#edit_button" + no).classList.remove("disappear");
 
   var firstName_val = document.getElementById("firstName_text" + no).value;
   var lastName_val = document.getElementById("secondName_text" + no).value;
@@ -258,72 +259,6 @@ async function add_row(no) {
 }
 
 // Client js
-
-// NEEDS TO BE REVIEWED-----------------------------------------------------------------------------------
-
-// function sortTable() {
-//   var table, rows, switching, i, x, y, shouldSwitch;
-//   table = document.getElementById("infoTable");
-//   switching = true;
-//   while (switching) {
-//     switching = false;
-//     rows = table.rows;
-
-//     // loop through all table rows except headers
-//     for (i = 1; i < rows.length - 1; i++) {
-//       shouldSwitch = false;
-//       x = rows[i].getElementByTagName("TD")[0];
-//       y = rows[i + 1].getElementByTagName("TD")[0];
-
-//       if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-//         //if so, mark as a switch and break the loop:
-//         shouldSwitch = true;
-//         break;
-//       }
-//     }
-//   }
-//   if (shouldSwitch) {
-//     /*If a switch has been marked, make the switch
-//         and mark that a switch has been done:*/
-//     rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-//     switching = true;
-//   }
-// }
-
-function email() {}
-
-async function getList(event) {
-  event.preventDefault();
-  // console.log("TEST");
-  const clients = await fetch("/api/database")
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
-
-  document.querySelector("#tableRows").innerHTML = "";
-
-  // console.log(clients, "  LIST FROM SCRIPT");
-
-  clients.forEach((el) => {
-    // console.log(el.firstname);
-    document.querySelector("#tableRows").innerHTML += `
-    <tr id="row${el.id}">
-    <td id="firstName_row${el.id}">${el.firstname}</td>
-    <td id="lastName_row${el.id}">${el.lastname}</td>
-    <td id="budget_row${el.id}">${el.totalbudget}</td>
-    <td id="downpayment_row${el.id}">${el.downpayment}</td>
-    <td id="areaOfInterest_row${el.id}">${el.area}</td>
-    <td id="email_row${el.id}">${el.email}</td>
-    <td id="status_row${el.id}">${el._status}</td>
-    <td id="note_row${el.id}">${el.note}</td>
-    <td>
-      <input type="button" id="edit_button${el.id}" value="Edit" class="btn btn-primary" onclick="edit_row(${el.id})">
-      <input type="button" id="save_button${el.id}" value="Save" class="btn btn-primary" onclick="save_row(${el.id})">
-      <input type="button" id="delete_button${el.id}" value="Delete" class="btn btn-secondary" onclick="delete_row(${el.id})">
-    </td>
-  </tr>
-    `;
-  });
-}
 
 async function getQuickView(event) {
   event.preventDefault();

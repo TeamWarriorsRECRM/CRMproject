@@ -5,7 +5,6 @@ const orm = require("./public/assets/orm");
 const express = require("express");
 const session = require("express-session");
 const sequelize = require("sequelize");
-const routes = require("./app/routes/api");
 const { get } = require("http");
 const passport = require("./app/config/passport");
 const db = require("./app/models");
@@ -16,9 +15,6 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-require("./app/routes/html-route.js")(app);
-// require("./routes/api-routes.js")(app);
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -28,6 +24,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+<<<<<<< HEAD
 app.post("/api/index", passport.authenticate("local"), function (req, res) {
   res.json(req.user);
 });
@@ -114,6 +111,97 @@ app.get("/api/clients", async (req, res) => {
   const quickList = await orm.quickList();
   res.send(quickList);
 });
+=======
+require("./app/routes/html-routes.js")(app);
+require("./app/routes/api-routes.js")(app);
+
+// app.post("/api/index", passport.authenticate("local"), function (req, res) {
+//   res.json(req.user);
+// });
+
+// app.post("/api/register", async function (req, res) {
+//   let result = await db.User.create({
+//     email: req.body.email,
+//     password: req.body.password,
+//   });
+//   res.send(result);
+// });
+
+// app.get("/logout", function (req, res) {
+//   req.logout();
+//   console.log("redirecting server side");
+//   res.redirect("/");
+// });
+
+// app.get("/api/user_data", function (req, res) {
+//   if (!req.user) {
+//     res.json({});
+//   } else {
+//     res.json({
+//       email: req.user.email,
+//       id: req.user.id,
+//     });
+//   }
+// });
+
+// app.get("/api/database", async (req, res) => {
+//   const list = await orm.getClients();
+//   console.log(list, "   FROM SERVER");
+//   res.send(list);
+// });
+
+// app.post("/api/addClient", async (req, res) => {
+//   let body = req.body;
+//   orm.insertClient(body);
+//   res.send();
+// });
+
+// app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
+//   //////////////////////////////////////////////////////////////////
+//   const body = req.body;
+//   console.log(body, "   REQUEST BODY");
+//   const entry = await orm.updateInfo(body, body.id);
+//   res.send(entry);
+// });
+
+// ///DELETES ENTRY
+// app.delete("/database.html/:firstName/:lastName", (req, res) => {
+//   orm.deleteClient(req.params.firstName, req.params.lastName);
+//   res.send();
+// });
+
+// app.post("/database.html", (req, res) => {
+//   let body = req.body;
+//   orm.insertClient(body);
+//   res.send();
+// });
+
+// app.post("/addClient.html", (req, res) => {
+//   let body = req.body;
+//   orm.insertClient(body);
+//   res.send();
+// });
+
+// ////ONLY GETTING THE ID FOR THE SELECTED ENTRY
+// app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
+//   console.log(req.params.firstName);
+//   const [id] = await orm.getSingleClient(
+//     req.params.firstName,
+//     req.params.lastName,
+//     req.params.email
+//   );
+
+//   const result = JSON.stringify(id.id);
+//   console.log(result, " FROM SERVER ID");
+//   res.send(result);
+// });
+
+// app.get("/api/clients", async (req, res) => {
+//   const quickList = await orm.quickList();
+//   console.log(quickList, "  FROM SERVER");
+//   res.send(quickList);
+// });
+>>>>>>> 3c18bdabbb34153d876cff77f6c6a447a403ccd6
 
 db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
