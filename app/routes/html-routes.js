@@ -30,14 +30,9 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../../public/database.html"));
   });
 
-<<<<<<< HEAD:app/routes/html-route.js
-
-
-=======
   app.get("/logout", function (req, res) {
     req.logout();
     console.log("redirecting server side");
     res.redirect("/");
   });
->>>>>>> 3c18bdabbb34153d876cff77f6c6a447a403ccd6:app/routes/html-routes.js
 };
