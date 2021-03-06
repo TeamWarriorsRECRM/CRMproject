@@ -13,68 +13,6 @@
 
 <body>
 
-<<<<<<< HEAD
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/logout">Logout</a>
-        </li>
-    
-        <li class="nav-item">
-          <a class="nav-link" href="/api/database">Client Database</a>
-        </li>
-    
-        <li class="nav-item">
-          <a class="nav-link active" href="/clients">Contact Support</a>
-        </li>
-      </ul>
-      <br>
-    <div class="container">
-    <div class="container " id="newEntry"> 
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label" id="firstNameTitle">First Name</label>
-          <textarea type="text" style="text-align: center;" class="form-control" id="firstNameNew" rows="1"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label" id="lastNameTitle">Second name</label>
-          <textarea style="text-align: center;" class="form-control" id="lastNameNew" rows="1"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label" id="budgetTitle">Budget</label>
-          <textarea style="text-align: center;" class="form-control" id="budgetNew" rows="1"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label" id="downpaymentTitle">Downpayment</label>
-          <textarea style="text-align: center;" class="form-control" id="downpaymentNew" rows="1"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label" id="areaOfInterestTitle">Area of interest</label>
-          <textarea style="text-align: center;" class="form-control" id="areaOfInterestNew" rows="1"></textarea>
-        </div>
-        <label for="exampleFormControlInput1" class="form-label" id="emailAddressTitle">Email address</label>
-        <input style="text-align: center;" type="email" class="form-control" id="emailNew"
-          placeholder="name@example.com">
-      
-      
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" id="userStatusNew" class="form-label" id="statusTitle">Status</label>
-            <form>
-              <select id="select">
-                <option value="1">Actively looking </option>
-                <option value="2">Passively Looking </option>
-                <option value="3">Not interested</option>
-              </select>
-    
-            </form>
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label" id="noteTitle">My Notes</label>
-            <textarea class="form-control" id="notesNew" rows="1"></textarea>
-          </div>
-    
-          <button class="submit" href="./database.html" onclick="insertClient()">Submit</button>
-      
-        </div>
-=======
   <ul class="nav nav-pills">
     <li class="nav-item">
       <a class="nav-link" aria-current="page" href="/logout">Logout</a>
@@ -132,7 +70,6 @@
       </div>
 
       <button class="submit" href="./database.html" onclick="insertClient()">Submit</button>
->>>>>>> 3c18bdabbb34153d876cff77f6c6a447a403ccd6
 
     </div>
 
@@ -142,17 +79,17 @@
   <script src="./assets/script.js"></script>
   <script>
 
-function myFunction(){
+    function myFunction() {
 
 
-let result = await fetch("/api/index", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((r) => r.json());
+      let result = await fetch("/api/index", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((r) => r.json());
 
-}
+    }
 
 
 
