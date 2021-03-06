@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "mySQL86giovanni",
+    "password": "password",
     "database": "clients_db",
     "host": "localhost",
     "dialect": "mysql",

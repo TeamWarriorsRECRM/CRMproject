@@ -13,6 +13,7 @@
 
 <body>
 
+<<<<<<< HEAD
   <ul class="nav nav-pills">
     <li class="nav-item">
       <a class="nav-link" aria-current="page" href="./index.html">Logout</a>
@@ -34,6 +35,24 @@
     <div class="container " id="newEntry">
       <div class="mb-3">
         <h1 style="text-align: center;">Add Client Page</h1>
+=======
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="./index.html">Logout</a>
+        </li>
+    
+        <li class="nav-item">
+          <a class="nav-link" href="./database.html">Client Database</a>
+        </li>
+    
+        <li class="nav-item">
+          <a class="nav-link active" href="./clients.html">Contact Support</a>
+        </li>
+      </ul>
+      <br>
+    <div class="container">
+    <div class="container " id="newEntry"> 
+>>>>>>> master
         <div class="mb-3">
           <label for="exampleFormControlTextarea1" class="form-label" id="firstNameTitle">First Name</label>
           <textarea type="text" style="text-align: center;" class="form-control" id="firstNameNew" rows="1"></textarea>
@@ -57,25 +76,29 @@
         <label for="exampleFormControlInput1" class="form-label" id="emailAddressTitle">Email address</label>
         <input style="text-align: center;" type="email" class="form-control" id="emailNew"
           placeholder="name@example.com">
-      </div>
+      
+      
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" id="userStatusNew" class="form-label" id="statusTitle">Status</label>
+            <form>
+              <select id="select">
+                <option value="1">Actively looking </option>
+                <option value="2">Passively Looking </option>
+                <option value="3">Not interested</option>
+              </select>
+    
+            </form>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label" id="noteTitle">My Notes</label>
+            <textarea class="form-control" id="notesNew" rows="1"></textarea>
+          </div>
+    
+          <button class="submit" href="./database.html" onclick="insertClient()">Submit</button>
+      
+        </div>
 
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" id="userStatusNew" class="form-label" id="statusTitle">Status</label>
-        <form>
-          <select id="select">
-            <option value="1">Actively looking </option>
-            <option value="2">Passively Looking </option>
-            <option value="3">Not interested</option>
-          </select>
-
-        </form>
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label" id="noteTitle">My Notes</label>
-        <textarea class="form-control" id="notesNew" rows="1"></textarea>
-      </div>
-
-      <button class="submit" href="./database.html" onclick="insertClient()">Submit</button>
+      
     </div>
   </div>
   <script src="./assets/script.js"></script>

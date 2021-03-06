@@ -13,7 +13,6 @@ const { connection } = require("./app/config/connection");
 const { Script } = require("vm");
 const { async } = require("rxjs");
 const app = express();
-const moment = require("moment");
 
 const PORT = process.env.PORT || 8080;
 
@@ -60,7 +59,6 @@ app.get("/api/user_data", function (req, res) {
 
 app.get("/api/database", async (req, res) => {
   const list = await orm.getClients();
-  // console.log(list, "   FROM SERVER");
   res.send(list);
 });
 
@@ -73,7 +71,6 @@ app.post("/api/addClient", async (req, res) => {
 app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
   ////////////////////////////////////////////////////////////////////
   const body = req.body;
-  // console.log(body, "   REQUEST BODY");
   const entry = await orm.updateInfo(body, body.id);
   res.send(entry);
 });
@@ -98,7 +95,6 @@ app.post("/addClient.html", (req, res) => {
 
 //////ONLY GETTING THE ID FOR THE SELECTED ENTRY
 app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
-  // console.log(req.params.firstName);
   const [id] = await orm.getSingleClient(
     req.params.firstName,
     req.params.lastName,
@@ -106,13 +102,11 @@ app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
   );
 
   const result = JSON.stringify(id.id);
-  // console.log(result, " FROM SERVER ID");
   res.send(result);
 });
 
 app.get("/api/clients", async (req, res) => {
   const quickList = await orm.quickList();
-  // console.log(quickList, "  FROM SERVER");
   res.send(quickList);
 });
 
