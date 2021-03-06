@@ -35,16 +35,16 @@ app.post("/api/index", passport.authenticate("local"), function (req, res) {
 
 app.post("/api/register", async function (req, res) {
   let result = await db.User.create({
-    username: req.body.username,
+    email: req.body.email,
     password: req.body.password,
   });
-  console.log();
   res.send(result);
 });
 
 app.get("/logout", function (req, res) {
   req.logout();
-  res.redirect("/index");
+  console.log("redirecting server side");
+  res.redirect("/");
 });
 
 app.get("/api/user_data", function (req, res) {
@@ -72,21 +72,25 @@ app.post("/api/addClient", async (req, res) => {
 
 app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
   ////////////////////////////////////////////////////////////////////
-  const body = JSON.parse(req.body);
+  const body = req.body;
   console.log(body, "   REQUEST BODY");
-  // const entry = await orm.updateInfo(body, res);
-  // res.send(entry);
+  const entry = await orm.updateInfo(body, body.id);
+  res.send(entry);
 });
 
 /////DELETES ENTRY
 app.delete("/database.html/:firstName/:lastName", (req, res) => {
-  // console.log(req.params);
   orm.deleteClient(req.params.firstName, req.params.lastName);
   res.send();
 });
 
 app.post("/database.html", (req, res) => {
-  // console.log(req.body);
+  let body = req.body;
+  orm.insertClient(body);
+  res.send();
+});
+
+app.post("/addClient.html", (req, res) => {
   let body = req.body;
   orm.insertClient(body);
   res.send();
@@ -100,9 +104,9 @@ app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
     req.params.lastName,
     req.params.email
   );
-  const result = id.id;
+  const result = JSON.stringify(id.id);
   console.log(result, " FROM SERVER ID");
-  res.send();
+  res.send(result);
 });
 
 db.sequelize.sync().then(function () {
