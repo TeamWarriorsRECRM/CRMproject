@@ -13,19 +13,15 @@
 
 <body>
 
-<<<<<<< HEAD
   <ul class="nav nav-pills">
     <li class="nav-item">
-      <a class="nav-link" aria-current="page" href="./index.html">Logout</a>
+      <a class="nav-link" aria-current="page" href="/logout">Logout</a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="./database.html">Client Database</a>
+      <a class="nav-link" href="/database">Client Database</a>
     </li>
 
-    <!-- <li class="nav-item">
-      <a class="nav-link" href="">Access MLS listing</a>
-    </li> -->
     <li class="nav-item">
       <a class="nav-link active" href="./clients.html">Contact Support</a>
     </li>
@@ -34,72 +30,51 @@
   <div class="container">
     <div class="container " id="newEntry">
       <div class="mb-3">
-        <h1 style="text-align: center;">Add Client Page</h1>
-=======
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="./index.html">Logout</a>
-        </li>
-    
-        <li class="nav-item">
-          <a class="nav-link" href="./database.html">Client Database</a>
-        </li>
-    
-        <li class="nav-item">
-          <a class="nav-link active" href="./clients.html">Contact Support</a>
-        </li>
-      </ul>
-      <br>
-    <div class="container">
-    <div class="container " id="newEntry"> 
->>>>>>> master
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label" id="firstNameTitle">First Name</label>
-          <textarea type="text" style="text-align: center;" class="form-control" id="firstNameNew" rows="1"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label" id="lastNameTitle">Second name</label>
-          <textarea style="text-align: center;" class="form-control" id="lastNameNew" rows="1"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label" id="budgetTitle">Budget</label>
-          <textarea style="text-align: center;" class="form-control" id="budgetNew" rows="1"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label" id="downpaymentTitle">Downpayment</label>
-          <textarea style="text-align: center;" class="form-control" id="downpaymentNew" rows="1"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label" id="areaOfInterestTitle">Area of interest</label>
-          <textarea style="text-align: center;" class="form-control" id="areaOfInterestNew" rows="1"></textarea>
-        </div>
-        <label for="exampleFormControlInput1" class="form-label" id="emailAddressTitle">Email address</label>
-        <input style="text-align: center;" type="email" class="form-control" id="emailNew"
-          placeholder="name@example.com">
-      
-      
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" id="userStatusNew" class="form-label" id="statusTitle">Status</label>
-            <form>
-              <select id="select">
-                <option value="1">Actively looking </option>
-                <option value="2">Passively Looking </option>
-                <option value="3">Not interested</option>
-              </select>
-    
-            </form>
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label" id="noteTitle">My Notes</label>
-            <textarea class="form-control" id="notesNew" rows="1"></textarea>
-          </div>
-    
-          <button class="submit" href="./database.html" onclick="insertClient()">Submit</button>
-      
-        </div>
+        <label for="exampleFormControlTextarea1" class="form-label" id="firstNameTitle">First Name</label>
+        <textarea type="text" style="text-align: center;" class="form-control" id="firstNameNew" rows="1"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label" id="lastNameTitle">Last Name</label>
+        <textarea style="text-align: center;" class="form-control" id="lastNameNew" rows="1"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label" id="budgetTitle">Budget</label>
+        <textarea style="text-align: center;" class="form-control" id="budgetNew" rows="1"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label" id="downpaymentTitle">Downpayment</label>
+        <textarea style="text-align: center;" class="form-control" id="downpaymentNew" rows="1"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label" id="areaOfInterestTitle">Area of interest</label>
+        <textarea style="text-align: center;" class="form-control" id="areaOfInterestNew" rows="1"></textarea>
+      </div>
+      <label for="exampleFormControlInput1" class="form-label" id="emailAddressTitle">Email address</label>
+      <input style="text-align: center;" type="email" class="form-control" id="emailNew" placeholder="name@example.com">
 
-      
+
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" id="userStatusNew" class="form-label" id="statusTitle">Status</label>
+        <form>
+          <select id="select">
+            <option value="1">Actively looking </option>
+            <option value="2">Passively Looking </option>
+            <option value="3">Not interested</option>
+          </select>
+
+        </form>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label" id="noteTitle">My Notes</label>
+        <textarea class="form-control" id="notesNew" rows="1"></textarea>
+      </div>
+
+      <button class="submit" href="./database.html" onclick="insertClient()">Submit</button>
+
     </div>
+
+
+  </div>
   </div>
   <script src="./assets/script.js"></script>
 </body>
