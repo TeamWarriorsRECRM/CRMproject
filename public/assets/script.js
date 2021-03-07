@@ -79,7 +79,7 @@ async function save_row(no) {
 
   const e = document.getElementById("select");
   const index = e.value;
-  var status_val = e.options[index].innerText;
+  var status_val = e.options[index - 1].innerText;
 
   var notes_val = document.getElementById("notes_text" + no).value;
 
@@ -139,7 +139,7 @@ async function insertClient() {
 
   const e = document.getElementById("select");
   const index = e.value;
-  var status_val = e.options[index].innerText;
+  var status_val = e.options[index - 1].innerText;
 
   var notes_val = document.getElementById("notesNew").value;
 
