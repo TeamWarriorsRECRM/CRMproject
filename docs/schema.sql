@@ -25,6 +25,7 @@ CREATE TABLE clients (
     note varchar(200),
 	id INT auto_increment NOT NULL PRIMARY KEY
 );
+
 create USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mySQL86giovanni';
 flush privileges;
 UPDATE user SET Password=PASSWORD('mySQL86giovanni') WHERE User='root';
