@@ -14,20 +14,15 @@
 
 <body>
 
-
   <nav class="navbar navbar-light">
     <div class="container-fluid">
       <ul class="nav nav-pills">
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/logout">Logout</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="/database">Client Database</a>
         </li>
-
-
-
         <li class="nav-item">
           <a class="nav-link" href="/contact-us">Contact Support</a>
         </li>
@@ -37,12 +32,11 @@
 
   <div class="container">
     <h1 style="text-align: center;">All Clients</h1>
-
   </div>
+
   <div class="container">
     <div style="text-align: center;">
       <h1 style="text-align: center;">My Leads</h1>
-
       <a href="/database"><button class="myButton" style="text-align:left">Database
         </button></a>
       <a href="/addClient"><button class="myButton" style="text-align:left">Add new client </button></a>
@@ -62,41 +56,12 @@
         </tr>
       </thead>
       <tbody id="quickView">
-
-
       </tbody>
     </table>
   </div>
 
   <script src="./assets/script.js"> </script>
-  <script>
-    async function getQuickView() {
-
-      const clients = await fetch("/api/clients")
-        .then((res) => res.json())
-        .catch((err) => console.log(err));
-
-      document.querySelector("#quickView").innerHTML = "";
-
-      clients.forEach((el) => {
-        document.querySelector("#quickView").innerHTML += `
-    <tr id="row${el.id}">
-          <td  id="firstName_row${el.id}" style="text-align: center;">${el.firstname}</td>
-          <td  id="lastName_row${el.id}"style="text-align: center;">${el.lastname}</td>
-          <td id="budget_row${el.id}"style="text-align: center;">${el._status}</td>
-          <td style="text-align: center;">
-            <div class="form-check">
-              <label class="btn btn-outline-secondary" for="btnradio3"><a target="_blank" class="fa fa-envelope"
-                  href="mailto:${el.email}"></a></label>
-              </label>
-            </div>
-          </td>
-        </tr>
-    `;
-      });
-    }
-    getQuickView();
-  </script>
+  <script src="./assets/clients.js"></script>
 </body>
 
 </html>
