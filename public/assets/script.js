@@ -1,26 +1,29 @@
-//To allow user to edit input
+const {
+  connectableObservableDescriptor,
+} = require("rxjs/internal/observable/ConnectableObservable");
+
+// TO ALLOW USER TO EDIT INPUT
 async function edit_row(no) {
-  console.log("this works");
   document.querySelector("#edit_button" + no).classList.add("disappear");
   document.getElementById("save_button" + no).classList.remove("disappear");
 
-  var firstName = document.getElementById("firstName_row" + no);
-  var lastName = document.getElementById("lastName_row" + no);
-  var budget = document.getElementById("budget_row" + no);
-  var downPay = document.getElementById("downpayment_row" + no);
-  var interest = document.getElementById("areaOfInterest_row" + no);
-  var email = document.getElementById("email_row" + no);
-  var status = document.getElementById("status_row" + no);
-  var notes = document.getElementById("note_row" + no);
+  let firstName = document.getElementById("firstName_row" + no);
+  let lastName = document.getElementById("lastName_row" + no);
+  let budget = document.getElementById("budget_row" + no);
+  let downPay = document.getElementById("downpayment_row" + no);
+  let interest = document.getElementById("areaOfInterest_row" + no);
+  let email = document.getElementById("email_row" + no);
+  let status = document.getElementById("status_row" + no);
+  let notes = document.getElementById("note_row" + no);
 
-  var firstName_data = firstName.innerHTML;
-  var lastName_data = lastName.innerHTML;
-  var budget_data = budget.innerHTML;
-  var downPay_data = downPay.innerHTML;
-  var interest_data = interest.innerHTML;
-  var email_data = email.innerHTML;
-  var status_data = status.innerHTML;
-  var notes_data = notes.innerHTML;
+  let firstName_data = firstName.innerHTML;
+  let lastName_data = lastName.innerHTML;
+  let budget_data = budget.innerHTML;
+  let downPay_data = downPay.innerHTML;
+  let interest_data = interest.innerHTML;
+  let email_data = email.innerHTML;
+  let status_data = status.innerHTML;
+  let notes_data = notes.innerHTML;
 
   firstName.innerHTML =
     "<input type='text' id='firstName_text" +
@@ -55,7 +58,7 @@ async function edit_row(no) {
   email.innerHTML =
     "<input type='text' id='email_text" + no + "' value='" + email_data + "'>";
   status.innerHTML =
-    "<select id='select''>' '<option value='1'> Actively looking </option>' '<option value='2'> Passively Looking </option>' '<option value='3'> Not Interested </option>' </select " +
+    "<select id='select''>' '<option value='1'>Actively looking </option>' '<option value='2'>Passively Looking </option>' '<option value='3'>Not Interested </option>' </select " +
     no +
     "' value='" +
     status_data +
@@ -64,26 +67,21 @@ async function edit_row(no) {
     "<input type='text' id='notes_text" + no + "' value='" + notes_data + "'>";
 }
 
-//To save user input
+//SAVE EDITED CLIENT INFORMATION FUNCTION
 async function save_row(no) {
-  console.log("this works fam");
   document.getElementById("save_button" + no).classList.add("disappear");
   document.querySelector("#edit_button" + no).classList.remove("disappear");
 
-  var firstName_val = document.getElementById("firstName_text" + no).value;
-  var lastName_val = document.getElementById("secondName_text" + no).value;
-  var budget_val = document.getElementById("budget_text" + no).value;
-  var downPay_val = document.getElementById("downPay_text" + no).value;
-  var interest_val = document.getElementById("interest_text" + no).value;
-  var email_val = document.getElementById("email_text" + no).value;
-
-  const e = document.getElementById("select");
-  const index = e.value;
-  var status_val = e.options[index].innerText;
-
-  var notes_val = document.getElementById("notes_text" + no).value;
-
-  console.log(lastName_val, "    LASTNAME");
+  let firstName_val = document.getElementById("firstName_text" + no).value;
+  let lastName_val = document.getElementById("secondName_text" + no).value;
+  let budget_val = document.getElementById("budget_text" + no).value;
+  let downPay_val = document.getElementById("downPay_text" + no).value;
+  let interest_val = document.getElementById("interest_text" + no).value;
+  let email_val = document.getElementById("email_text" + no).value;
+  let e = document.getElementById("select");
+  let index = e.value;
+  let status_val = e.options[index - 1].innerText;
+  let notes_val = document.getElementById("notes_text" + no).value;
 
   document.getElementById("firstName_row" + no).innerHTML = firstName_val;
   document.getElementById("lastName_row" + no).innerHTML = lastName_val;
@@ -95,7 +93,7 @@ async function save_row(no) {
   document.getElementById("note_row" + no).innerHTML = notes_val;
 
   let findId = await fetch(
-    `/database.html/${firstName_val}/${lastName_val}/${email_val}`,
+    `/api/database/${firstName_val}/${lastName_val}/${email_val}`,
     {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -103,7 +101,6 @@ async function save_row(no) {
   )
     .then((res) => {
       const result = res.json();
-      // console.log(result, "  WTF!!!!"); //////response
       return result;
     })
     .then((res) => {
@@ -121,151 +118,22 @@ async function save_row(no) {
     });
 }
 
-async function insertClient() {
-  const clients = await fetch("/api/database")
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
-  // document.querySelector("#edit_button" + no).classList.remove("disappear");
-  let id = clients.length + 1;
-
-  console.log(id, "   NUMBER");
-  //////////////////////DOESN'T READ VALUES
-  var firstName_val = document.getElementById("firstNameNew").value;
-  var lastName_val = document.getElementById("lastNameNew").value;
-  var budget_val = document.getElementById("budgetNew").value;
-  var downPay_val = document.getElementById("downpaymentNew").value;
-  var interest_val = document.getElementById("areaOfInterestNew").value;
-  var email_val = document.getElementById("emailNew").value;
-
-  const e = document.getElementById("select");
-  const index = e.value;
-  var status_val = e.options[index].innerText;
-
-  var notes_val = document.getElementById("notesNew").value;
-
-  addEntry(
-    firstName_val,
-    lastName_val,
-    budget_val,
-    downPay_val,
-    interest_val,
-    email_val,
-    status_val,
-    notes_val,
-    id
-  );
-}
-
-//To Delete full Row
+// TO DELETE FULL ROW
 async function delete_row(no) {
   console.log("this works eh");
-  var firstName_val = document.getElementById("firstName_row" + no).innerHTML;
-  var lastName_val = document.getElementById("lastName_row" + no).innerHTML;
+  let firstName_val = document.getElementById("firstName_row" + no).innerHTML;
+  let lastName_val = document.getElementById("lastName_row" + no).innerHTML;
   document.getElementById("row" + no + "").outerHTML = "";
 
   const deletion = await fetch(
-    `/database.html/${firstName_val}/${lastName_val}`,
+    `/api/database/${firstName_val}/${lastName_val}`,
     {
       method: "DELETE",
     }
   );
-  // console.log(deletion, "  DELETION ");
 }
 
-//to Add a row
-function add_client() {
-  document.getElementById("newEntry").classList.remove("disappear");
-}
-
-let x;
-// This is to add rows
-async function add_row(no) {
-  document.getElementById("newEntry").classList.add("disappear");
-  var new_firstName = document.getElementById("new_firstName");
-  var new_lastName = document.getElementById("new_lastName");
-  var new_budget = document.getElementById("new_budget");
-  var new_downPayment = document.getElementById("new_downPayment");
-  var new_areaOfInterest = document.getElementById("new_areaOfInterest");
-  var new_email = document.getElementById("new_email");
-  var new_status = document.getElementById("new_status");
-  var new_note = document.getElementById("new_note ");
-
-  //   if (!new_firstName) new_firstName.innerHTML += "";
-
-  // // This is to add the User entries from the form, to the table
-  // var userFirstName = document.getElementById("firstNameNew").value;
-  // var userLastName = document.getElementById("lastNameNew").value;
-  // var userBudget = document.getElementById("budgetNew").value;
-  // var userDownpayment = document.getElementById("downpaymentNew").value;
-  // var userAreaInterest = document.getElementById("areaOfInterestNew").value;
-  // var userEmail = document.getElementById("emailAdressNew").value;
-  // // var userStatus = document.getElementById('lastNameNew').value
-  // var userNotes = document.getElementById("myNotesNew").value;
-
-  var table = document.getElementById("tableInfo");
-  var table_len = table.rows.length;
-  var row = (table.insertRow(table_len).outerHTML =
-    "<tr id='row" +
-    table_len +
-    "'><td id='firstNameNew" +
-    table_len +
-    "'>" +
-    userFirstName +
-    "</td><td placeholder='value here' id='lastName_row" +
-    table_len +
-    "'>" +
-    userLastName +
-    "</td><td placeholder='value here' id='budget_row" +
-    table_len +
-    "'>" +
-    userBudget +
-    "</td><td placeholder='value here' id='downpayment_row" +
-    table_len +
-    "'>" +
-    userDownpayment +
-    "</td><td placeholder='value here' id='areaOfInterest_row" +
-    table_len +
-    "'>" +
-    userAreaInterest +
-    "</td><td placeholder='value here' id='email_row" +
-    table_len +
-    "'>" +
-    userEmail +
-    "</td><td placeholder='value here' id='status_row" +
-    "'>" +
-    x +
-    "</td><td placeholder='value here' id='note_row" +
-    table_len +
-    "'>" +
-    userNotes +
-    "</td><td><input type='button' id='edit_button" +
-    no +
-    "' value= 'Edit' class='btn btn-primary'  onclick='edit_row(" +
-    table_len +
-    ")'> <input type='button' ' value='Save' class='btn btn-primary' onclick='save_row(" +
-    table_len +
-    ")'> <input type='button' value='Delete' class='btn btn-secondary' onclick='delete_row(" +
-    table_len +
-    ")'></td></tr>");
-
-  //to clear all inputs
-  document.getElementById("firstNameNew").value = "";
-  document.getElementById("lastNameNew").value = "";
-  document.getElementById("budgetNew").value = "";
-  document.getElementById("downpaymentNew").value = "";
-  document.getElementById("areaOfInterestNew").value = "";
-  document.getElementById("emailAdressNew").value = "";
-  document.getElementById("myNotesNew").value = "";
-}
-
-// Client js
-
-function mySelect() {
-  var d = document.getElementById("select");
-  var displaytext = d.options[d.selectedIndex].text;
-  document.getElementById("textvalue").value = displaytext;
-}
-
+// DATABASE HTML EDIT ENTRY FUNCTION
 async function editEntry(
   firstName_val,
   lastName_val,
@@ -277,11 +145,9 @@ async function editEntry(
   notes_val,
   id
 ) {
-  ////////if entry exists update
-  // console.log(id, "   findID");
-  //if entry exists update
+  // IF ENTRY EXISTS UPDATE THE ENTRY
   const result = await fetch(
-    `/database.html/${firstName_val}/${lastName_val}/${email_val}`,
+    `/api/database/${firstName_val}/${lastName_val}/${email_val}`,
     {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -300,6 +166,7 @@ async function editEntry(
   );
 }
 
+// SENDS NEW CLIENT INFORMATION TO DATABASE FUNCTION
 async function addEntry(
   firstName_val,
   lastName_val,
@@ -311,8 +178,7 @@ async function addEntry(
   notes_val,
   id
 ) {
-  //////ELSE ADD
-  const result = await fetch(`/database.html`, {
+  const result = await fetch(`/database`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -327,48 +193,4 @@ async function addEntry(
       id: id,
     }),
   });
-
-  document.getElementById("firstNameNew").value = "";
-  document.getElementById("lastNameNew").value = "";
-  document.getElementById("budgetNew").value = "";
-  document.getElementById("downpaymentNew").value = "";
-  document.getElementById("areaOfInterestNew").value = "";
-  document.getElementById("emailNew").value = "";
-  document.getElementById("notesNew").value = "";
-}
-
-// AUTH CODE --------------------------------------------------------------------------
-
-async function sendLogIn(event) {
-  event.preventDefault();
-  console.log("working");
-  data = {
-    email: document.querySelector("#email").value,
-    password: document.querySelector("#password").value,
-  };
-  console.log(data);
-  let logInResult = await fetch("/api/index", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  }).then((r) => r.json());
-  location.href = "/clients.html";
-}
-
-async function register(event) {
-  event.preventDefault();
-  data = {
-    email: document.querySelector("#email").value,
-    password: document.querySelector("#password").value,
-  };
-  let result = await fetch("/api/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  }).then((r) => r.json());
-  location.href = "/index.html";
 }

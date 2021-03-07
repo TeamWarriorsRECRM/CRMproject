@@ -6,11 +6,18 @@ const session = require("express-session");
 const app = express();
 
 module.exports = function (app) {
+  // LOG IN ROUTING
   app.get("/", function (req, res) {
     if (req.user) {
       res.redirect("/database");
     }
     res.sendFile(path.join(__dirname, "../../public/register.html"));
+  });
+  // LOGOUT REDIRECT
+  app.get("/logout", function (req, res) {
+    req.logout();
+    console.log("redirecting server side");
+    res.redirect("/");
   });
 
   app.get("/index", function (req, res) {
@@ -22,12 +29,6 @@ module.exports = function (app) {
 
   app.get("/database", isAuth, function (req, res) {
     res.sendFile(path.join(__dirname, "../../public/database.html"));
-  });
-
-  app.get("/logout", function (req, res) {
-    req.logout();
-    console.log("redirecting server side");
-    res.redirect("/");
   });
 
   app.get("/database", function (req, res) {
@@ -52,5 +53,9 @@ module.exports = function (app) {
   app.get("/thankyou", function (req, res) {
     console.log("redirecting to contact us page unauthenicated");
     res.sendFile(path.join(__dirname, "../../public/thankyou.html"));
+  });
+
+  app.get("/register", function (req, res) {
+    res.sendFile(path.join(__dirname, "../../public/register.html"));
   });
 };
