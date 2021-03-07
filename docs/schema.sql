@@ -1,19 +1,10 @@
-DROP DATABASE tasks;
-CREATE DATABASE tasks;
-USE tasks;
-
-CREATE TABLE tasks (
-    `id` INTEGER AUTO_INCREMENT PRIMARY KEY,
-    `priority` ENUM('danger','primary','secondary') DEFAULT 'primary', /* using bootstrap class as priority colouring */
-    `info` VARCHAR(255) NOT NULL,
-    `due` TIMESTAMP DEFAULT NULL,
-    `createdAt` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
-
 
 DROP DATABASE IF EXISTS  clients_db ;
+
 CREATE DATABASE clients_db;
+
 USE clients_db;  
+
 CREATE TABLE clients (
     firstname varchar(100),
     lastname varchar(100),

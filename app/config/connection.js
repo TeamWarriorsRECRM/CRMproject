@@ -2,7 +2,9 @@ const mysql = require("mysql");
 
 class Database {
   constructor(config) {
-    this.connection = mysql.createConnection(config);
+    this.connection = mysql.createConnection(
+      process.env.JAWSDB_URL ? process.env.JAWSDB_URL : config
+    );
   }
   query(sql, args) {
     return new Promise((resolve, reject) => {
