@@ -43,7 +43,7 @@
     <div style="text-align: center;">
       <h1 style="text-align: center;">My Leads</h1>
 
-      <a><button class="myButton" onclick="getQuickView(event)" style="text-align:left">QuickView
+      <a href="/database"><button class="myButton" style="text-align:left">Database
         </button></a>
       <a href="/addClient"><button class="myButton" style="text-align:left">Add new client </button></a>
       <h7 id="time" style="text-align: right;"> </h7>
@@ -69,6 +69,34 @@
   </div>
 
   <script src="./assets/script.js"> </script>
+  <script>
+    async function getQuickView() {
+
+      const clients = await fetch("/api/clients")
+        .then((res) => res.json())
+        .catch((err) => console.log(err));
+
+      document.querySelector("#quickView").innerHTML = "";
+
+      clients.forEach((el) => {
+        document.querySelector("#quickView").innerHTML += `
+    <tr id="row${el.id}">
+          <td  id="firstName_row${el.id}" style="text-align: center;">${el.firstname}</td>
+          <td  id="lastName_row${el.id}"style="text-align: center;">${el.lastname}</td>
+          <td id="budget_row${el.id}"style="text-align: center;">${el._status}</td>
+          <td style="text-align: center;">
+            <div class="form-check">
+              <label class="btn btn-outline-secondary" for="btnradio3"><a target="_blank" class="fa fa-envelope"
+                  href="mailto:${el.email}"></a></label>
+              </label>
+            </div>
+          </td>
+        </tr>
+    `;
+      });
+    }
+    getQuickView();
+  </script>
 </body>
 
 </html>
