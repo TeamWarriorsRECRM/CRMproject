@@ -1,16 +1,10 @@
 require("dotenv").config();
 
-const createClass = require("./public/assets/script");
-const orm = require("./public/assets/orm");
 const express = require("express");
 const session = require("express-session");
-const sequelize = require("sequelize");
-const { get } = require("http");
 const passport = require("./app/config/passport");
 const db = require("./app/models");
-const { connection } = require("./app/config/connection");
-const { Script } = require("vm");
-const { async } = require("rxjs");
+
 const app = express();
 
 const PORT = process.env.PORT || 8080;
