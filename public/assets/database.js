@@ -1,3 +1,4 @@
+// POPULATES DATABASE ENTRIES WHEN DATABASE TAB IS PRESSED ON WEBSITE
 async function getList() {
   const clients = await fetch("/api/database")
     .then((res) => res.json())
@@ -5,10 +6,7 @@ async function getList() {
   console.log(clients);
   document.querySelector("#tableRows").innerHTML = "";
 
-  // console.log(clients, "  LIST FROM SCRIPT");
-
   clients.forEach((el) => {
-    // console.log(el.firstname);
     document.querySelector("#tableRows").innerHTML += `
       <tr id="row${el.id}">
       <td id="firstName_row${el.id}">${el.firstname}</td>
