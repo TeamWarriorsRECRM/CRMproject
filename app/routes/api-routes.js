@@ -5,10 +5,12 @@ const db = require("../models");
 const orm = require("../../public/assets/orm");
 
 module.exports = function (app) {
+  // LOG IN AUTH CHECKS DATABASE TO SEE IF USER EXISTS AND IF PASSWORD MATCHES
   app.post("/api/index", passport.authenticate("local"), function (req, res) {
     res.json(req.user);
   });
 
+  // SENDS NEW USER ACCOUNT INFORMATION TO BE STORED IN DATABASE
   app.post("/api/register", async function (req, res) {
     let result = await db.User.create({
       email: req.body.email,
@@ -28,55 +30,44 @@ module.exports = function (app) {
     }
   });
 
+  // GETS FULL DETAILS OF CLIENTS FROM DATABASE
   app.get("/api/database", async (req, res) => {
     const list = await orm.getClients();
     console.log(list);
     res.send(list);
   });
 
-  app.post("/api/addClient", async (req, res) => {
-    let body = req.body;
-    orm.insertClient(body);
-    res.send();
-  });
-
-  app.put("/database.html/:firstname/:lastname/:email", async (req, res) => {
-    ////////////////////////////////////////////////////////////////////
+  // EDIT ENTRIES IN DATABASE
+  app.put("/api/database/:firstname/:lastname/:email", async (req, res) => {
     const body = req.body;
     const entry = await orm.updateInfo(body, body.id);
     res.send(entry);
   });
 
-  /////DELETES ENTRY
-  app.delete("/database.html/:firstName/:lastName", (req, res) => {
+  /////DELETES ENTRY FROM DATABASE
+  app.delete("/api/database/:firstName/:lastName", (req, res) => {
     orm.deleteClient(req.params.firstName, req.params.lastName);
     res.send();
   });
-
-  app.post("/database.html", (req, res) => {
-    let body = req.body;
-    orm.insertClient(body);
-    res.send();
-  });
-
-  app.post("/addClient.html", (req, res) => {
+  // INSERTS NEW ENTRY INTON DATABASE
+  app.post("/database", (req, res) => {
     let body = req.body;
     orm.insertClient(body);
     res.send();
   });
 
   //////ONLY GETTING THE ID FOR THE SELECTED ENTRY
-  app.get(`/database.html/:firstName/:lastName/:email`, async (req, res) => {
+  app.get(`/api/database/:firstName/:lastName/:email`, async (req, res) => {
     const [id] = await orm.getSingleClient(
       req.params.firstName,
       req.params.lastName,
       req.params.email
     );
-
     const result = JSON.stringify(id.id);
     res.send(result);
   });
 
+  // SHOWS 'QUICK LIST'
   app.get("/api/clients", async (req, res) => {
     const quickList = await orm.quickList();
     res.send(quickList);
