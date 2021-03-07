@@ -24,15 +24,44 @@ module.exports = function (app) {
   });
 
   // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
 
-  app.get("/database", function (req, res) {
-    res.sendFile(path.join(__dirname, "../../public/database.html"));
-  });
+  // If a user who is not logged in tries to access this route they will be redirected to the signup page
 
   app.get("/logout", function (req, res) {
     req.logout();
     console.log("redirecting server side");
     res.redirect("/");
   });
+
+
+app.get("/database", function (req, res) {
+  res.sendFile(path.join(__dirname, "../../public/database.html"));
+});
+
+// app.get("/contact-us", function (req, res) {
+//   res.sendFile(path.join(__dirname, "../../public/contact-us.html"));
+// });
+
+app.get("/contact-us", function (req, res) {
+  console.log('this works')
+  res.sendFile(path.join(__dirname, "../../public/contact-us.html"));
+});
+
+
+app.get("/addClient", function (req, res){
+  console.log('redirecting to add client')
+  res.sendFile(path.join(__dirname, "../../public/addClient.html"));
+})
+
+app.get("/clients", function(req,res){
+  console.log('redirecting to clients quick view')
+  res.sendFile(path.join(__dirname, "../../public/clients.html"));
+})
+
+app.get("/thankyou", function(req,res){
+  console.log('redirecting to contact us page unauthenicated')
+  res.sendFile(path.join(__dirname, "../../public/thankyou.html"));
+
+})
+
 };
