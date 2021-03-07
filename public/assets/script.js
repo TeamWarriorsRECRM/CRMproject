@@ -1,7 +1,3 @@
-const {
-  connectableObservableDescriptor,
-} = require("rxjs/internal/observable/ConnectableObservable");
-
 // TO ALLOW USER TO EDIT INPUT
 async function edit_row(no) {
   document.querySelector("#edit_button" + no).classList.add("disappear");
